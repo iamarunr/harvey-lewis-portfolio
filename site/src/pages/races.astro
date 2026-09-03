@@ -1,0 +1,450 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import races from '../data/races.json';
+import badwaterDawn from '../assets/photos/badwater-dawn.jpg';
+
+const wins = races.filter((r) => r.placeOverall === 1 && r.status === 'finished').length;
+const podiums = races.filter((r) => r.placeOverall <= 3 && r.status === 'finished').length;
+const years = [...new Set(races.map((r) => r.year))].sort((a, b) => b - a);
+
+const highlights = [
+  {
+    event: "Big's Backyard Ultra",
+    detail: '5 starts · 2 wins, both world records',
+    rows: [
+      { y: '2023', r: '108 laps · 450.0 mi', p: '1st — World Record' },
+      { y: '2021', r: '85 laps · 354.2 mi', p: '1st — World Record' },
+      { y: '2024', r: '316.7 mi', p: '4th' },
+      { y: '2017', r: '58 laps · 241.7 mi', p: '2nd — "the assist"' },
+    ],
+  },
+  {
+    event: 'Badwater 135',
+    detail: '14 starts since 2011 · 2 wins · 7 podiums',
+    rows: [
+      { y: '2014', r: '23:52', p: '1st' },
+      { y: '2021', r: '25:50:23', p: '1st' },
+      { y: '2016', r: '23:40:52', p: '2nd' },
+      { y: '2019', r: '26:11:18', p: '3rd' },
+    ],
+  },
+  {
+    event: 'IAU 24-Hour World Championship',
+    detail: '5 Team USA appearances — a U.S. record',
+    rows: [
+      { y: '2019', r: '160.3 mi — Brive-la-Gaillarde', p: '14th' },
+      { y: '2015', r: '158.4 mi — Turin', p: '9th' },
+      { y: '2012', r: '148.6 mi — Katowice', p: '22nd' },
+      { y: '2017', r: '144.2 mi — Belfast', p: '48th' },
+    ],
+  },
+  {
+    event: 'The Long Way Round',
+    detail: 'Expeditions & one-offs',
+    rows: [
+      { y: '2020', r: 'Badwater Basin → Mt. Whitney · 33:32', p: 'World Record' },
+      { y: '2018', r: 'Appalachian Trail · 49d 14h', p: 'Top-10 fastest ever' },
+      { y: '2016', r: 'Ultra Trail Gobi · 400 km', p: '11th' },
+      { y: '2008', r: "Gandhi's Salt March · 241 mi", p: 'Commemorative' },
+    ],
+  },
+];
+---
+
+<Base title="Races & Records — Harvey Lewis" description="Every race Harvey Lewis has run since 1996 — 124 results, 38 wins, from FANS 24-Hour to back-to-back world records at Big's Backyard Ultra.">
+  <section class="races-hero">
+    <div class="container">
+      <p class="eyebrow">Races &amp; Records</p>
+      <h1 class="races-title">
+        {races.length} races. Thirty years. <em>Seven continents.</em>
+      </h1>
+      <div class="races-stats">
+        <div class="rstat"><span class="rstat-n">{wins}</span><span class="rstat-l">Overall wins</span></div>
+        <div class="rstat"><span class="rstat-n">{podiums}</span><span class="rstat-l">Podiums</span></div>
+        <div class="rstat"><span class="rstat-n">{years[years.length - 1]}–{years[0]}</span><span class="rstat-l">Active span</span></div>
+        <div class="rstat"><span class="rstat-n">3</span><span class="rstat-l">World records</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="photo-band">
+    <Image
+      src={badwaterDawn}
+      alt="Runners on the road at Badwater Basin at dawn, mountains on the horizon"
+      widths={[800, 1280]}
+      sizes="100vw"
+      quality={80}
+    />
+  </div>
+
+  <section class="highlights">
+    <div class="container">
+      <p class="mono-label">01 / The marquee events</p>
+      <div class="highlight-grid">
+        {
+          highlights.map((h) => (
+            <article class="highlight-card">
+              <h2 class="highlight-event">{h.event}</h2>
+              <p class="highlight-detail">{h.detail}</p>
+              <table class="highlight-table">
+                <tbody>
+                  {h.rows.map((row) => (
+                    <tr>
+                      <td class="ht-year">{row.y}</td>
+                      <td class="ht-result">{row.r}</td>
+                      <td class="ht-place">{row.p}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="archive">
+    <div class="container">
+      <p class="mono-label">02 / The full archive</p>
+      <h2 class="archive-title">Every start since 1996</h2>
+      <p class="archive-note">Source: UltraSignup. Results are miles for fixed-time races, elapsed time for fixed-distance races.</p>
+
+      <div class="filters" role="group" aria-label="Filter races">
+        <button class="filter-btn active" data-filter="all">All ({races.length})</button>
+        <button class="filter-btn" data-filter="wins">Wins ({wins})</button>
+        <button class="filter-btn" data-filter="podiums">Podiums ({podiums})</button>
+      </div>
+
+      <div class="race-table-head">
+        <span>Date</span><span>Race</span><span>Result</span><span>Place</span>
+      </div>
+
+      {
+        years.map((year) => (
+          <div class="year-group" data-year={year}>
+            <h3 class="year-label">{year}</h3>
+            {races
+              .filter((r) => r.year === year)
+              .map((r) => (
+                <div
+                  class="race-row"
+                  data-win={r.placeOverall === 1 && r.status === 'finished' ? 'true' : 'false'}
+                  data-podium={r.placeOverall <= 3 && r.status === 'finished' ? 'true' : 'false'}
+                >
+                  <span class="race-date">{r.date}</span>
+                  <span class="race-name">{r.race}</span>
+                  <span class="race-result">{r.status === 'dnf' ? 'DNF' : r.result}</span>
+                  <span class="race-place">
+                    {r.status === 'dnf' ? '—' : r.placeOverall === 1 ? <strong>1st</strong> : `${r.placeOverall}${['th','st','nd','rd'][((r.placeOverall % 100) - 20) % 10] || ['th','st','nd','rd'][r.placeOverall % 100] || 'th'}`}
+                  </span>
+                </div>
+              ))}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const rows = document.querySelectorAll('.race-row');
+  const groups = document.querySelectorAll('.year-group');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.getAttribute('data-filter');
+
+      rows.forEach((row) => {
+        const show =
+          mode === 'all' ||
+          (mode === 'wins' && row.getAttribute('data-win') === 'true') ||
+          (mode === 'podiums' && row.getAttribute('data-podium') === 'true');
+        (row as HTMLElement).style.display = show ? '' : 'none';
+      });
+
+      groups.forEach((group) => {
+        const visible = group.querySelectorAll(
+          '.race-row:not([style*="display: none"])'
+        ).length;
+        (group as HTMLElement).style.display = visible > 0 ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .races-hero {
+    padding: 96px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .races-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+    max-width: 900px;
+    margin: 18px 0 40px;
+  }
+
+  .races-title em {
+    font-style: italic;
+    font-weight: 340;
+    color: var(--rust);
+  }
+
+  .races-stats {
+    display: flex;
+    border-top: 1px solid var(--line);
+  }
+
+  .rstat {
+    flex: 1;
+    padding: 20px 24px 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rstat-n {
+    font-family: var(--font-mono);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--rust);
+  }
+
+  .rstat-l {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 4px;
+  }
+
+  .photo-band {
+    border-bottom: 1px solid var(--line);
+    max-height: 480px;
+    overflow: hidden;
+  }
+
+  .photo-band img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .highlights {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+    margin-top: 32px;
+  }
+
+  .highlight-card {
+    padding: 32px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .highlight-event {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 26px;
+  }
+
+  .highlight-detail {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin: 8px 0 20px;
+  }
+
+  .highlight-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .highlight-table td {
+    padding: 9px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  .ht-year {
+    font-family: var(--font-mono);
+    color: var(--ink-dim);
+    width: 60px;
+  }
+
+  .ht-result {
+    color: var(--ink);
+  }
+
+  .ht-place {
+    text-align: right;
+    color: var(--ink-dim);
+    white-space: nowrap;
+  }
+
+  .archive {
+    padding: 88px 0 112px;
+  }
+
+  .archive-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 40px;
+    margin: 14px 0 10px;
+  }
+
+  .archive-note {
+    font-size: 14px;
+    color: var(--ink-dim);
+    margin-bottom: 36px;
+  }
+
+  .filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .filter-btn {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    background: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 0;
+    padding: 10px 18px;
+    cursor: pointer;
+  }
+
+  .filter-btn:hover {
+    color: var(--ink);
+    border-color: var(--ink-dim);
+  }
+
+  .filter-btn.active {
+    background: var(--rust);
+    border-color: var(--rust);
+    color: var(--bg-deep);
+    font-weight: 700;
+  }
+
+  .race-table-head {
+    display: grid;
+    grid-template-columns: 110px 1fr 150px 70px;
+    gap: 16px;
+    padding: 0 0 12px;
+    border-bottom: 1px solid var(--line-strong);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .year-label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--rust);
+    padding: 28px 0 8px;
+  }
+
+  .race-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 150px 70px;
+    gap: 16px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+
+  .race-date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+    padding-top: 2px;
+  }
+
+  .race-name {
+    color: var(--ink);
+  }
+
+  .race-result {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-dim);
+    text-align: right;
+  }
+
+  .race-place {
+    text-align: right;
+    color: var(--ink-dim);
+  }
+
+  .race-place strong {
+    color: var(--rust);
+  }
+
+  /* Mobile < 640px */
+  @media (max-width: 640px) {
+    .races-hero {
+      padding: 64px 0 48px;
+    }
+
+    .races-title {
+      font-size: 38px;
+    }
+
+    .races-stats {
+      flex-wrap: wrap;
+    }
+
+    .rstat {
+      flex: 1 1 50%;
+      padding: 16px 12px 0 0;
+    }
+
+    .highlight-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .race-table-head {
+      display: none;
+    }
+
+    .race-row {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        'name name'
+        'date result'
+        'date place';
+      gap: 4px 12px;
+    }
+
+    .race-name { grid-area: name; }
+    .race-date { grid-area: date; }
+    .race-result { grid-area: result; }
+    .race-place { grid-area: place; }
+  }
+</style>

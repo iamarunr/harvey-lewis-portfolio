@@ -1,0 +1,334 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import trailRiver from '../assets/photos/trail-river.jpg';
+import veganFriends from '../assets/photos/vegan-friends.jpg';
+import after450 from '../assets/photos/after-450.jpg';
+import speakingStudents from '../assets/photos/speaking-students.jpg';
+import saltFlatSunset from '../assets/photos/salt-flat-sunset.jpg';
+import desertRoadPair from '../assets/photos/desert-road-pair.jpg';
+import badwaterFinishNight from '../assets/photos/badwater-finish-night.jpg';
+import sunsetTogether from '../assets/photos/sunset-together.jpg';
+
+const chapterPhotos = [
+  { src: trailRiver, alt: 'Harvey Lewis running a wooded trail beside a river' },
+  { src: veganFriends, alt: 'Harvey Lewis in a VEGAN shirt with Lazarus Lake and a friend at a race camp' },
+  { src: after450, alt: 'Harvey Lewis after finishing a backyard ultra, scraped but standing' },
+  { src: speakingStudents, alt: 'Harvey Lewis speaking to hundreds of schoolchildren outdoors' },
+  { src: saltFlatSunset, alt: 'Harvey Lewis running alone across a salt flat toward the setting sun' },
+  { src: desertRoadPair, alt: 'Two runners on a long empty desert highway' },
+  { src: badwaterFinishNight, alt: 'Harvey Lewis crossing the Badwater 135 finish tape at night with his crew and an American flag' },
+  { src: sunsetTogether, alt: 'Harvey and Kelly at sunset on a salt flat' },
+];
+
+const chapters = [
+  {
+    n: '01',
+    kicker: 'Origins',
+    title: 'Not a natural athlete.',
+    paras: [
+      'Harvey Lewis III was born on April 13, 1976 in Wheeling, West Virginia, and grew up in Berea, Ohio, a suburb of Cleveland. By his own account he was an unhealthy kid — fast food culture, meals heavy on meat, heartburn, "layers of fat around my stomach."',
+      'But something was picking at him. He explored the Pennsylvania woods as a boy, saw black bears, loved his cat, his dog, his fish — and kept eating McDonald\'s without connecting the two.',
+    ],
+    quote: {
+      text: 'I loved animals, my cat, my dog, my fish. But I didn\'t think anything and would just grab something from McDonald\'s. Something was picking at me.',
+      cite: 'Great Vegan Athletes',
+    },
+  },
+  {
+    n: '02',
+    kicker: 'The Turning Point',
+    title: 'His mother\'s stroke changed everything.',
+    paras: [
+      'When Lewis was 19, his mother — a nurse, 54 years old — suffered a stroke. No family history. The experience shook him into rethinking everything about food and health.',
+      'By 1996 the transformation was underway: he went vegetarian, and that same year — at age 20 — he ran his first ultramarathon, the FANS 24-Hour in Minnesota, covering 81.3 miles. He went fully vegan in 2016 and hasn\'t wavered since. He calls it "the single most important ingredient to my longevity in the sport."',
+    ],
+    quote: {
+      text: 'When I was 19 my mother had a stroke. She was 54 years old, a nurse, and we had no family history. The nutrition was a big element that we could have done differently.',
+      cite: 'Great Vegan Athletes',
+    },
+  },
+  {
+    n: '03',
+    kicker: 'The Comeback',
+    title: 'A broken neck, rebuilt in titanium.',
+    paras: [
+      'Around 2004, Lewis suffered a broken neck. Neurosurgeons rebuilt his C4 and C5 vertebrae with titanium implants. Rather than ending his career, the injury catalyzed it — he came back faster than before.',
+    ],
+    quote: {
+      text: 'I was fortunate to survive, and after that event I actually have become so much faster. I try to encourage people not to put mental limitations on their abilities because you never know what you can do.',
+      cite: 'WVXU, July 2014',
+    },
+  },
+  {
+    n: '04',
+    kicker: 'The Teacher',
+    title: 'He promised his students. Then he kept running.',
+    paras: [
+      'Lewis has taught at the School for Creative and Performing Arts in Cincinnati\'s Over-the-Rhine since 2006 — financial literacy and American government. Around 2013, after screening a climate change film in his government class, he made his students a promise: he would stop driving to work.',
+      'Every school day since, he has run roughly three miles from East Walnut Hills to SCPA — up Mount Adams for a sunrise view of Eden Park, down the riverside trail, through downtown\'s cobblestone alleyways, past Washington Park. His backpack is famously the size of a mini-fridge. On mornings when his students are on the bus route, he races the bus.',
+      'He calls each student "a sequoia — with so much potential in front of you."',
+    ],
+    quote: {
+      text: 'That\'s a great opportunity to show them the benefits of: I\'m 47, and … I\'m racing a bus? What the hell is going on here?',
+      cite: 'iRunFar, May 2024',
+    },
+  },
+  {
+    n: '05',
+    kicker: 'Running as Witness',
+    title: 'Gandhi\'s Salt March. Selma to Montgomery.',
+    paras: [
+      'In 2008, Lewis earned a grant to retrace Mahatma Gandhi\'s 1930 Salt March — 241 miles from Ahmedabad to the coastal city of Dandi, India. In 2009, he ran Dr. Martin Luther King Jr.\'s Selma to Montgomery march.',
+      'Afterward he met 99-year-old civil rights icon Amelia Boynton Robinson, who told him: "I believe God kept me alive 99 years so I can share my story with young people." Ever the teacher.',
+    ],
+  },
+  {
+    n: '06',
+    kicker: 'Father & Son',
+    title: '2,190 miles with his dad in the crew van.',
+    paras: [
+      'In 2018, Lewis ran the full Appalachian Trail — Springer Mountain, Georgia to Mount Katahdin, Maine — in 49 days and 14 hours, averaging over 42 miles per day, one of the ten fastest completions ever at the time. His crew chief: his father, Harvey Lewis Jr., then 78, from whom he had been estranged early in life.',
+      'The journey became the award-winning documentary Like Harvey Like Son. Five days after finishing the trail, Lewis started the Badwater 135.',
+    ],
+  },
+  {
+    n: '07',
+    kicker: 'The Record Book',
+    title: 'Last man standing. Twice.',
+    paras: [
+      'Lewis has won Badwater 135 — "the world\'s toughest footrace" — twice: 2014 (23:52) and 2021 (25:50:23), the second at age 45 after coming from an hour behind at mile 90. In 2020 he set the world record from Badwater Basin to the summit of Mt. Whitney — the lowest point in the contiguous U.S. to the highest — in 33 hours 32 minutes.',
+      'At Big\'s Backyard Ultra he set the backyard world record twice: 85 laps (354 miles) in 2021 — running the final yards with a broken hand he told no one about — and 108 laps (450 miles) in 2023, when six runners passed 100 hours for the first time in history.',
+      'After the 2023 win, he slept in a tent, drove home to Cincinnati, and was back in his classroom Friday morning. Less than 48 hours after finishing 450 miles, he ran to school. He had to go teach.',
+    ],
+    quote: {
+      text: 'There are powers that exist to push us beyond what seems reasonable.',
+      cite: 'iRunFar, November 2023',
+    },
+  },
+  {
+    n: '08',
+    kicker: 'Off the Clock',
+    title: 'Charlie, the Flying Pig, and 101 countries.',
+    paras: [
+      'Lewis lives in East Walnut Hills, Cincinnati, with a rescued dog named Charlie — who runs long distances with him and eats vegan too. He has run every Flying Pig Marathon since the race began in 1999, and has been to 101 countries across seven continents. He counts centenarian vegan runner Mike Fremont among his friends and running partners.',
+      'His pre-run breakfast: granola with almond milk, chia seeds, and dragon fruit. His race fuel: squeezable chia pouches, miso soup, coconut water, beans and rice, bean burritos — "as long as it\'s vegan, I\'m happy to have it."',
+    ],
+  },
+];
+---
+
+<Base title="Story — Harvey Lewis" description="From a broken neck to back-to-back world records — the full story of ultrarunner and teacher Harvey Lewis.">
+  <section class="story-hero">
+    <div class="container">
+      <p class="eyebrow">The Story</p>
+      <h1 class="story-hero-title">
+        From a broken neck to <em>the record book.</em>
+      </h1>
+      <p class="story-hero-sub">
+        A teacher from Cincinnati who became one of the greatest endurance
+        athletes alive — without ever quitting his day job.
+      </p>
+    </div>
+  </section>
+
+  {
+    chapters.map((c, i) => (
+      <section class="chapter">
+        <div class="container chapter-grid">
+          <div class="chapter-meta">
+            <p class="chapter-n">{c.n}</p>
+            <p class="eyebrow">{c.kicker}</p>
+          </div>
+          <div class="chapter-body">
+            <h2 class="chapter-title">{c.title}</h2>
+            {c.paras.map((p) => (
+              <p class="chapter-para">{p}</p>
+            ))}
+            {c.quote && (
+              <blockquote class="chapter-quote">
+                <p>“{c.quote.text}”</p>
+                <cite>— Harvey Lewis, {c.quote.cite}</cite>
+              </blockquote>
+            )}
+          </div>
+          <div class="chapter-photo">
+            <div class="chapter-photo-box">
+              <Image
+                src={chapterPhotos[i].src}
+                alt={chapterPhotos[i].alt}
+                widths={[480, 720, 1080]}
+                sizes="(max-width: 900px) 100vw, 33vw"
+                quality={80}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="story-next">
+    <div class="container">
+      <p class="mono-label">Keep going</p>
+      <a class="next-link" href="/races">Every race since 1996 →</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .story-hero {
+    padding: 96px 0 80px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .story-hero-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+    max-width: 860px;
+    margin: 18px 0 22px;
+  }
+
+  .story-hero-title em {
+    font-style: italic;
+    font-weight: 340;
+    color: var(--rust);
+  }
+
+  .story-hero-sub {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+    max-width: 540px;
+  }
+
+  .chapter {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: 120px 1.5fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .chapter-n {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-dim);
+    margin-bottom: 8px;
+  }
+
+  .chapter-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.12;
+    margin-bottom: 24px;
+  }
+
+  .chapter-para {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-dim);
+    margin-bottom: 18px;
+    max-width: 60ch;
+  }
+
+  .chapter-quote {
+    border-left: 2px solid var(--rust);
+    padding-left: 24px;
+    margin-top: 28px;
+  }
+
+  .chapter-quote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 340;
+    font-size: 21px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .chapter-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .chapter-photo-box {
+    aspect-ratio: 3 / 4;
+    position: sticky;
+    top: 32px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .chapter-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story-next {
+    padding: 96px 0;
+  }
+
+  .next-link {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 40px;
+    color: var(--ink);
+    margin-top: 12px;
+  }
+
+  .next-link:hover {
+    color: var(--rust);
+  }
+
+  /* Mobile < 900px: meta collapses inline; photo drops below text */
+  @media (max-width: 900px) {
+    .chapter-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .chapter-photo-box {
+      aspect-ratio: 4 / 3;
+      position: static;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .story-hero {
+      padding: 64px 0 60px;
+    }
+
+    .story-hero-title {
+      font-size: 38px;
+    }
+
+    .chapter {
+      padding: 56px 0;
+    }
+
+    .chapter-title {
+      font-size: 28px;
+    }
+
+    .next-link {
+      font-size: 28px;
+    }
+  }
+</style>

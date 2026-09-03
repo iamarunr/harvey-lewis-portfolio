@@ -1,0 +1,1242 @@
+[
+  {
+    "date": "2026-06-20",
+    "year": 2026,
+    "race": "Mid-State Mile - Last Person Standing",
+    "result": "0.0 mi",
+    "resultType": "distance",
+    "placeOverall": 0,
+    "placeGender": 0,
+    "status": "finished"
+  },
+  {
+    "date": "2026-02-07",
+    "year": 2026,
+    "race": "Black Toe Run - 12HR",
+    "result": "60.0 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2026-01-10",
+    "year": 2026,
+    "race": "Night Owl Trail Marathon, Half, and 10K - Marathon",
+    "result": "4:25:42",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2025-10-18",
+    "year": 2025,
+    "race": "Big Dog's Backyard Ultra - Last Man Standing",
+    "result": "462.5 mi",
+    "resultType": "distance",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2025-08-08",
+    "year": 2025,
+    "race": "Bigfoot 200 Mile Endurance Run - 200 Miler",
+    "result": "65:22:57",
+    "resultType": "time",
+    "placeOverall": 19,
+    "placeGender": 14,
+    "status": "finished"
+  },
+  {
+    "date": "2025-07-09",
+    "year": 2025,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "26:17:01",
+    "resultType": "time",
+    "placeOverall": 7,
+    "placeGender": 6,
+    "status": "finished"
+  },
+  {
+    "date": "2025-06-05",
+    "year": 2025,
+    "race": "RunUp4Water - 12hrs",
+    "result": "30.8 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2025-03-22",
+    "year": 2025,
+    "race": "Ohio's Backyard Ultra - Last Person Standing",
+    "result": "208.3 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2025-01-12",
+    "year": 2025,
+    "race": "Rocks and Roots Winter Trail Series - 50K",
+    "result": "5:00:02",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2024-10-19",
+    "year": 2024,
+    "race": "Big Dog's Backyard Ultra - Last Man Standing",
+    "result": "316.7 mi",
+    "resultType": "distance",
+    "placeOverall": 4,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2024-09-28",
+    "year": 2024,
+    "race": "Salt Pans Ultra Marathon - 100K",
+    "result": "13:25:48",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2024-08-09",
+    "year": 2024,
+    "race": "Bigfoot 200 Mile Endurance Run - 200 Miler",
+    "result": "50:32:58",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2024-07-22",
+    "year": 2024,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "36:41:22",
+    "resultType": "time",
+    "placeOverall": 27,
+    "placeGender": 19,
+    "status": "finished"
+  },
+  {
+    "date": "2024-06-29",
+    "year": 2024,
+    "race": "Western States - 100 Miler",
+    "result": "19:21:46",
+    "resultType": "time",
+    "placeOverall": 40,
+    "placeGender": 25,
+    "status": "finished"
+  },
+  {
+    "date": "2024-01-13",
+    "year": 2024,
+    "race": "Long Haul 100 - 100 Miler",
+    "result": "21:20:02",
+    "resultType": "time",
+    "placeOverall": 15,
+    "placeGender": 12,
+    "status": "finished"
+  },
+  {
+    "date": "2023-10-21",
+    "year": 2023,
+    "race": "Big Dog's Backyard Ultra - Last Man Standing",
+    "result": "108.0 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2023-09-16",
+    "year": 2023,
+    "race": "Hocking Hills Indian Run - 60K",
+    "result": "4:55:36",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2023-08-05",
+    "year": 2023,
+    "race": "Canadian Death Race - 125K",
+    "result": "14:41:33",
+    "resultType": "time",
+    "placeOverall": 4,
+    "placeGender": 4,
+    "status": "finished"
+  },
+  {
+    "date": "2023-07-04",
+    "year": 2023,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "27:06:49",
+    "resultType": "time",
+    "placeOverall": 5,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2023-06-16",
+    "year": 2023,
+    "race": "Australian Backyard Masters - Last Runner Standing",
+    "result": "374.2 mi",
+    "resultType": "distance",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2023-05-13",
+    "year": 2023,
+    "race": "Dawn 2 Dusk 2 Dawn Ultra - 24hrs",
+    "result": "137.2 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2023-03-14",
+    "year": 2023,
+    "race": "The Barkley Marathons - 20 Miler",
+    "result": "9:59:12",
+    "resultType": "time",
+    "placeOverall": 4,
+    "placeGender": 4,
+    "status": "finished"
+  },
+  {
+    "date": "2023-02-25",
+    "year": 2023,
+    "race": "In the Woods 30A 50K - 50K Solo",
+    "result": "4:10:09",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2023-01-15",
+    "year": 2023,
+    "race": "Rocks and Roots Winter Trail Series - 50K",
+    "result": "4:35:25",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2022-12-03",
+    "year": 2022,
+    "race": "The Tennessee Mile - 12hrs",
+    "result": "55.0 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2022-10-15",
+    "year": 2022,
+    "race": "Big Dog's Backyard Ultra - Last Man Standing",
+    "result": "0.0 mi",
+    "resultType": "distance",
+    "placeOverall": 0,
+    "placeGender": 0,
+    "status": "dnf"
+  },
+  {
+    "date": "2022-09-17",
+    "year": 2022,
+    "race": "Hocking Hills Indian Run - 60K",
+    "result": "5:02:54",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2022-08-20",
+    "year": 2022,
+    "race": "Leadville Trail - 100 Miler",
+    "result": "28:53:47",
+    "resultType": "time",
+    "placeOverall": 230,
+    "placeGender": 188,
+    "status": "finished"
+  },
+  {
+    "date": "2022-07-11",
+    "year": 2022,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "27:16:35",
+    "resultType": "time",
+    "placeOverall": 4,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2022-06-04",
+    "year": 2022,
+    "race": "FANS Ultra Races - 24hrs",
+    "result": "148.7 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2022-05-07",
+    "year": 2022,
+    "race": "Strolling Jim 40 Miler - 40 Miler",
+    "result": "4:47:07",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2022-04-02",
+    "year": 2022,
+    "race": "Akamas Blossom Trail Festival - 60K",
+    "result": "5:54:04",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2022-03-08",
+    "year": 2022,
+    "race": "The Barkley Marathons - 20 Miler",
+    "result": "8:37:38",
+    "resultType": "time",
+    "placeOverall": 4,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2022-01-15",
+    "year": 2022,
+    "race": "Long Haul 100 - 100 Miler",
+    "result": "16:07:24",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2021-12-11",
+    "year": 2021,
+    "race": "Bigfoot 50k - 50K",
+    "result": "4:49:32",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2021-10-16",
+    "year": 2021,
+    "race": "Big Dog's Backyard Ultra - Last Man Standing",
+    "result": "85.0 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2021-09-10",
+    "year": 2021,
+    "race": "Superior Fall Trail Race - 100 Miler",
+    "result": "22:22:44",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2021-08-28",
+    "year": 2021,
+    "race": "FANS Ultra Races - 24hrs",
+    "result": "124.9 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2021-07-19",
+    "year": 2021,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "25:50:23",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2021-05-01",
+    "year": 2021,
+    "race": "Strolling Jim 40 Miler - 40 Miler",
+    "result": "4:54:00",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2021-03-20",
+    "year": 2021,
+    "race": "Ohio's Backyard Ultra - Last Person Standing",
+    "result": "229.2 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2021-01-16",
+    "year": 2021,
+    "race": "Long Haul 100 - 100 Miler",
+    "result": "14:49:07",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2020-12-12",
+    "year": 2020,
+    "race": "Desert Solstice - 100 Miler",
+    "result": "16:20:10",
+    "resultType": "time",
+    "placeOverall": 13,
+    "placeGender": 11,
+    "status": "finished"
+  },
+  {
+    "date": "2020-12-12",
+    "year": 2020,
+    "race": "Desert Solstice - 24hrs",
+    "result": "135.5 mi",
+    "resultType": "distance",
+    "placeOverall": 8,
+    "placeGender": 6,
+    "status": "finished"
+  },
+  {
+    "date": "2020-10-17",
+    "year": 2020,
+    "race": "Big Dog's Backyard Ultra - Last Man Standing",
+    "result": "67.0 mi",
+    "resultType": "distance",
+    "placeOverall": 2,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2020-09-12",
+    "year": 2020,
+    "race": "Youngstown Ultra Trail Classic - 50K",
+    "result": "4:41:47",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2020-08-22",
+    "year": 2020,
+    "race": "Burning River Endurance Runs - 100 Miler",
+    "result": "17:48:43",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2020-01-18",
+    "year": 2020,
+    "race": "Long Haul 100 - 100 Miler",
+    "result": "15:55:19",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2019-10-26",
+    "year": 2019,
+    "race": "IAU 24 Hour World Championship - Brive-la-Gaillarde - 24hrs",
+    "result": "160.3 mi",
+    "resultType": "distance",
+    "placeOverall": 14,
+    "placeGender": 13,
+    "status": "finished"
+  },
+  {
+    "date": "2019-09-21",
+    "year": 2019,
+    "race": "NorthCoast 24-Hour Endurance Run - 24hrs",
+    "result": "130.8 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2019-09-15",
+    "year": 2019,
+    "race": "Ohio Pawpaw 4 Miler - 4 Miler",
+    "result": "00:25:31",
+    "resultType": "time",
+    "placeOverall": 5,
+    "placeGender": 5,
+    "status": "finished"
+  },
+  {
+    "date": "2019-08-10",
+    "year": 2019,
+    "race": "One Hot Momma - 50K",
+    "result": "4:37:26",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2019-07-15",
+    "year": 2019,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "26:11:18",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2019-05-11",
+    "year": 2019,
+    "race": "Dawn 2 Dusk 2 Dawn Ultra - 24hrs",
+    "result": "156.3 mi",
+    "resultType": "distance",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2019-04-06",
+    "year": 2019,
+    "race": "Iron Furnace Trail Run - 1/2 Marathon",
+    "result": "1:50:30",
+    "resultType": "time",
+    "placeOverall": 4,
+    "placeGender": 4,
+    "status": "finished"
+  },
+  {
+    "date": "2019-02-02",
+    "year": 2019,
+    "race": "Rocky Raccoon - 100 Miler",
+    "result": "17:42:54",
+    "resultType": "time",
+    "placeOverall": 6,
+    "placeGender": 6,
+    "status": "finished"
+  },
+  {
+    "date": "2019-01-19",
+    "year": 2019,
+    "race": "Long Haul 100 - 100 Miler",
+    "result": "18:19:29",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2019-01-05",
+    "year": 2019,
+    "race": "Rocks and Roots Winter Trail Series - 50K",
+    "result": "4:44:59",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2018-10-20",
+    "year": 2018,
+    "race": "Big Dog's Backyard Ultra - Last Man Standing",
+    "result": "4.0 mi",
+    "resultType": "distance",
+    "placeOverall": 66,
+    "placeGender": 50,
+    "status": "finished"
+  },
+  {
+    "date": "2018-09-22",
+    "year": 2018,
+    "race": "NorthCoast 24-Hour Endurance Run - 24hrs",
+    "result": "44.1 mi",
+    "resultType": "distance",
+    "placeOverall": 103,
+    "placeGender": 67,
+    "status": "finished"
+  },
+  {
+    "date": "2018-09-16",
+    "year": 2018,
+    "race": "Ohio Pawpaw 4 Miler - 4 Miler",
+    "result": "00:26:30",
+    "resultType": "time",
+    "placeOverall": 7,
+    "placeGender": 7,
+    "status": "finished"
+  },
+  {
+    "date": "2018-07-23",
+    "year": 2018,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "38:55:30",
+    "resultType": "time",
+    "placeOverall": 38,
+    "placeGender": 28,
+    "status": "finished"
+  },
+  {
+    "date": "2018-02-11",
+    "year": 2018,
+    "race": "Root and Rock Trail Series #2 - 50 Miler",
+    "result": "8:45:03",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2018-01-20",
+    "year": 2018,
+    "race": "FASTtrack 24hr - 24hrs",
+    "result": "153.5 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2018-01-07",
+    "year": 2018,
+    "race": "Rocks and Roots Winter Trail Series - 50K",
+    "result": "4:43:30",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2017-11-11",
+    "year": 2017,
+    "race": "Tunnel Hill 100 - 50 Miler",
+    "result": "6:38:33",
+    "resultType": "time",
+    "placeOverall": 4,
+    "placeGender": 4,
+    "status": "finished"
+  },
+  {
+    "date": "2017-10-21",
+    "year": 2017,
+    "race": "Big Dog's Backyard Ultra - Last Man Standing",
+    "result": "58.0 mi",
+    "resultType": "distance",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2017-09-16",
+    "year": 2017,
+    "race": "NorthCoast 24-Hour Endurance Run - 24hrs",
+    "result": "142.0 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2017-07-10",
+    "year": 2017,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "26:45:59",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2017-07-01",
+    "year": 2017,
+    "race": "IAU 24 Hour World Championship - Belfast - 24hrs",
+    "result": "144.2 mi",
+    "resultType": "distance",
+    "placeOverall": 48,
+    "placeGender": 37,
+    "status": "finished"
+  },
+  {
+    "date": "2017-02-12",
+    "year": 2017,
+    "race": "Root and Rock Trail Series #2 - 50K",
+    "result": "5:17:24",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2017-01-08",
+    "year": 2017,
+    "race": "Rocks and Roots Winter Trail Series - 50K",
+    "result": "4:42:21",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2016-09-25",
+    "year": 2016,
+    "race": "Ultra Trail Gobi Race - 400K",
+    "result": "120:43:03",
+    "resultType": "time",
+    "placeOverall": 11,
+    "placeGender": 11,
+    "status": "finished"
+  },
+  {
+    "date": "2016-09-17",
+    "year": 2016,
+    "race": "NorthCoast 24-Hour Endurance Run - 24hrs",
+    "result": "93.1 mi",
+    "resultType": "distance",
+    "placeOverall": 37,
+    "placeGender": 28,
+    "status": "finished"
+  },
+  {
+    "date": "2016-07-18",
+    "year": 2016,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "23:40:52",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2016-06-18",
+    "year": 2016,
+    "race": "Mohican - 100 Miler",
+    "result": "17:52:05",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2016-05-14",
+    "year": 2016,
+    "race": "Tie Dye - 50K",
+    "result": "4:20:20",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2016-04-01",
+    "year": 2016,
+    "race": "Marathon des Sables - 250K",
+    "result": "34:47:44",
+    "resultType": "time",
+    "placeOverall": 109,
+    "placeGender": 101,
+    "status": "finished"
+  },
+  {
+    "date": "2015-11-14",
+    "year": 2015,
+    "race": "Tunnel Hill 100 - 100 Miler",
+    "result": "14:53:21",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2015-09-19",
+    "year": 2015,
+    "race": "NorthCoast 24-Hour Endurance Run - 24hrs",
+    "result": "157.9 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2015-07-28",
+    "year": 2015,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "39:12:22",
+    "resultType": "time",
+    "placeOverall": 48,
+    "placeGender": 38,
+    "status": "finished"
+  },
+  {
+    "date": "2015-04-11",
+    "year": 2015,
+    "race": "IAU 24 Hour World Championship - Turin - 24hrs",
+    "result": "158.4 mi",
+    "resultType": "distance",
+    "placeOverall": 9,
+    "placeGender": 9,
+    "status": "finished"
+  },
+  {
+    "date": "2015-02-08",
+    "year": 2015,
+    "race": "Root and Rock Trail Series #2 - 50K",
+    "result": "4:38:02",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2015-01-26",
+    "year": 2015,
+    "race": "Arrowhead 135 - 135 Miler",
+    "result": "38:45:00",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2014-12-20",
+    "year": 2014,
+    "race": "Lookout Mountain Trail Race - 50 Miler",
+    "result": "8:26:41",
+    "resultType": "time",
+    "placeOverall": 8,
+    "placeGender": 7,
+    "status": "finished"
+  },
+  {
+    "date": "2014-10-25",
+    "year": 2014,
+    "race": "Stone Steps - 50K",
+    "result": "4:24:40",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2014-09-20",
+    "year": 2014,
+    "race": "NorthCoast 24-Hour Endurance Run - 24hrs",
+    "result": "136.3 mi",
+    "resultType": "distance",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2014-07-21",
+    "year": 2014,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "23:52:55",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2014-03-15",
+    "year": 2014,
+    "race": "South Carolina 24-Hour Race - 24hrs",
+    "result": "154.2 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2014-02-08",
+    "year": 2014,
+    "race": "Louisville Lovin' the Hills - 50K",
+    "result": "5:32:03",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2013-10-27",
+    "year": 2013,
+    "race": "Stone Steps - 50K",
+    "result": "4:15:33",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2013-09-21",
+    "year": 2013,
+    "race": "NorthCoast 24-Hour Endurance Run - 24hrs",
+    "result": "150.6 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2013-07-15",
+    "year": 2013,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "25:49:50",
+    "resultType": "time",
+    "placeOverall": 4,
+    "placeGender": 4,
+    "status": "finished"
+  },
+  {
+    "date": "2013-05-11",
+    "year": 2013,
+    "race": "IAU 24 Hour World Championship - Steenbergen - 24hrs",
+    "result": "116.5 mi",
+    "resultType": "distance",
+    "placeOverall": 145,
+    "placeGender": 86,
+    "status": "finished"
+  },
+  {
+    "date": "2013-02-09",
+    "year": 2013,
+    "race": "Louisville Lovin' the Hills - 50K",
+    "result": "4:42:30",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2012-11-17",
+    "year": 2012,
+    "race": "JFK - 50 Miler",
+    "result": "6:54:14",
+    "resultType": "time",
+    "placeOverall": 27,
+    "placeGender": 23,
+    "status": "finished"
+  },
+  {
+    "date": "2012-10-28",
+    "year": 2012,
+    "race": "Stone Steps - 50K",
+    "result": "4:25:27",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2012-09-08",
+    "year": 2012,
+    "race": "IAU 24 Hour World Championship - Katowice - 24hrs",
+    "result": "148.6 mi",
+    "resultType": "distance",
+    "placeOverall": 22,
+    "placeGender": 20,
+    "status": "finished"
+  },
+  {
+    "date": "2012-07-16",
+    "year": 2012,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "26:15:31",
+    "resultType": "time",
+    "placeOverall": 4,
+    "placeGender": 4,
+    "status": "finished"
+  },
+  {
+    "date": "2012-06-02",
+    "year": 2012,
+    "race": "FANS Ultra Races - 24hrs",
+    "result": "142.9 mi",
+    "resultType": "distance",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2012-04-28",
+    "year": 2012,
+    "race": "Tie Dye - 32 Miler",
+    "result": "4:01:32",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2012-02-11",
+    "year": 2012,
+    "race": "Louisville Lovin' the Hills - 50K",
+    "result": "5:22:01",
+    "resultType": "time",
+    "placeOverall": 5,
+    "placeGender": 5,
+    "status": "finished"
+  },
+  {
+    "date": "2011-10-23",
+    "year": 2011,
+    "race": "Stone Steps - 50K",
+    "result": "4:28:31",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2011-09-17",
+    "year": 2011,
+    "race": "NorthCoast 24-Hour Endurance Run - 24hrs",
+    "result": "140.6 mi",
+    "resultType": "distance",
+    "placeOverall": 5,
+    "placeGender": 4,
+    "status": "finished"
+  },
+  {
+    "date": "2011-07-11",
+    "year": 2011,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "30:08:03",
+    "resultType": "time",
+    "placeOverall": 11,
+    "placeGender": 8,
+    "status": "finished"
+  },
+  {
+    "date": "2011-04-23",
+    "year": 2011,
+    "race": "Tie Dye - 32 Miler",
+    "result": "4:29:55",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2011-02-05",
+    "year": 2011,
+    "race": "Rocky Raccoon - 100 Miler",
+    "result": "17:34:49",
+    "resultType": "time",
+    "placeOverall": 12,
+    "placeGender": 11,
+    "status": "finished"
+  },
+  {
+    "date": "2010-10-24",
+    "year": 2010,
+    "race": "Stone Steps - 50K",
+    "result": "4:22:17",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2010-08-22",
+    "year": 2010,
+    "race": "Little Miami Half Marathon and 10K - 1/2 Marathon",
+    "result": "1:23:25",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2010-07-31",
+    "year": 2010,
+    "race": "Burning River Endurance Runs - 100 Miler",
+    "result": "17:17:37",
+    "resultType": "time",
+    "placeOverall": 7,
+    "placeGender": 6,
+    "status": "finished"
+  },
+  {
+    "date": "2010-05-29",
+    "year": 2010,
+    "race": "Sulphur Springs - 160K",
+    "result": "17:12:37",
+    "resultType": "time",
+    "placeOverall": 1,
+    "placeGender": 1,
+    "status": "finished"
+  },
+  {
+    "date": "2010-04-24",
+    "year": 2010,
+    "race": "John Bryan 50 - 50K",
+    "result": "3:56:20",
+    "resultType": "time",
+    "placeOverall": 3,
+    "placeGender": 3,
+    "status": "finished"
+  },
+  {
+    "date": "2010-02-20",
+    "year": 2010,
+    "race": "Frosty 14 Trail Run - 14 Miler",
+    "result": "1:56:35",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2009-12-19",
+    "year": 2009,
+    "race": "The HUFF - 50K",
+    "result": "4:15:20",
+    "resultType": "time",
+    "placeOverall": 7,
+    "placeGender": 7,
+    "status": "finished"
+  },
+  {
+    "date": "2009-10-24",
+    "year": 2009,
+    "race": "Stone Steps - 50K",
+    "result": "4:28:31",
+    "resultType": "time",
+    "placeOverall": 2,
+    "placeGender": 2,
+    "status": "finished"
+  },
+  {
+    "date": "2008-10-19",
+    "year": 2008,
+    "race": "Stone Steps - 50K",
+    "result": "5:19:10",
+    "resultType": "time",
+    "placeOverall": 12,
+    "placeGender": 11,
+    "status": "finished"
+  },
+  {
+    "date": "2007-02-10",
+    "year": 2007,
+    "race": "Louisville Lovin' the Hills - 50K",
+    "result": "6:04:00",
+    "resultType": "time",
+    "placeOverall": 13,
+    "placeGender": 11,
+    "status": "finished"
+  },
+  {
+    "date": "2006-06-03",
+    "year": 2006,
+    "race": "FANS Ultra Races - 24hrs",
+    "result": "111.2 mi",
+    "resultType": "distance",
+    "placeOverall": 7,
+    "placeGender": 4,
+    "status": "finished"
+  },
+  {
+    "date": "1999-06-01",
+    "year": 1999,
+    "race": "FANS Ultra Races - 24hrs",
+    "result": "86.0 mi",
+    "resultType": "distance",
+    "placeOverall": 22,
+    "placeGender": 17,
+    "status": "finished"
+  },
+  {
+    "date": "1998-06-01",
+    "year": 1998,
+    "race": "FANS Ultra Races - 24hrs",
+    "result": "99.9 mi",
+    "resultType": "distance",
+    "placeOverall": 15,
+    "placeGender": 13,
+    "status": "finished"
+  },
+  {
+    "date": "1998-04-18",
+    "year": 1998,
+    "race": "Trail Mix - 50K",
+    "result": "4:10:54",
+    "resultType": "time",
+    "placeOverall": 12,
+    "placeGender": 12,
+    "status": "finished"
+  },
+  {
+    "date": "1997-09-01",
+    "year": 1997,
+    "race": "Olander Ultra & Dave's Endurance Run - 24hrs",
+    "result": "104.7 mi",
+    "resultType": "distance",
+    "placeOverall": 33,
+    "placeGender": 26,
+    "status": "finished"
+  },
+  {
+    "date": "1997-06-01",
+    "year": 1997,
+    "race": "FANS Ultra Races - 24hrs",
+    "result": "92.4 mi",
+    "resultType": "distance",
+    "placeOverall": 14,
+    "placeGender": 12,
+    "status": "finished"
+  },
+  {
+    "date": "1996-06-01",
+    "year": 1996,
+    "race": "FANS Ultra Races - 24hrs",
+    "result": "81.3 mi",
+    "resultType": "distance",
+    "placeOverall": 24,
+    "placeGender": 22,
+    "status": "finished"
+  }
+]

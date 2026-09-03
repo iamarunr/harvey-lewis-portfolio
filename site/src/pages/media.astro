@@ -1,0 +1,429 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import posterPhoto from '../assets/photos/architects-of-destiny.jpg';
+import thumbBandana from '../assets/photos/bandana-arch.jpg';
+import thumbSilhouette from '../assets/photos/silhouette-night.jpg';
+import thumbForest from '../assets/photos/forest-run.jpg';
+import thumbFallRoad from '../assets/photos/fall-road.jpg';
+import thumbAerial from '../assets/photos/badwater-aerial.jpg';
+import thumbSierra from '../assets/photos/sierra-pair.jpg';
+
+const videos = [
+  {
+    title: 'Rich Roll Podcast — Ep. 812',
+    sub: '"The 47-Year-Old High School Teacher Who Ran 450 Miles and Broke a World Record" · Feb 2024',
+    url: 'https://www.youtube.com/watch?v=S3LT2XfyBdo',
+    thumb: thumbBandana,
+    alt: 'Harvey Lewis passing under the There Is No Finish arch at Big\'s Backyard Ultra',
+  },
+  {
+    title: 'Rich Roll Podcast — Ep. 658',
+    sub: '"Finding Your Why, Nirvana Moments & Winning 300+ Mile Races" · Jan 2022',
+    url: 'https://www.youtube.com/watch?v=X2JkDdmEIR8',
+    thumb: thumbSilhouette,
+    alt: 'Harvey Lewis running in near-darkness, rim-lit by low sun',
+  },
+  {
+    title: 'A Day with Harvey Lewis',
+    sub: 'Rich Roll production — the run-commute and a portrait of his daily life',
+    url: 'https://www.youtube.com/watch?v=yvkm8FvDTDU',
+    thumb: thumbForest,
+    alt: 'Harvey Lewis running through sunlit woods',
+  },
+  {
+    title: '24 Hour Race Crash Course',
+    sub: 'Harvey\'s own tips for racing around the clock · Sept 2019',
+    url: 'https://www.youtube.com/watch?v=d2HMoa_vmyE',
+    thumb: thumbFallRoad,
+    alt: 'Harvey Lewis racing on a tree-lined road in autumn',
+  },
+  {
+    title: 'We Can Choose To Be Healthier',
+    sub: 'Interview on health, diet, and choices · 2017',
+    url: 'https://www.youtube.com/watch?v=2gPozkus-QM',
+    thumb: thumbAerial,
+    alt: 'Harvey Lewis in white desert gear striding across a highway, seen from above',
+  },
+  {
+    title: 'Top Mindsets Every Ultrarunner Needs',
+    sub: 'Short · May 2025',
+    url: 'https://www.youtube.com/shorts/-BitmQ2dL7U',
+    thumb: thumbSierra,
+    alt: 'Harvey Lewis and a pacer running toward the Sierra Nevada',
+  },
+];
+
+const podcasts = [
+  {
+    show: 'Rich Roll Podcast',
+    ep: 'Ep. 812 — The 47-Year-Old High School Teacher Who Ran 450 Miles',
+    date: 'Feb 2024',
+    url: 'https://richroll.com/podcast/harvey-lewis-812/',
+  },
+  {
+    show: 'Rich Roll Podcast',
+    ep: 'Ep. 658 — Finding Your Why, Nirvana Moments & Winning 300+ Mile Races',
+    date: 'Jan 2022',
+    url: 'https://www.richroll.com/podcast/harvey-lewis-658/',
+  },
+  {
+    show: 'The Extra Mile (Charity Miles)',
+    ep: 'Nice Guys Finish Last — the host joins Harvey\'s run-commute',
+    date: '2024',
+    url: 'https://podcasts.apple.com/us/podcast/the-extra-mile-the-official-charity-miles-podcast/id1256271696?i=1000673075256',
+  },
+  {
+    show: 'Marathon Training Academy',
+    ep: '354 Miles in 85 Hours — the Honey Badger race',
+    date: 'Nov 2021',
+    url: 'https://www.marathontrainingacademy.com/harvey-lewis',
+  },
+  {
+    show: 'No Meat Athlete Radio',
+    ep: 'Ep. 37 — Badwater Winner and Vegetarian Harvey Lewis',
+    date: '2014',
+    url: 'https://www.nomeatathlete.com/podcast/radio-37/',
+  },
+];
+---
+
+<Base title="Media — Harvey Lewis" description="Like Harvey Like Son — the award-winning documentary — plus podcasts and video features on ultrarunner Harvey Lewis.">
+  <section class="media-hero">
+    <div class="container">
+      <p class="eyebrow">Media</p>
+      <h1 class="media-title">The film, the podcasts, <em>the interviews.</em></h1>
+    </div>
+  </section>
+
+  <!-- ============ DOCUMENTARY ============ -->
+  <section class="doc">
+    <div class="container doc-grid">
+      <div class="doc-poster">
+        <Image
+          src={posterPhoto}
+          alt="Two runners on a Death Valley highway wearing shirts reading Your Thoughts Are The Architects Of Your Destiny"
+          widths={[480, 720, 1024]}
+          sizes="(max-width: 640px) 100vw, 40vw"
+          quality={80}
+        />
+      </div>
+      <div class="doc-body">
+        <p class="mono-label">01 / The Documentary</p>
+        <h2 class="doc-title"><em>Like Harvey Like Son</em></h2>
+        <p class="doc-award">★ Best Feature Film — Woodbury Film Festival, 2019</p>
+        <p class="doc-para">
+          In 2018, Harvey Lewis III ran the 2,190-mile Appalachian Trail in 49
+          days and 14 hours. His crew chief was his father — Harvey Lewis Jr.,
+          then 78 — from whom he had been estranged early in life. The film's
+          title carries a double meaning: both men are named Harvey Lewis, and
+          the journey from Georgia to Maine is as much a reconciliation as a
+          record attempt.
+        </p>
+        <dl class="doc-facts">
+          <div><dt>Director</dt><dd>Rudy Harris Jr.</dd></div>
+          <div><dt>Producers</dt><dd>TJ Bitter, Mike Trimpe, Rudy Harris Jr.</dd></div>
+          <div><dt>Premiere</dt><dd>Mariemont Theatre, Cincinnati — Nov 2020</dd></div>
+          <div><dt>Streaming</dt><dd>Amazon Prime Video</dd></div>
+        </dl>
+        <div class="doc-links">
+          <a class="text-link" href="https://vimeo.com/383788991" rel="noopener">Watch the trailer</a>
+          <a class="text-link" href="https://www.likeharveylikeson.com/" rel="noopener">Official site</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO ============ -->
+  <section class="videos">
+    <div class="container">
+      <p class="mono-label">02 / On Camera</p>
+      <div class="video-grid">
+        {
+          videos.map((v) => (
+            <a class="video-card" href={v.url} rel="noopener">
+              <div class="video-thumb">
+                <Image
+                  src={v.thumb}
+                  alt={v.alt}
+                  widths={[400, 640]}
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  quality={80}
+                />
+              </div>
+              <h3 class="video-title">{v.title}</h3>
+              <p class="video-sub">{v.sub}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PODCASTS ============ -->
+  <section class="podcasts">
+    <div class="container">
+      <p class="mono-label">03 / On Air</p>
+      <div class="podcast-list">
+        {
+          podcasts.map((p) => (
+            <a class="podcast-row" href={p.url} rel="noopener">
+              <span class="podcast-show">{p.show}</span>
+              <span class="podcast-ep">{p.ep}</span>
+              <span class="podcast-date">{p.date}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .media-hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .media-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+    max-width: 860px;
+    margin-top: 18px;
+  }
+
+  .media-title em {
+    font-style: italic;
+    font-weight: 340;
+    color: var(--rust);
+  }
+
+  .doc {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .doc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .doc-poster {
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .doc-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .doc-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 44px;
+    margin: 14px 0 10px;
+  }
+
+  .doc-title em {
+    font-style: italic;
+  }
+
+  .doc-award {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 22px;
+  }
+
+  .doc-para {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-dim);
+    max-width: 58ch;
+    margin-bottom: 28px;
+  }
+
+  .doc-facts {
+    border-top: 1px solid var(--line);
+    margin-bottom: 28px;
+  }
+
+  .doc-facts div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .doc-facts dt {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+
+  .doc-facts dd {
+    font-size: 14px;
+    text-align: right;
+  }
+
+  .doc-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .text-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--rust);
+    padding-bottom: 3px;
+  }
+
+  .text-link:hover {
+    color: var(--rust);
+  }
+
+  .videos {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 36px;
+  }
+
+  .video-thumb {
+    aspect-ratio: 16 / 9;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .video-card:hover .video-thumb img {
+    transform: scale(1.03);
+  }
+
+  .video-card:hover .video-title {
+    color: var(--rust);
+  }
+
+  .video-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .video-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+  }
+
+  .podcasts {
+    padding: 88px 0 112px;
+  }
+
+  .podcast-list {
+    margin-top: 32px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .podcast-row {
+    display: grid;
+    grid-template-columns: 240px 1fr 90px;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+
+  .podcast-row:hover .podcast-ep {
+    color: var(--rust);
+  }
+
+  .podcast-show {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .podcast-ep {
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .podcast-date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+    text-align: right;
+  }
+
+  /* Mobile < 640px */
+  @media (max-width: 640px) {
+    .media-hero {
+      padding: 64px 0 56px;
+    }
+
+    .media-title {
+      font-size: 38px;
+    }
+
+    .doc-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .doc-poster {
+      aspect-ratio: 16 / 10;
+    }
+
+    .doc-title {
+      font-size: 32px;
+    }
+
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .podcast-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .podcast-date {
+      text-align: left;
+    }
+  }
+</style>

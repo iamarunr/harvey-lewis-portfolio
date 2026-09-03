@@ -1,0 +1,117 @@
+/* ---------------------------------------------------------------
+   Harvey Lewis — design tokens & base styles
+   Light editorial theme: white / slate / vermilion. Flat colors only.
+   Type: Bitter (slab display) · Inter (body) · JetBrains Mono (data)
+   --------------------------------------------------------------- */
+
+:root {
+  --bg: #ffffff;
+  --bg-deep: #f6f5f3;
+  --panel: #edebe8;
+  --ink: #2b3640;
+  --ink-dim: #68727c;
+  --rust: #e8511f;
+  --line: rgba(43, 54, 64, 0.14);
+  --line-strong: rgba(43, 54, 64, 0.3);
+  --dark: #212a30;
+
+  --font-serif: 'Bitter Variable', Georgia, serif;
+  --font-sans: 'Inter Variable', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'SF Mono', monospace;
+
+  --max-w: 1200px;
+  --pad-x: 32px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--rust);
+  color: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---- shared primitives ---- */
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+/* Photo placeholder — swapped for real imagery later.
+   Flat panel, hairline border, mono caption. No gradients. */
+.photo-placeholder {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.photo-placeholder span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(43, 54, 64, 0.4);
+  max-width: 32ch;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --pad-x: 20px;
+  }
+}

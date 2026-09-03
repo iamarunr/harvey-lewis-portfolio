@@ -1,0 +1,267 @@
+---
+import Base from '../layouts/Base.astro';
+
+const articles = [
+  {
+    year: '2024',
+    outlet: 'iRunFar',
+    title: 'The Educator Effect: Teachers in Ultrarunning',
+    note: 'Feature with Harvey as central subject — the run-commute, racing the bus, and teaching 48 hours after 450 miles.',
+    byline: 'Robbie Harms · May 22, 2024',
+    url: 'https://www.irunfar.com/the-educator-effect-teachers-in-ultrarunning',
+  },
+  {
+    year: '2023',
+    outlet: 'iRunFar',
+    title: 'A Different Mode: An Interview with Harvey Lewis After His Record-Breaking Win at the 2023 Big Dog\'s Backyard Ultra',
+    note: 'Full Q&A after the 450-mile world record — sleep strategy, vegan fueling, and what comes next.',
+    byline: 'Sarah Brady · Nov 10, 2023',
+    url: 'https://www.irunfar.com/harvey-lewis-2023-big-dogs-backyard-ultra-interview',
+  },
+  {
+    year: '2023',
+    outlet: 'iRunFar',
+    title: '2023 Big Dog\'s Backyard Ultra Results: Harvey Lewis Wins After 108 Hours, 450 Miles of Running',
+    note: 'The race report — six runners past 100 hours, and one left standing.',
+    byline: 'Sarah Brady · Oct 25, 2023',
+    url: 'https://www.irunfar.com/2023-big-dogs-backyard-ultra-results',
+  },
+  {
+    year: '2023',
+    outlet: 'Miriam Diaz Gilbert',
+    title: 'Harvey Lewis on Training, Racing, Crewing, Diet, Gardening, and His Documentary',
+    note: 'Long-form interview while packing for Australia — crew philosophy and life beyond racing.',
+    byline: 'June 2023',
+    url: 'https://www.miriamdiazgilbert.com/post/harvey-lewis-on-racing-his-plant-based-diet-gardening-and-his-documentary-like-harvey-like-son',
+  },
+  {
+    year: '2021',
+    outlet: 'iRunFar',
+    title: 'Harvey Lewis is the Last Person Standing at the 2021 Big Dog\'s Backyard Ultra',
+    note: '85 laps, 354 miles — a new world record in Bell Buckle, Tennessee.',
+    byline: 'Alex Potter · Oct 19, 2021',
+    url: 'https://www.irunfar.com/harvey-lewis-is-the-last-person-standing-at-the-2021-big-dogs-backyard-ultra',
+  },
+  {
+    year: '2021',
+    outlet: 'Trail Running Magazine',
+    title: 'Harvey Lewis Ran the Final Few Yards at Big\'s with a Hand Fracture',
+    note: 'The broken fourth metacarpal he told no one about. "It\'s kind of like a poker game."',
+    byline: 'Oct 2021',
+    url: 'https://runningmagazine.ca/trail-running/harvey-lewis-ran-final-few-yards-at-bigs-with-a-hand-fracture/',
+  },
+  {
+    year: '2021',
+    outlet: 'iRunFar',
+    title: '2021 Badwater 135 Results: Lewis Gains Second Men\'s Win',
+    note: 'From an hour down at mile 90 to champion at 45 — 25:50:23.',
+    byline: 'Sam Anderson · Jul 21, 2021',
+    url: 'https://www.irunfar.com/2021-badwater-135-race-results',
+  },
+  {
+    year: '2021',
+    outlet: 'Plant Based News',
+    title: 'Vegan Athlete Wins \'World\'s Toughest Race\' for the Second Time',
+    note: 'Coverage of the 2021 Badwater win through the plant-based lens.',
+    byline: 'Aug 2021',
+    url: 'https://plantbasednews.org/culture/sport/vegan-athlete-worlds-toughest-race/',
+  },
+  {
+    year: '2020',
+    outlet: 'Cincinnati Enquirer',
+    title: '\'Everything Is About the Mental Strength.\' Local Runner Breaks 29-Year-Old World Record',
+    note: 'Badwater Basin to Mt. Whitney in 33:32 — breaking Marshall Ulrich\'s 1991 mark.',
+    byline: 'Madeline Mitchell · Aug 14, 2020',
+    url: 'https://www.cincinnati.com/story/news/2020/08/14/cincinnati-runner-breaks-world-record-runs-lowest-highest-points-u-s/3373809001/',
+  },
+  {
+    year: '2020',
+    outlet: 'CityBeat Cincinnati',
+    title: 'A Look Inside the Life of Cincinnati Ultramarathon Runner and Educator Harvey Lewis',
+    note: 'The immersive profile — CityBeat ran the morning commute with him.',
+    byline: 'Nov 2020',
+    url: 'https://www.citybeat.com/cincinnati/a-look-inside-the-life-of-cincinnati-ultramarathon-runner-and-educator-harvey-lewis/Slideshow/12233155',
+  },
+  {
+    year: '2020',
+    outlet: 'CityBeat Cincinnati',
+    title: 'SCPA Teacher Harvey Lewis Is Topic of New Athletic Documentary \'Like Harvey Like Son\'',
+    note: 'Documentary preview ahead of the Mariemont Theatre premiere.',
+    byline: 'Nov 2020',
+    url: 'https://www.citybeat.com/arts/cincinnati-ultramarathon-runner-and-scpa-teacher-harvey-lewis-is-topic-of-new-athletic-documentary-like-harvey-like-son-12169662/',
+  },
+  {
+    year: '2018',
+    outlet: 'Cincinnati Enquirer',
+    title: 'Cincinnati Teacher Ran 2,198 Miles Under 50 Days',
+    note: 'The Appalachian Trail journey, documented as it happened.',
+    byline: 'Jul 19, 2018',
+    url: 'https://www.cincinnati.com/story/news/2018/07/19/cincinnati-teacher-ran-2-198-miles-under-50-days/799932002/',
+  },
+  {
+    year: '2014',
+    outlet: 'WVXU (Cincinnati Public Radio)',
+    title: 'SCPA Teacher Wins Badwater Race',
+    note: 'The first Badwater win, and the broken-neck story in his own words.',
+    byline: 'Jul 22, 2014',
+    url: 'https://www.wvxu.org/sports/2014-07-22/scpa-teacher-wins-badwater-race',
+  },
+  {
+    year: '1999',
+    outlet: 'Cincinnati Enquirer',
+    title: 'Finishing Strong',
+    note: 'The earliest known press mention — the same year the Flying Pig streak began.',
+    byline: 'May 10, 1999',
+    url: null,
+  },
+];
+---
+
+<Base title="Press — Harvey Lewis" description="Press coverage of ultrarunner Harvey Lewis — iRunFar, Cincinnati Enquirer, CityBeat, WVXU, and more, from 1999 to today.">
+  <section class="press-hero">
+    <div class="container">
+      <p class="eyebrow">Press</p>
+      <h1 class="press-title">In the headlines <em>since 1999.</em></h1>
+      <p class="press-sub">
+        For interview and media requests, see the <a href="/contact">contact page</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="press-list-section">
+    <div class="container">
+      <div class="press-list">
+        {
+          articles.map((a) => (
+            <article class="press-item">
+              <span class="press-year">{a.year}</span>
+              <div class="press-body">
+                <p class="press-outlet">{a.outlet}</p>
+                {a.url ? (
+                  <a class="press-headline" href={a.url} rel="noopener">{a.title}</a>
+                ) : (
+                  <span class="press-headline">{a.title}</span>
+                )}
+                <p class="press-note">{a.note}</p>
+                <p class="press-byline">{a.byline}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .press-hero {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .press-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+    margin: 18px 0 20px;
+  }
+
+  .press-title em {
+    font-style: italic;
+    font-weight: 340;
+    color: var(--rust);
+  }
+
+  .press-sub {
+    font-size: 16px;
+    color: var(--ink-dim);
+  }
+
+  .press-sub a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--rust);
+  }
+
+  .press-list-section {
+    padding: 72px 0 112px;
+  }
+
+  .press-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .press-year {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--rust);
+    padding-top: 4px;
+  }
+
+  .press-outlet {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 8px;
+  }
+
+  .press-headline {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.25;
+    color: var(--ink);
+    max-width: 760px;
+  }
+
+  a.press-headline:hover {
+    color: var(--rust);
+  }
+
+  .press-note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+    margin-top: 10px;
+    max-width: 68ch;
+  }
+
+  .press-byline {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 640px) {
+    .press-hero {
+      padding: 64px 0 56px;
+    }
+
+    .press-title {
+      font-size: 38px;
+    }
+
+    .press-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 24px 0;
+    }
+
+    .press-headline {
+      font-size: 20px;
+    }
+  }
+</style>

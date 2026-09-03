@@ -1,0 +1,54 @@
+{
+  "note": "Updated 2026-05-08. Handles confirmed from Harvey's own RunQuest Travel website (runquesttravel.com/about-us).",
+  "profiles": [
+    {
+      "platform": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Harvey_Lewis_(ultrarunner)",
+      "handle": null,
+      "confirmed": true,
+      "source": "https://en.wikipedia.org/wiki/Harvey_Lewis_(ultrarunner)"
+    },
+    {
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/harveylewisultrarunner/",
+      "handle": "harveylewisultrarunner",
+      "confirmed": true,
+      "source": "https://www.runquesttravel.com/about-us/"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/harveylewisultrarunner/",
+      "handle": "harveylewisultrarunner",
+      "confirmed": true,
+      "source": "https://www.runquesttravel.com/about-us/"
+    },
+    {
+      "platform": "Twitter/X",
+      "url": "https://x.com/harveylewisruns",
+      "handle": "harveylewisruns",
+      "confirmed": true,
+      "source": "https://www.runquesttravel.com/about-us/"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/@HarveyandKelly",
+      "handle": "HarveyandKelly",
+      "confirmed": true,
+      "source": "https://www.runquesttravel.com/about-us/"
+    },
+    {
+      "platform": "PersonalWebsite",
+      "url": "https://www.runquesttravel.com",
+      "confirmed": true,
+      "note": "RunQuest Travel — his running travel company, founded 2014.",
+      "source": "https://www.marathontrainingacademy.com/harvey-lewis"
+    },
+    {
+      "platform": "Strava",
+      "url": null,
+      "handle": null,
+      "confirmed": false,
+      "note": "Not yet located."
+    }
+  ]
+}
