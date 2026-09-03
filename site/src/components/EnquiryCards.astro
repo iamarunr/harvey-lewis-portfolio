@@ -13,12 +13,10 @@ const cards = enquiries.map((card) => ({
     cards.map((card) => (
       <a href={card.href} class="card" data-reveal>
         <div class="card-eyebrow">{card.eyebrow}</div>
-        <div>
-          <div class="card-title">{card.title}</div>
-          <div class="card-body">{card.body}</div>
-          <div class="card-arrow" aria-hidden="true">
-            →
-          </div>
+        <div class="card-title">{card.title}</div>
+        <div class="card-body">{card.body}</div>
+        <div class="card-arrow" aria-hidden="true">
+          →
         </div>
       </a>
     ))
@@ -34,10 +32,8 @@ const cards = enquiries.map((card) => ({
     background: var(--bg);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 56px;
-    padding: 30px 26px;
-    min-height: 260px;
+    padding: 32px 28px;
+    min-height: 280px;
     transition: background-color 0.15s ease, color 0.15s ease;
   }
 
@@ -53,23 +49,29 @@ const cards = enquiries.map((card) => ({
     font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+    margin-bottom: 22px;
   }
 
   .card-title {
     font-weight: 600;
-    font-size: 26px;
-    line-height: 1.15;
+    font-size: 24px;
+    line-height: 1.2;
+    min-height: 58px;
+    display: flex;
+    align-items: flex-start;
   }
 
   .card-body {
     font-size: 15px;
     line-height: 1.6;
-    margin-top: 12px;
+    margin-top: 10px;
     opacity: 0.84;
+    min-height: 72px;
   }
 
   .card-arrow {
-    margin-top: 16px;
+    margin-top: auto;
+    padding-top: 20px;
     font-size: 20px;
     display: inline-block;
     transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);

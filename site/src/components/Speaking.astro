@@ -16,9 +16,8 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
       <div data-reveal>
         <h2>A teacher who can tell you exactly what the fifth day feels like</h2>
         <p class="lede">
-          Harvey speaks the way he teaches: specific, unhurried, evidence first. No hype, no
-          beast-mode. He has held rooms of ninth graders and rooms of executives with the same
-          three stories.
+          Specific, unhurried, evidence first. Lessons from thirty years of endurance,
+          brought directly to corporate teams and schools.
         </p>
 
         <div class="talks hairline-grid" data-reveal-group data-reveal-step="90">
@@ -34,7 +33,7 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
         </div>
       </div>
 
-      <div>
+      <div class="speaking-sidebar">
         <Image
           src={students}
           alt="Harvey Lewis speaking with students"
@@ -65,9 +64,9 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
   .split {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: clamp(30px, 5vw, 70px);
+    gap: clamp(30px, 5vw, 60px);
     margin-top: 20px;
-    align-items: start;
+    align-items: stretch;
   }
 
   h2 {
@@ -78,21 +77,29 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
   }
 
   .lede {
-    margin-top: 22px;
-    font-size: 18px;
-    line-height: 1.68;
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 1.6;
     color: rgba(237, 228, 211, 0.82);
-    max-width: 52ch;
+    max-width: 48ch;
     text-wrap: pretty;
   }
 
   .talks {
-    margin-top: 34px;
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
   }
 
   .talk {
     background: var(--bg-deep);
-    padding: 24px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 130px;
+    flex: 1;
   }
 
   .talk-tag {
@@ -105,22 +112,28 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
 
   .talk-title {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1.25;
-    margin-top: 10px;
+    margin-top: 6px;
   }
 
   .talk p {
-    margin-top: 8px;
-    font-size: 15px;
-    line-height: 1.62;
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.58;
     color: rgba(237, 228, 211, 0.78);
     text-wrap: pretty;
   }
 
+  .speaking-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .speaking-photo {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
   }
 
