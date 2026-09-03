@@ -1,0 +1,33 @@
+[
+  {
+    "kind": "Footwear & apparel",
+    "name": "Brooks Running",
+    "note": "Sponsored athlete"
+  },
+  {
+    "kind": "Biomarker testing",
+    "name": "InsideTracker",
+    "note": "Partner — biomarker testing"
+  },
+  {
+    "kind": "Sleep & recovery",
+    "name": "Dream Recovery",
+    "note": "Sleep strategy for Big’s"
+  },
+  {
+    "kind": "National team",
+    "name": "Team USA · IAU 24-Hour",
+    "note": "Five appearances — a US record"
+  },
+  {
+    "kind": "Own venture",
+    "name": "RunQuest Travel",
+    "note": "International running expeditions",
+    "href": "https://www.runquesttravel.com"
+  },
+  {
+    "kind": "Advocacy",
+    "name": "Viva! · Great Vegan Athletes",
+    "note": "Plant-based performance features"
+  }
+]

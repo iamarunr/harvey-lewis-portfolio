@@ -29,9 +29,10 @@
 | Achievement | Detail | Source |
 |---|---|---|
 | Badwater 135 wins | 2014 (23:52), 2021 (25:50:23) | [Cincinnati Enquirer, 2020](https://www.cincinnati.com/story/news/2020/08/14/cincinnati-runner-breaks-world-record-runs-lowest-highest-points-u-s/3373809001/) / [iRunFar 2021](https://www.irunfar.com/2021-badwater-135-race-results) |
-| Badwater 135 starts | 14+ (1 win, 2011–2025) | [UltraSignup API](https://ultrasignup.com/service/events.svc/historybyname/Harvey/Lewis/) |
-| Big Dog's Backyard Ultra wins | 2021 (85 laps / 354.16 mi, WR), 2023 (108 laps / 450 mi, WR) | [iRunFar](https://www.irunfar.com/2023-big-dogs-backyard-ultra-results) |
+| Badwater 135 finishes | 15 finishes (2011–2026); 2024 "Badwater Double" (270 miles) | UltraSignup / Badwater official results / [Newton Running](https://www.newtonrunning.com/) |
+| Big Dog's Backyard Ultra | 2× World Record: 2021 (85 laps / 354.16 mi), 2023 (108 laps / 450 mi); 2025 (111 laps / 462.51 mi, 3rd) | [iRunFar](https://www.irunfar.com/2023-big-dogs-backyard-ultra-results) |
 | Badwater Basin → Mt. Whitney world record | 33 hrs 32 min (Aug 2020); broke Marshall Ulrich's 1991 record (33:54) | [Cincinnati Enquirer, Aug 14, 2020](https://www.cincinnati.com/story/news/2020/08/14/cincinnati-runner-breaks-world-record-runs-lowest-highest-points-u-s/3373809001/) |
+| Chasing Democracy 250 | 250 miles NYC → DC (2026) for America's 250th anniversary | [Chasing Democracy 250](https://chasingdemocracy250.com/) |
 | Team USA — IAU 24-Hour | 5 appearances (2012, 2013, 2015, 2017, 2019) — US record for most appearances | [Great Vegan Athletes](https://www.greatveganathletes.com/harvey-lewis-ultramarathon-runner/) |
 | Arrowhead 135 | Tied 2nd, 2014 | [Wikipedia](https://en.wikipedia.org/wiki/Harvey_Lewis_(ultrarunner)) |
 | Appalachian Trail | 49 days 14 hrs (2018) — top 10 fastest ever | [Cincinnati Enquirer, 2020](https://www.cincinnati.com/story/news/2020/08/14/cincinnati-runner-breaks-world-record-runs-lowest-highest-points-u-s/3373809001/) |
@@ -147,6 +148,12 @@ In 2008, he earned a grant to retrace Mahatma Gandhi's famous 1930 Salt March �
 > — Amelia Boynton Robinson, to Harvey Lewis ([Wikipedia, citing sources](https://en.wikipedia.org/wiki/Harvey_Lewis_(ultrarunner)))
 
 Ever the teacher.
+
+In summer 2026, in honor of America's 250th anniversary (Semiquincentennial, 1776–2026), Lewis led a 250-mile journey titled **[Chasing Democracy 250](https://chasingdemocracy250.com/)** from Liberty State Park (under the Statue of Liberty) to the U.S. Capitol and the Martin Luther King Jr. Memorial in Washington, D.C. Running alongside fellow educators and veterans over five days, Lewis took to the road to uncover stories of marginalized communities that helped shape American democracy:
+
+> "As a teacher and ultrarunner, I wanted to celebrate America’s 250th birthday by running 250 miles and highlighting the diverse communities whose struggles and triumphs have built America. I’m running to go beyond the textbook and share stories that are often marginalized but vital to the formation of our democracy and nation."
+>
+> — Harvey Lewis ([Chasing Democracy 250](https://chasingdemocracy250.com/))
 
 ### Documentary: *Like Harvey Like Son*
 

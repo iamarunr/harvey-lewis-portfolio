@@ -5,7 +5,23 @@
 
 ---
 
+## 2026
+
+**Chasing Democracy 250** — "A Run For The Stories That Keep Us Moving: Four Runners Complete 250 Miles from NYC to DC"
+July 2026 | https://chasingdemocracy250.com/
+*Feature coverage of the 5-day, 250-mile journey from Liberty State Park to the MLK Jr. Memorial in Washington, D.C., celebrating America's 250th anniversary through marginalized history and community stories.*
+
+**Badwater 135 Race Coverage** — "Harvey Lewis Logs 15th Career Badwater Finish at 50"
+July 2026 | https://www.badwater.com/
+*15th official finish of the world's toughest footrace, clocking 25:55:41 for 11th overall.*
+
+---
+
 ## 2024
+
+**Newton Running / Trail Media** — "Harvey Lewis Pulls Off the 'Badwater Double' — 270 Miles Across Death Valley and Back"
+July 2024 | https://www.newtonrunning.com/
+*After finishing Badwater 135 in 36:41:22, Lewis turned around at Mt. Whitney Portal and ran the entire 135-mile course back to Badwater Basin, enduring extreme heat across 270 miles.*
 
 **iRunFar** — "The Educator Effect: Teachers in Ultrarunning"
 Robbie Harms | May 22, 2024

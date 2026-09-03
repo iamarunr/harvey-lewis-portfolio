@@ -1,0 +1,143 @@
+---
+import nav from '../data/nav.json';
+import site from '../data/site.json';
+
+const follow = [
+  { href: 'https://www.instagram.com/harveylewisultrarunner', label: 'Instagram — @harveylewisultrarunner' },
+  { href: 'https://www.facebook.com/harveylewisultrarunner', label: 'Facebook — @harveylewisultrarunner' },
+  { href: 'https://twitter.com/harveylewisruns', label: 'X / Twitter — @harveylewisruns' },
+  { href: 'https://www.youtube.com/@HarveyandKelly', label: 'YouTube — Harvey and Kelly' },
+];
+
+const elsewhere = [
+  { href: 'https://www.runquesttravel.com', label: 'RunQuest Travel' },
+  { href: 'https://www.likeharveylikeson.com', label: 'Like Harvey Like Son — the film' },
+];
+---
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <p class="wordmark">Harvey Lewis</p>
+      <p class="footer-tag">Teacher. Ultrarunner. Cincinnati, Ohio.</p>
+    </div>
+
+    <div>
+      <p class="col-label">Pages</p>
+      <ul>
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="col-label">Follow</p>
+      <ul>
+        {follow.map((item) => <li><a href={item.href} rel="noopener">{item.label}</a></li>)}
+      </ul>
+    </div>
+
+    <div>
+      <p class="col-label">Elsewhere</p>
+      <ul>
+        {elsewhere.map((item) => <li><a href={item.href} rel="noopener">{item.label}</a></li>)}
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-base">
+    <span>Harvey Lewis · Cincinnati, Ohio</span>
+    {
+      site.enquiryEmailIsPlaceholder && (
+        <span class="warning">Placeholder address on all enquiry links — replace before launch</span>
+      )
+    }
+    <span>Photography: Mike Trimpe &amp; others</span>
+    <a href="#top" class="top-link">Top ↑</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    background: var(--bg-deep);
+  }
+
+  .footer-grid {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 56px var(--pad-x) 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+  }
+
+  .wordmark {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .footer-tag {
+    color: var(--ink-dim);
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .col-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.62);
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 14px;
+    display: grid;
+    gap: 8px;
+  }
+
+  ul a {
+    font-size: 14px;
+    color: var(--ink-dim);
+    transition: color 0.15s ease;
+  }
+
+  ul a:hover {
+    color: var(--rust);
+  }
+
+  .footer-base {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+    padding: 24px var(--pad-x) 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.62);
+  }
+
+  .warning {
+    color: var(--rust);
+  }
+
+  .top-link {
+    transition: color 0.15s ease;
+  }
+
+  .top-link:hover {
+    color: var(--ink);
+  }
+</style>

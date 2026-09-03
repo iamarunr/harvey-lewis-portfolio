@@ -1,0 +1,124 @@
+---
+import nav from '../data/nav.json';
+
+interface Props {
+  /** `overlay` sits transparent on the hero photo; `solid` is the content-page bar. */
+  variant?: 'overlay' | 'solid';
+}
+
+const { variant = 'solid' } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class:list={['site-header', variant]} data-site-header>
+  <div class="header-inner">
+    <a href="/" class="wordmark">Harvey Lewis</a>
+    <nav aria-label="Main">
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="/contact" class="nav-cta">Enquiries</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Transparent over the hero photo — the hero owns the background. */
+  .site-header.overlay {
+    position: relative;
+    z-index: 2;
+  }
+
+  .site-header.solid {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid transparent;
+    background: rgba(11, 10, 9, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  @supports not (backdrop-filter: blur(10px)) {
+    .site-header.solid {
+      background: var(--bg);
+    }
+  }
+
+  /* Once you leave the top the bar earns its hairline and a denser ground. */
+  .site-header.solid.is-scrolled {
+    border-bottom-color: var(--line);
+    background: rgba(11, 10, 9, 0.9);
+  }
+
+  .header-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 18px var(--pad-x);
+  }
+
+  .overlay .header-inner {
+    max-width: none;
+  }
+
+  .wordmark {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* flex-wrap is required — a non-wrapping nav pushes the Enquiries button
+     outside the overflow-hidden hero on phones. */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  nav a {
+    color: rgba(237, 228, 211, 0.78);
+    transition: color 0.15s ease;
+  }
+
+  nav a:hover {
+    color: var(--ink);
+  }
+
+  nav a[aria-current='page'] {
+    color: var(--ink);
+    box-shadow: inset 0 -1px 0 var(--rust);
+  }
+
+  .nav-cta {
+    padding: 9px 16px;
+    background: var(--rust);
+    color: var(--bg);
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+  }
+
+  .nav-cta:hover,
+  .nav-cta[aria-current='page'] {
+    background: var(--ink);
+    color: var(--bg);
+    box-shadow: none;
+  }
+</style>

@@ -1,0 +1,6 @@
+[
+  { "href": "/story", "label": "Story" },
+  { "href": "/races", "label": "Races" },
+  { "href": "/speaking", "label": "Speaking" },
+  { "href": "/media", "label": "Media & Press" }
+]

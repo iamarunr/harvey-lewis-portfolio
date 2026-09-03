@@ -1,26 +1,35 @@
 /* ---------------------------------------------------------------
    Harvey Lewis — design tokens & base styles
-   Light editorial theme: white / slate / vermilion. Flat colors only.
-   Type: Bitter (slab display) · Inter (body) · JetBrains Mono (data)
+   Shipped direction: DARK. Sand on near-black, single vermilion accent.
+   Flat colors only — no gradients, no shadows, no border-radius.
+   Type: Archivo (prose + headlines) · Anton (numerals only)
+         · JetBrains Mono (eyebrows, labels, data)
    --------------------------------------------------------------- */
 
 :root {
-  --bg: #ffffff;
-  --bg-deep: #f6f5f3;
-  --panel: #edebe8;
-  --ink: #2b3640;
-  --ink-dim: #68727c;
+  --bg: #0b0a09;
+  --bg-deep: #100e0d;
+  --ink: #ede4d3;
+  --ink-dim: rgba(237, 228, 211, 0.72);
   --rust: #e8511f;
-  --line: rgba(43, 54, 64, 0.14);
-  --line-strong: rgba(43, 54, 64, 0.3);
-  --dark: #212a30;
+  --line: rgba(237, 228, 211, 0.14);
+  --line-strong: rgba(237, 228, 211, 0.28);
 
-  --font-serif: 'Bitter Variable', Georgia, serif;
-  --font-sans: 'Inter Variable', -apple-system, sans-serif;
+  /* photo scrims — flat, never gradients */
+  --scrim-hero: rgba(11, 10, 9, 0.58);
+  --scrim-band: rgba(11, 10, 9, 0.5);
+
+  --font-sans: 'Archivo Variable', Helvetica, Arial, sans-serif;
+  --font-num: 'Anton', Impact, sans-serif;
   --font-mono: 'JetBrains Mono Variable', 'SF Mono', monospace;
+  /* The dark direction sets everything in Archivo — display included. Kept as an
+     alias so the content pages' existing `var(--font-serif)` rules resolve to it
+     rather than needing a find-and-replace through 1,700 lines of researched markup. */
+  --font-serif: var(--font-sans);
 
-  --max-w: 1200px;
+  --max-w: 1240px;
   --pad-x: 32px;
+  --section-y: 90px;
 }
 
 * {
@@ -44,7 +53,7 @@ body {
 
 ::selection {
   background: var(--rust);
-  color: #ffffff;
+  color: var(--bg);
 }
 
 a {
@@ -55,6 +64,11 @@ a {
 img {
   max-width: 100%;
   display: block;
+  /* Astro's <Image> emits width/height attributes. Those act as presentational
+     hints, which keep the box definite and stop any `aspect-ratio` rule from
+     taking effect. Releasing the height lets aspect-ratio govern; components that
+     want a fixed height set one on their own class, which outranks this. */
+  height: auto;
 }
 
 /* ---- shared primitives ---- */
@@ -66,12 +80,29 @@ img {
   padding-right: var(--pad-x);
 }
 
+/* Section shell: 1240px container with the standard 90px vertical rhythm. */
+.section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--section-y) var(--pad-x);
+}
+
+/* Alternating deep band, separated by a hairline rather than a shadow. */
+.band-deep {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--line);
+}
+
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.eyebrow-rust {
   color: var(--rust);
 }
 
@@ -84,34 +115,271 @@ img {
   color: var(--ink-dim);
 }
 
+/* Eyebrow / meta pair above a block, closed with a hairline. */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(237, 228, 211, 0.65);
+  border-bottom: 1px solid rgba(237, 228, 211, 0.16);
+  padding-bottom: 14px;
+}
+
+/* Hairline grid: 1px gaps read as rules because the wrapper is --line. */
+/* Hairline grid: rules are drawn by the cells themselves, not by a 1px gap over a
+   tinted wrapper. The wrapper approach leaves the tint exposed whenever the last
+   row is short (7 cards in a 5-track auto-fit row = 3 bare cells), so the lines
+   live on the cells and simply stop where the content does. */
+.hairline-grid {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.hairline-grid > * {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
 .rule {
   border: 0;
   border-top: 1px solid var(--line);
 }
 
-/* Photo placeholder — swapped for real imagery later.
-   Flat panel, hairline border, mono caption. No gradients. */
-.photo-placeholder {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 24px;
+/* ---- motion layer ----
+   Every rule here is gated behind `.js-motion`, set on <html> by an inline script.
+   With JS off the initial hidden state never applies, so content can't be trapped
+   invisible. `prefers-reduced-motion` is handled in the block at the bottom. */
+
+.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0s);
 }
 
-.photo-placeholder span {
+.js-motion [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Children of a [data-reveal-group] inherit an incrementing delay from the script. */
+.js-motion [data-reveal][data-reveal-x] {
+  transform: translateY(0) translateX(var(--reveal-x, -20px));
+}
+
+/* Numerals that count up hold their width so the layout can't jitter mid-tick. */
+.counting {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Card hover — the flat-design stand-in for VoidCraft's glow. A tint, not a rise:
+   cells in a hairline grid share their borders, so translating one tears a gap in
+   the rules. Same value the results rows already use, so hover reads consistently. */
+.lift {
+  transition: background-color 0.25s ease;
+}
+
+.lift:hover {
+  background: rgba(237, 228, 211, 0.05);
+}
+
+/* ---- show more / show fewer ----
+   Collapsing is gated on `.js-motion`, so with JS off the full list renders and the
+   toggle never appears. Because the class is set by an inline script in <head>, the
+   collapsed state is in place before first paint — no flash of the whole list. */
+
+.more-panel {
+  display: block;
+}
+
+.js-motion .more-panel {
+  display: none;
+}
+
+.js-motion .more-panel.is-open {
+  display: block;
+}
+
+.more-toggle {
+  display: none;
+}
+
+.js-motion .more-toggle {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 13px 22px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--rust);
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(43, 54, 64, 0.4);
-  max-width: 32ch;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.js-motion .more-toggle:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: rgba(237, 228, 211, 0.05);
+}
+
+.js-motion .more-toggle:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 2px;
+}
+
+/* Routes a homepage section to the page that holds the full version. */
+.see-all {
+  display: inline-block;
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rust);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.see-all:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  transform: translateX(4px);
+}
+
+/* Buttons — solid rust and outlined, both sharp-cornered. */
+.btn {
+  display: inline-block;
+  padding: 15px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-solid {
+  background: var(--rust);
+  color: var(--bg);
+}
+
+.btn-solid:hover {
+  background: var(--ink);
+}
+
+.btn-outline {
+  border: 1px solid rgba(237, 228, 211, 0.45);
+  font-weight: 400;
+}
+
+.btn-outline:hover {
+  border-color: var(--ink);
+}
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+/* Anton is numerals-only — never set prose in it. */
+.figure {
+  font-family: var(--font-num);
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+/* Page masthead — the eyebrow + H1 + standfirst block every content page opens with. */
+.page-head {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 72px var(--pad-x) 0;
+}
+
+.page-head h1 {
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: clamp(34px, 5vw, 66px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+
+.page-head .standfirst {
+  margin-top: 24px;
+  max-width: 56ch;
+  font-size: 19px;
+  line-height: 1.6;
+  color: rgba(237, 228, 211, 0.82);
+  text-wrap: pretty;
+}
+
+/* Accessible keyboard skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 1000;
+  padding: 12px 20px;
+  background: var(--rust);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 @media (max-width: 640px) {
   :root {
     --pad-x: 20px;
+    --section-y: 64px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Reveals resolve to their final state immediately rather than animating */
+  .js-motion [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Kill displacement and infinite animations, while preserving subtle color hover feedback */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+

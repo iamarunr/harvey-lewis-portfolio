@@ -1,0 +1,181 @@
+---
+import { Image } from 'astro:assets';
+import mediaKit from '../data/media-kit.json';
+import site from '../data/site.json';
+
+import badwaterDawn from '../assets/photos/badwater-dawn.jpg';
+import forestRun from '../assets/photos/forest-run.jpg';
+import desertRoadPair from '../assets/photos/desert-road-pair.jpg';
+import noFinishArch from '../assets/photos/no-finish-arch.jpg';
+import bandanaArch from '../assets/photos/bandana-arch.jpg';
+import sunsetPortrait from '../assets/photos/sunset-portrait.jpg';
+
+interface Props {
+  /** Render the six-image press grid. Off for a text-only media kit. */
+  showPhotoGrid?: boolean;
+}
+
+const { showPhotoGrid = true } = Astro.props;
+
+const gallery = [
+  { src: badwaterDawn, alt: 'Harvey Lewis running across Badwater Basin at dawn with desert mountains behind' },
+  { src: forestRun, alt: 'Harvey Lewis trail running along a sunlit woodland path during training' },
+  { src: desertRoadPair, alt: 'Harvey Lewis and pacer striding down a two-lane Death Valley highway' },
+  { src: noFinishArch, alt: 'Harvey Lewis passing beneath the There Is No Finish arch at Big’s Backyard Ultra' },
+  { src: bandanaArch, alt: 'Harvey Lewis wearing his signature bandana celebrating at the race arch' },
+  { src: sunsetPortrait, alt: 'Harvey Lewis portrait at sunset on a quiet road overlooking wooded hills' },
+];
+---
+
+<section id="media" class="band-deep">
+  <div class="section-inner">
+    <div class="eyebrow">Media kit</div>
+    <h2 data-reveal>Everything a deadline needs</h2>
+
+    <div class="panels hairline-grid" data-reveal-group data-reveal-step="100">
+      <div class="panel">
+        <div class="panel-title">Quick facts</div>
+        <div class="panel-list">
+          {mediaKit.quickFacts.map((fact) => <div>{fact}</div>)}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Press</div>
+        <div class="panel-list">
+          {mediaKit.press.map((item) => <div>{item}</div>)}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Downloads</div>
+        <div class="downloads">
+          {
+            mediaKit.downloads.map((download) => (
+              <a href={download.href} class="download">
+                {download.label}
+                <span class="format">{download.format}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    {
+      showPhotoGrid && (
+        <>
+          <div class="gallery" data-reveal-group data-reveal-step="70">
+            {gallery.map((photo) => (
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                widths={[320, 640]}
+                sizes="(max-width: 640px) 90vw, 280px"
+                loading="lazy"
+              />
+            ))}
+          </div>
+          <div class="credit">{site.photoCredit}</div>
+          <div class="media-links">
+            <a href="/media" class="see-all">Full media kit →</a>
+            <a href="/press" class="see-all">Press archive →</a>
+          </div>
+        </>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  h2 {
+    margin: 18px 0 34px;
+    font-weight: 600;
+    font-size: clamp(26px, 3.2vw, 46px);
+    line-height: 1.1;
+  }
+
+  .panels {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  }
+
+  .panel {
+    background: var(--bg-deep);
+    padding: 28px 26px;
+  }
+
+  .panel-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .panel-list {
+    margin-top: 16px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(237, 228, 211, 0.84);
+  }
+
+  .downloads {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    font-size: 15px;
+  }
+
+  .download {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+    transition: color 0.15s ease;
+  }
+
+  .downloads .download:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .download:hover {
+    color: var(--rust);
+  }
+
+  .format {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(237, 228, 211, 0.62);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .gallery :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .media-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+  }
+
+  .credit {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.62);
+    margin-top: 12px;
+  }
+</style>

@@ -1,9 +1,12 @@
 ---
-import '@fontsource-variable/bitter';
-import '@fontsource-variable/bitter/wght-italic.css';
-import '@fontsource-variable/inter';
+import '@fontsource-variable/archivo';
+import '@fontsource-variable/archivo/wght-italic.css';
+import '@fontsource/anton';
 import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
+import Motion from '../components/Motion.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props {
   title: string;
@@ -12,18 +15,8 @@ interface Props {
 
 const {
   title,
-  description = 'Harvey Lewis — two-time Badwater 135 champion, two-time Big’s Backyard Ultra world record holder, and full-time high school teacher in Cincinnati, Ohio.',
+  description = 'Harvey Lewis — two-time Badwater 135 champion, twice a backyard ultra world record setter, and a full-time high school teacher in Cincinnati, Ohio.',
 } = Astro.props;
-
-const nav = [
-  { href: '/story', label: 'Story' },
-  { href: '/races', label: 'Races' },
-  { href: '/media', label: 'Media' },
-  { href: '/press', label: 'Press' },
-  { href: '/contact', label: 'Contact' },
-];
-
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <!doctype html>
@@ -31,187 +24,23 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0a09" />
+    <script is:inline>
+      document.documentElement.classList.add('js-motion');
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
   </head>
-  <body>
-    <header class="site-header">
-      <nav class="container site-nav" aria-label="Main">
-        <a class="wordmark" href="/">Harvey Lewis</a>
-        <ul class="nav-links">
-          {
-            nav.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  aria-current={currentPath === item.href ? 'page' : undefined}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-    </header>
-
-    <slot />
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-col">
-          <p class="wordmark">Harvey Lewis</p>
-          <p class="footer-tag">Teacher. Ultrarunner. Cincinnati, Ohio.</p>
-        </div>
-        <div class="footer-col">
-          <p class="mono-label">Follow</p>
-          <ul class="footer-links">
-            <li><a href="https://www.instagram.com/harveylewisultrarunner" rel="noopener">Instagram — @harveylewisultrarunner</a></li>
-            <li><a href="https://www.facebook.com/harveylewisultrarunner" rel="noopener">Facebook — @harveylewisultrarunner</a></li>
-            <li><a href="https://twitter.com/harveylewisruns" rel="noopener">X / Twitter — @harveylewisruns</a></li>
-            <li><a href="https://www.youtube.com/@HarveyandKelly" rel="noopener">YouTube — Harvey and Kelly</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="mono-label">Elsewhere</p>
-          <ul class="footer-links">
-            <li><a href="https://www.runquesttravel.com" rel="noopener">RunQuest Travel</a></li>
-            <li><a href="https://www.likeharveylikeson.com" rel="noopener">Like Harvey Like Son — the film</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="container footer-base">
-        <p class="mono-label">© {new Date().getFullYear()} Harvey Lewis</p>
-        <p class="mono-label">Photography: Mike Trimpe, Gareth Roberts &amp; courtesy of Harvey Lewis</p>
-      </div>
-    </footer>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <SiteHeader variant="solid" />
+    <main id="main-content">
+      <slot />
+    </main>
+    <SiteFooter />
+    <Motion />
   </body>
 </html>
-
-<style>
-  .site-header {
-    position: relative;
-    z-index: 10;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .site-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-
-  .wordmark {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    padding-bottom: 4px;
-  }
-
-  .nav-links a:hover,
-  .nav-links a[aria-current='page'] {
-    color: var(--ink);
-    border-bottom: 1px solid var(--rust);
-  }
-
-  .site-footer {
-    background: var(--dark);
-    color: #f2f0ec;
-    padding: 56px 0 32px;
-    margin-top: 0;
-  }
-
-  .site-footer .wordmark {
-    color: #f2f0ec;
-  }
-
-  .site-footer .mono-label {
-    color: rgba(242, 240, 236, 0.55);
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1fr;
-    gap: 40px;
-    padding-bottom: 40px;
-  }
-
-  .footer-tag {
-    color: rgba(242, 240, 236, 0.65);
-    font-size: 14px;
-    margin-top: 10px;
-  }
-
-  .footer-links {
-    list-style: none;
-    margin-top: 14px;
-    display: grid;
-    gap: 8px;
-  }
-
-  .footer-links a {
-    font-size: 14px;
-    color: rgba(242, 240, 236, 0.65);
-  }
-
-  .footer-links a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-color: var(--rust);
-  }
-
-  .footer-base {
-    border-top: 1px solid rgba(242, 240, 236, 0.16);
-    padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  /* Mobile < 640px: wordmark stacks above a scrollable link row */
-  @media (max-width: 640px) {
-    .site-nav {
-      height: auto;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      padding-top: 14px;
-      padding-bottom: 14px;
-    }
-
-    .nav-links {
-      gap: 18px;
-      overflow-x: auto;
-      max-width: 100%;
-    }
-
-    .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-  }
-</style>

@@ -1,0 +1,82 @@
+---
+import enquiries from '../data/enquiries.json';
+import site from '../data/site.json';
+
+const cards = enquiries.map((card) => ({
+  ...card,
+  href: `mailto:${site.enquiryEmail}?subject=${encodeURIComponent(card.subject)}`,
+}));
+---
+
+<div class="cards hairline-grid" data-reveal-group data-reveal-step="110">
+  {
+    cards.map((card) => (
+      <a href={card.href} class="card" data-reveal>
+        <div class="card-eyebrow">{card.eyebrow}</div>
+        <div>
+          <div class="card-title">{card.title}</div>
+          <div class="card-body">{card.body}</div>
+          <div class="card-arrow" aria-hidden="true">
+            →
+          </div>
+        </div>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  }
+
+  .card {
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 56px;
+    padding: 30px 26px;
+    min-height: 260px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  /* Whole card inverts on hover — the one loud interaction on the page. */
+  .card:hover,
+  .card:focus-visible {
+    background: var(--rust);
+    color: var(--bg);
+  }
+
+  .card-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .card-body {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 12px;
+    opacity: 0.84;
+  }
+
+  .card-arrow {
+    margin-top: 16px;
+    font-size: 20px;
+    display: inline-block;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card:hover .card-arrow,
+  .card:focus-visible .card-arrow {
+    transform: translateX(6px);
+  }
+</style>

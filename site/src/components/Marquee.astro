@@ -1,0 +1,97 @@
+---
+interface Props {
+  items: string[];
+  /** Seconds for one full pass. Longer = slower. */
+  duration?: number;
+}
+
+const { items, duration = 42 } = Astro.props;
+
+// The track is duplicated so the -50% translate loops seamlessly. The copy is
+// aria-hidden so screen readers hear the list once.
+---
+
+<div class="marquee">
+  <div class="track" style={`--marquee-duration:${duration}s`}>
+    <ul class="run">
+      {items.map((item) => <li>{item}<span class="dot" aria-hidden="true">·</span></li>)}
+    </ul>
+    <ul class="run" aria-hidden="true">
+      {items.map((item) => <li>{item}<span class="dot">·</span></li>)}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-deep);
+    padding: 20px 0;
+    /* Fades the ends so items enter and leave instead of being cut by the edge.
+       A mask, not a gradient fill — the flat-colour rule still holds. */
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--marquee-duration, 42s) linear infinite;
+  }
+
+  .marquee:hover .track {
+    animation-play-state: paused;
+  }
+
+  .run {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .run li {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding-right: 28px;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.66);
+  }
+
+  .dot {
+    color: var(--rust);
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track {
+      animation: none;
+    }
+
+    /* Static fallback: show one run, scrollable rather than moving on its own. */
+    .marquee {
+      overflow-x: auto;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+
+    .run[aria-hidden='true'] {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth }
+  body { margin: 0; background: #0B0A09; color: #EDE4D3; font-family: Archivo, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased }
+  a { color: #EDE4D3; text-decoration: none }
+  a:hover { color: #E8511F }
+  img { display: block; max-width: 100% }
+  ::selection { background: #E8511F; color: #0B0A09 }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important } }
+</style>
+</helmet>
+
+<section id="top" style="position: relative; min-height: 100vh; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: minmax(0, 1fr)">
+  <img src="photos/hero-silhouette.jpg" alt="Harvey Lewis running at dusk" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%" />
+  <div style="position: absolute; inset: 0; background: rgba(11,10,9,0.58)"></div>
+
+  <div style="position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 22px 32px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase">
+    <span style="font-weight: 500">Harvey Lewis</span>
+    <nav style="display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; justify-content: flex-end">
+      <a href="#story" style="color: rgba(237,228,211,0.78)" style-hover="color: #EDE4D3">Story</a>
+      <a href="#speaking" style="color: rgba(237,228,211,0.78)" style-hover="color: #EDE4D3">Speaking</a>
+      <a href="#results" style="color: rgba(237,228,211,0.78)" style-hover="color: #EDE4D3">Results</a>
+      <a href="#media" style="color: rgba(237,228,211,0.78)" style-hover="color: #EDE4D3">Media</a>
+      <a href="#contact" style="padding: 9px 16px; background: #E8511F; color: #0B0A09; font-weight: 500" style-hover="background: #EDE4D3">Enquiries</a>
+    </nav>
+  </div>
+
+  <div style="position: relative; align-self: center; width: 100%; max-width: 1240px; margin: 0 auto; padding: 30px 32px; box-sizing: border-box">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E8511F">Cincinnati, Ohio &#8212; ultrarunner &amp; high school teacher</div>
+    <h1 style="margin: 22px 0 0; font-family: Archivo, sans-serif; font-weight: 600; font-size: clamp(32px, 5.4vw, 76px); line-height: 1.04; letter-spacing: -0.02em; max-width: 21ch">450 miles. 108 hours. He answered the bell every time.</h1>
+    <p style="margin: 26px 0 0; max-width: 52ch; font-size: 19px; line-height: 1.6; color: rgba(237,228,211,0.88); text-wrap: pretty">Two-time Badwater 135 champion, twice a backyard ultra world record setter, and a full-time teacher who trains between class periods.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px">
+      <a href="#contact" style="padding: 15px 24px; background: #E8511F; color: #0B0A09; font-weight: 600; font-size: 15px" style-hover="background: #EDE4D3">Sponsorship &amp; speaking &#8594;</a>
+      <a href="#media" style="padding: 15px 24px; border: 1px solid rgba(237,228,211,0.45); font-size: 15px" style-hover="border-color: #EDE4D3">Media kit</a>
+    </div>
+  </div>
+
+  <div style="position: relative; padding: 0 32px 30px">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px 32px; padding-top: 24px; border-top: 1px solid rgba(237,228,211,0.28)">
+      <div>
+        <div style="font-family: Anton, Impact, sans-serif; font-size: 34px; line-height: 1">450</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,228,211,0.75); margin-top: 6px">Miles, Big&#8217;s 2023</div>
+      </div>
+      <div>
+        <div style="font-family: Anton, Impact, sans-serif; font-size: 34px; line-height: 1">108</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,228,211,0.75); margin-top: 6px">Hours without sleep</div>
+      </div>
+      <div>
+        <div style="font-family: Anton, Impact, sans-serif; font-size: 34px; line-height: 1">2&#215;</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,228,211,0.75); margin-top: 6px">Badwater 135 champion</div>
+      </div>
+      <div>
+        <div style="font-family: Anton, Impact, sans-serif; font-size: 34px; line-height: 1">124</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,228,211,0.75); margin-top: 6px">Races since 1996</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top: 1px solid rgba(237,228,211,0.14); background: #100E0D">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 90px 32px; box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: clamp(32px, 6vw, 90px); align-items: center">
+    <div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,228,211,0.65)">Who he is</div>
+      <h1 style="margin: 20px 0 0; font-family: Archivo, sans-serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 52px); line-height: 1.1; letter-spacing: -0.015em; max-width: 24ch">Harvey Lewis is a high school teacher in Cincinnati who has twice set the backyard ultra world record.</h1>
+      <p style="margin: 24px 0 0; font-size: 18px; line-height: 1.68; color: rgba(237,228,211,0.8); max-width: 52ch; text-wrap: pretty">Two-time Badwater 135 champion, twice a backyard ultra world record setter, five-time Team USA 24-hour athlete, 124 races since 1996. He run-commutes three miles each way to school and calls every student a sequoia.</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px">
+        <a href="#contact" style="padding: 15px 24px; background: #E8511F; color: #0B0A09; font-weight: 600; font-size: 15px" style-hover="background: #EDE4D3">Sponsorship &amp; speaking &#8594;</a>
+        <a href="#media" style="padding: 15px 24px; border: 1px solid rgba(237,228,211,0.42); font-size: 15px" style-hover="border-color: #EDE4D3">Media kit</a>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+      <img src="photos/speaking-students.jpg" alt="Harvey Lewis with students" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover" />
+      <img src="photos/badwater-finish-night.jpg" alt="Harvey Lewis finishing at night" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover" />
+    </div>
+  </div>
+</section>
+
+<section id="story" style="max-width: 1240px; margin: 0 auto; padding: 90px 32px; box-sizing: border-box">
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,228,211,0.65); border-bottom: 1px solid rgba(237,228,211,0.16); padding-bottom: 14px">Three careers, one runner</div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; margin-top: 34px; background: rgba(237,228,211,0.14); border: 1px solid rgba(237,228,211,0.14)">
+    <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+      <div style="background: #0B0A09; padding: 30px 26px">
+        <div style="font-family: Anton, Impact, sans-serif; font-size: 40px; line-height: 1; color: #E8511F">{{ p.figure }}</div>
+        <div style="font-family: Archivo, sans-serif; font-weight: 600; font-size: 20px; line-height: 1.25; margin-top: 14px">{{ p.title }}</div>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.66; color: rgba(237,228,211,0.78); text-wrap: pretty">{{ p.body }}</p>
+      </div>
+    </sc-for>
+  </div>
+  <blockquote style="margin: 70px auto 0; max-width: 900px; text-align: center; font-family: Archivo, sans-serif; font-weight: 500; font-size: clamp(22px, 2.8vw, 40px); line-height: 1.3; letter-spacing: -0.01em; text-wrap: pretty">&#8220;We are all capable of incredible feats. No matter your pursuits, <span style="color: #E8511F">we can all go so much further than we think.</span>&#8221;</blockquote>
+  <div style="text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,228,211,0.62); margin-top: 20px">Rich Roll Podcast, ep. 812</div>
+</section>
+
+<section style="position: relative; overflow: hidden">
+  <img src="photos/salt-flat-sunset.jpg" alt="Salt flat at sunset" style="width: 100%; height: clamp(340px, 58vh, 620px); object-fit: cover" />
+  <div style="position: absolute; inset: 0; background: rgba(11,10,9,0.5)"></div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 32px">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #E8511F">Badwater 135</div>
+      <div style="font-family: Archivo, sans-serif; font-weight: 600; font-size: clamp(24px, 3vw, 44px); line-height: 1.12; margin-top: 14px; max-width: 26ch">135 miles across Death Valley. Fifteen starts, two wins, five podiums.</div>
+    </div>
+  </div>
+</section>
+
+<section id="results" style="max-width: 1240px; margin: 0 auto; padding: 90px 32px; box-sizing: border-box">
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,228,211,0.65); border-bottom: 1px solid rgba(237,228,211,0.16); padding-bottom: 14px">
+    <span>Selected results</span>
+    <span>124 races since 1996 &#183; UltraSignup, iRunFar &#183; WR = world record at the time</span>
+  </div>
+  <sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+    <div style="display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; padding: 18px 6px; border-bottom: 1px solid rgba(237,228,211,0.12)" style-hover="background: rgba(237,228,211,0.05)">
+      <span style="flex: 0 0 64px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: rgba(237,228,211,0.7)">{{ r.year }}</span>
+      <span style="flex: 1 1 220px; font-family: Archivo, sans-serif; font-weight: 500; font-size: 18px; line-height: 1.3">{{ r.event }}</span>
+      <span style="flex: 1 1 150px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: rgba(237,228,211,0.78)">{{ r.detail }}</span>
+      <span style="flex: 0 0 112px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {{ r.placeColor }}">{{ r.place }}</span>
+    </div>
+  </sc-for>
+</section>
+
+<section id="speaking" style="border-top: 1px solid rgba(237,228,211,0.14); background: #100E0D">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 90px 32px; box-sizing: border-box">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,228,211,0.65)">Speaking</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(30px, 5vw, 70px); margin-top: 20px; align-items: start">
+      <div>
+        <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 600; font-size: clamp(26px, 3.2vw, 46px); line-height: 1.1; max-width: 22ch">A teacher who can tell you exactly what the fifth day feels like</h2>
+        <p style="margin: 22px 0 0; font-size: 18px; line-height: 1.68; color: rgba(237,228,211,0.82); max-width: 52ch; text-wrap: pretty">Harvey speaks the way he teaches: specific, unhurried, evidence first. No hype, no beast-mode. He has held rooms of ninth graders and rooms of executives with the same three stories.</p>
+        <div style="display: grid; gap: 1px; margin-top: 34px; background: rgba(237,228,211,0.14); border: 1px solid rgba(237,228,211,0.14)">
+          <sc-for list="{{ talks }}" as="t" hint-placeholder-count="3">
+            <div style="background: #100E0D; padding: 24px 24px">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #E8511F">{{ t.tag }}</div>
+              <div style="font-family: Archivo, sans-serif; font-weight: 600; font-size: 20px; line-height: 1.25; margin-top: 10px">{{ t.title }}</div>
+              <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.62; color: rgba(237,228,211,0.78); text-wrap: pretty">{{ t.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <img src="photos/speaking-students.jpg" alt="Harvey Lewis speaking with students" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover" />
+        <div style="display: grid; gap: 1px; margin-top: 8px; background: rgba(237,228,211,0.14); border: 1px solid rgba(237,228,211,0.14)">
+          <sc-for list="{{ speakingFacts }}" as="f" hint-placeholder-count="4">
+            <div style="background: #100E0D; padding: 18px 22px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,228,211,0.65)">{{ f.label }}</span>
+              <span style="font-size: 15px; text-align: right">{{ f.value }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <a href="mailto:hello@harveylewis.com?subject=Speaking%20enquiry" style="display: block; margin-top: 8px; padding: 16px 22px; background: #E8511F; color: #0B0A09; font-weight: 600; text-align: center" style-hover="background: #EDE4D3">Check a date &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partners" style="max-width: 1240px; margin: 0 auto; padding: 90px 32px; box-sizing: border-box">
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,228,211,0.65); border-bottom: 1px solid rgba(237,228,211,0.16); padding-bottom: 14px">
+    <span>Partners &amp; affiliations</span>
+    <span>Audience figures to confirm</span>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; margin-top: 34px; background: rgba(237,228,211,0.14); border: 1px solid rgba(237,228,211,0.14)">
+    <sc-for list="{{ partners }}" as="p" hint-placeholder-count="6">
+      <div style="background: #0B0A09; padding: 26px 24px; min-height: 130px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(237,228,211,0.62)">{{ p.kind }}</div>
+        <div>
+          <div style="font-family: Archivo, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.2">{{ p.name }}</div>
+          <div style="font-size: 14px; line-height: 1.55; color: rgba(237,228,211,0.72); margin-top: 6px">{{ p.note }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 8px; background: rgba(237,228,211,0.14); border: 1px solid rgba(237,228,211,0.14)">
+    <sc-for list="{{ reach }}" as="r" hint-placeholder-count="4">
+      <div style="background: #0B0A09; padding: 24px 22px">
+        <div style="font-family: Anton, Impact, sans-serif; font-size: 32px; line-height: 1">{{ r.value }}</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,228,211,0.68); margin-top: 8px">{{ r.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="media" style="border-top: 1px solid rgba(237,228,211,0.14); background: #100E0D">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 90px 32px; box-sizing: border-box">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,228,211,0.65)">Media kit</div>
+    <h2 style="margin: 18px 0 34px; font-family: Archivo, sans-serif; font-weight: 600; font-size: clamp(26px, 3.2vw, 46px); line-height: 1.1">Everything a deadline needs</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1px; background: rgba(237,228,211,0.14); border: 1px solid rgba(237,228,211,0.14)">
+      <div style="background: #100E0D; padding: 28px 26px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #E8511F">Quick facts</div>
+        <div style="margin-top: 16px; font-size: 15px; line-height: 1.9; color: rgba(237,228,211,0.84)">Cincinnati, Ohio<br />Teacher, Cincinnati Public Schools<br />Vegan since 1998<br />124 races since 1996<br />Brooks Running athlete</div>
+      </div>
+      <div style="background: #100E0D; padding: 28px 26px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #E8511F">Press</div>
+        <div style="margin-top: 16px; font-size: 15px; line-height: 1.9; color: rgba(237,228,211,0.84)">Rich Roll Podcast (658, 812)<br />iRunFar &#8212; &#8220;A Different Mode&#8221;<br />Cincinnati Enquirer<br />CityBeat profile<br />&#8220;Like Harvey Like Son&#8221; documentary</div>
+      </div>
+      <div style="background: #100E0D; padding: 28px 26px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #E8511F">Downloads</div>
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 11px; font-size: 15px">
+          <a href="#media" style="display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid rgba(237,228,211,0.14); padding-bottom: 8px">Short &amp; long bio <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(237,228,211,0.62)">PDF</span></a>
+          <a href="#media" style="display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid rgba(237,228,211,0.14); padding-bottom: 8px">High-res photography <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(237,228,211,0.62)">ZIP</span></a>
+          <a href="#media" style="display: flex; justify-content: space-between; gap: 12px">Speaking one-sheet <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(237,228,211,0.62)">PDF</span></a>
+        </div>
+      </div>
+    </div>
+    <sc-if value="{{ showMediaGrid }}" hint-placeholder-val="{{ true }}">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; margin-top: 8px">
+      <img src="photos/badwater-dawn.jpg" alt="Badwater at dawn" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover" />
+      <img src="photos/forest-run.jpg" alt="Running in forest" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover" />
+      <img src="photos/desert-road-pair.jpg" alt="Running the desert road" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover" />
+      <img src="photos/no-finish-arch.jpg" alt="At the finish arch" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover" />
+      <img src="photos/bandana-arch.jpg" alt="Harvey Lewis at the arch" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover" />
+      <img src="photos/sunset-portrait.jpg" alt="Harvey Lewis at sunset" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover" />
+    </div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,228,211,0.62); margin-top: 12px">Photography: Mike Trimpe and others &#183; credit required on use</div>
+    </sc-if>
+  </div>
+</section>
+
+<section id="contact" style="max-width: 1240px; margin: 0 auto; padding: 90px 32px; box-sizing: border-box">
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,228,211,0.65)">Enquiries</div>
+  <h2 style="margin: 18px 0 34px; font-family: Archivo, sans-serif; font-weight: 600; font-size: clamp(26px, 3.6vw, 52px); line-height: 1.08">Three ways to bring him in</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1px; background: rgba(237,228,211,0.14); border: 1px solid rgba(237,228,211,0.14)">
+    <sc-for list="{{ ctas }}" as="c" hint-placeholder-count="3">
+      <a href="{{ c.href }}" style="background: #0B0A09; display: flex; flex-direction: column; justify-content: space-between; gap: 56px; padding: 30px 26px; min-height: 260px" style-hover="background: #E8511F; color: #0B0A09">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase">{{ c.eyebrow }}</div>
+        <div>
+          <div style="font-family: Archivo, sans-serif; font-weight: 600; font-size: 26px; line-height: 1.15">{{ c.title }}</div>
+          <div style="font-size: 15px; line-height: 1.6; margin-top: 12px; opacity: 0.84">{{ c.body }}</div>
+          <div style="margin-top: 16px; font-size: 20px">&#8594;</div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid rgba(237,228,211,0.14); padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,228,211,0.62)">
+  <span>Harvey Lewis &#183; Cincinnati, Ohio</span>
+  <span style="color: #E8511F">Placeholder address on all enquiry links &#8212; replace before launch</span>
+  <span>Photography: Mike Trimpe &amp; others</span>
+  <a href="#top" style="color: rgba(237,228,211,0.62)" style-hover="color: #EDE4D3">Top &#8593;</a>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Restrained&quot;,&quot;Cinematic&quot;],&quot;default&quot;:&quot;Cinematic&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Replay&quot;},&quot;secondsPerHour&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.55,&quot;min&quot;:0.2,&quot;max&quot;:1.5,&quot;step&quot;:0.05,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Replay&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const win = "#E8511F", dim = "rgba(237,228,211,0.7)";
+    return {
+      pillars: [
+        { figure: "450", title: "The record", body: "108 consecutive 4.167-mile yards at Big\u2019s Backyard Ultra, October 2023 \u2014 a world record that stood until 2025. Six runners passed 100 hours that year, never done before." },
+        { figure: "2\u00d7", title: "Badwater champion", body: "135 miles from Death Valley to Mount Whitney, won in 2014 and again in 2021 at age 45, after being an hour down at mile 90." },
+        { figure: "180", title: "School days a year", body: "He teaches full time in Cincinnati Public Schools and run-commutes three miles each way, adding five more on the way home." }
+      ],
+      showMediaGrid: this.props.showMediaGrid ?? true,
+      talks: [
+        { tag: "Keynote \u00b7 45\u201360 min", title: "One more loop", body: "How a 108-hour race is won in hour-long decisions \u2014 and where that applies to teams facing work with no visible finish line." },
+        { tag: "Corporate \u00b7 30\u201345 min", title: "Pacing, not heroics", body: "Sustainable performance from someone who recovers fast enough to race a 24-hour and a 100-miler thirteen days apart." },
+        { tag: "Schools \u00b7 30 min + Q&A", title: "Everyone is a sequoia", body: "The talk he gives his own students: mental limits, patience and gratitude, from a teacher who run-commutes to their school." }
+      ],
+      speakingFacts: [
+        { label: "Formats", value: "Keynote, fireside, assembly, panel" },
+        { label: "Audiences", value: "Corporate, schools, endurance events" },
+        { label: "Travel", value: "From Cincinnati, OH \u00b7 worldwide" },
+        { label: "Fee band", value: "On request" },
+        { label: "Lead time", value: "Book around race season" }
+      ],
+      partners: [
+        { kind: "Footwear & apparel", name: "Brooks Running", note: "Sponsored athlete" },
+        { kind: "Biomarker testing", name: "InsideTracker", note: "Partner \u2014 status to confirm" },
+        { kind: "Sleep & recovery", name: "Dream Recovery", note: "Sleep strategy for Big\u2019s 2023" },
+        { kind: "National team", name: "Team USA \u00b7 IAU 24-Hour", note: "Five appearances \u2014 a US record" },
+        { kind: "Own venture", name: "RunQuest Travel", note: "International running expeditions" },
+        { kind: "Advocacy", name: "Viva! \u00b7 Great Vegan Athletes", note: "Plant-based performance features" }
+      ],
+      reach: [
+        { value: "64k", label: "Facebook followers" },
+        { value: "2\u00d7", label: "Rich Roll Podcast guest" },
+        { value: "1", label: "Feature documentary" },
+        { value: "TBC", label: "Instagram \u00b7 YouTube \u00b7 Strava" }
+      ],
+      rows: ([
+        { year: "2023", event: "Big Dog's Backyard Ultra", detail: "450.00 mi / 108 yards", place: "1st \u00b7 WR then", placeColor: win },
+        { year: "2021", event: "Big Dog's Backyard Ultra", detail: "354.16 mi / 85 yards", place: "1st \u00b7 WR then", placeColor: win },
+        { year: "2021", event: "Badwater 135", detail: "25:50:23", place: "1st", placeColor: win },
+        { year: "2014", event: "Badwater 135", detail: "~23:53", place: "1st", placeColor: win },
+        { year: "2019", event: "IAU 24-Hour World Champs", detail: "160.34 mi \u00b7 Team USA", place: "14th", placeColor: dim },
+        { year: "2018", event: "Appalachian Trail", detail: "2,190 mi / 49d 14h", place: "Finish", placeColor: dim },
+        { year: "2016", event: "Badwater 135", detail: "23:40:52", place: "2nd", placeColor: dim },
+        { year: "2023", event: "FANS 24-Hour", detail: "137.24 mi", place: "1st", placeColor: win },
+        { year: "2015", event: "NorthCoast 24-Hour", detail: "157.91 mi", place: "1st", placeColor: win },
+        { year: "2024", event: "Bigfoot 200", detail: "50:32:58", place: "3rd", placeColor: dim }
+      ]).slice(0, Math.max(5, Math.min(10, this.props.resultCount ?? 10))),
+      ctas: [
+        { eyebrow: "01 / Sponsorship", title: "Partner with Harvey", body: "Footwear, nutrition and recovery partners reaching an audience that watches 108-hour races.", href: "mailto:hello@harveylewis.com?subject=Sponsorship%20enquiry" },
+        { eyebrow: "02 / Speaking", title: "Book a keynote", body: "Corporate, schools and endurance events. Resilience, pacing and the long game \u2014 from a teacher.", href: "mailto:hello@harveylewis.com?subject=Speaking%20enquiry" },
+        { eyebrow: "03 / Media", title: "Press & interviews", body: "Bio, verified results, high-res imagery. Fast turnaround on deadline.", href: "mailto:hello@harveylewis.com?subject=Media%20enquiry" }
+      ]
+    };
+  }
+
+}
+</script>
+</body>
+</html>

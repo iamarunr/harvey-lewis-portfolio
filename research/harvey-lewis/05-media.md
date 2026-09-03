@@ -44,6 +44,8 @@
 | Interview with Harvey Lewis | https://www.youtube.com/watch?v=DMiqzMM0_h8 | Standalone interview |
 | 24 HOUR RACE CRASH COURSE | https://www.youtube.com/watch?v=d2HMoa_vmyE | Sept 2019; 24-hour race tips |
 | Top Mindsets Every Ultrarunner Needs (Shorts) | https://www.youtube.com/shorts/-BitmQ2dL7U | May 2025 |
+| The Purpose Behind Chasing Democracy 250 | https://www.instagram.com/p/DZw-TNGRH8J/ | 2026; video feature with runners explaining why they run |
+| The Edge of Possible: A Barkley Marathons Tale | Documentary | 2025; features Harvey Lewis at the Barkley Marathons |
 
 ---
 
@@ -51,11 +53,13 @@
 
 | Podcast | Episode | Date | URL | Notes |
 |---|---|---|---|---|
-| Rich Roll Podcast | ep658 — "Finding Your Why, Nirvana Moments & Winning 300+ Mile Races" | Jan 31, 2022 | https://www.richroll.com/podcast/harvey-lewis-658/ | Full video on YouTube |
+| Ageless Athlete Podcast | "How Harvey Lewis Healed After the World's Wildest Ultra" | Jan 2026 | https://www.youtube.com/watch?v=s9z8rK0u7yA | Recovery from cracked ribs, sleep optimization, longevity |
+| Ultra Running Magazine Podcast | "Pre-WS100 w/ Harvey Lewis" | June 2024 | https://ultrarunningmagazine.libsyn.com/ | WS100 prep, marriage, Big's Backyard WR |
 | Rich Roll Podcast | ep812 — "The 47-Year-Old High School Teacher Who Ran 450 Miles and Broke a World Record" | Feb 8, 2024 | https://richroll.com/podcast/harvey-lewis-812/ | Full video on YouTube |
-| No Meat Athlete Radio | ep37 — "Badwater Ultramarathon Winner and Vegetarian Harvey Lewis" | 2014 | https://www.nomeatathlete.com/podcast/radio-37/ | Audio; covers Badwater 2014, heat training, visualization |
-| Marathon Training Academy | "Interview with Harvey Lewis – 354 Miles in 85 Hours" | Nov 4, 2021 | https://www.marathontrainingacademy.com/harvey-lewis | Audio members-only; Honey Badger spirit animal |
+| Rich Roll Podcast | ep658 — "Finding Your Why, Nirvana Moments & Winning 300+ Mile Races" | Jan 31, 2022 | https://www.richroll.com/podcast/harvey-lewis-658/ | Full video on YouTube |
 | The Extra Mile (Charity Miles) | "Harvey Lewis – Nice Guys Finish Last" | ~2024 | Apple: https://podcasts.apple.com/us/podcast/the-extra-mile-the-official-charity-miles-podcast/id1256271696?i=1000673075256 / Spotify: https://open.spotify.com/episode/5OEjeFYYiklMZBzM7yeDir | Host ran commute with Harvey; students interviewed |
+| Marathon Training Academy | "Interview with Harvey Lewis – 354 Miles in 85 Hours" | Nov 4, 2021 | https://www.marathontrainingacademy.com/harvey-lewis | Audio members-only; Honey Badger spirit animal |
+| No Meat Athlete Radio | ep37 — "Badwater Ultramarathon Winner and Vegetarian Harvey Lewis" | 2014 | https://www.nomeatathlete.com/podcast/radio-37/ | Audio; covers Badwater 2014, heat training, visualization |
 | OwlTail index | 28 Harvey Lewis podcast appearances | ongoing | https://www.owltail.com/people/C7SJI-harvey-lewis/appearances | Useful for finding additional episodes |
 
 ---

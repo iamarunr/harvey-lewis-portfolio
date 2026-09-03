@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import saltFlat from '../assets/photos/salt-flat-sunset.jpg';
+---
+
+<section class="photo-band">
+  <Image
+    src={saltFlat}
+    alt="Salt flat at sunset"
+    class="band-photo"
+    widths={[900, 1440, 2000]}
+    sizes="100vw"
+  />
+  <div class="band-scrim"></div>
+  <div class="band-copy">
+    <div class="container band-copy-inner" data-reveal>
+      <div class="eyebrow eyebrow-rust">Badwater 135 · Death Valley</div>
+      <div class="band-headline">
+        135 miles across the hottest place on Earth. Fifteen finishes, two victories, and a celebration of what the human spirit can endure.
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .photo-band {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .band-photo {
+    width: 100%;
+    height: clamp(340px, 58vh, 620px);
+    object-fit: cover;
+  }
+
+  .band-scrim {
+    position: absolute;
+    inset: 0;
+    background: var(--scrim-band);
+  }
+
+  .band-copy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 40px 0;
+  }
+
+  .band-copy-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .band-headline {
+    font-weight: 600;
+    font-size: clamp(24px, 3vw, 44px);
+    line-height: 1.12;
+    margin-top: 14px;
+    max-width: 26ch;
+  }
+</style>

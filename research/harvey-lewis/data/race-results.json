@@ -1,5 +1,32 @@
 [
   {
+    "date": "8/14/2026",
+    "race": "Last Soul Ultra - Last Person Standing (Germany)",
+    "result": "195.8 mi / 47 laps",
+    "place_overall": 14,
+    "place_gender": 12,
+    "status": "finished",
+    "source": "ultramarathondatabase"
+  },
+  {
+    "date": "7/22/2026",
+    "race": "Badwater 135 - 135 Miler",
+    "result": "25:55:41",
+    "place_overall": 11,
+    "place_gender": 8,
+    "status": "finished",
+    "source": "badwater"
+  },
+  {
+    "date": "6/20/2026",
+    "race": "Mid-State Mile - Last Person Standing",
+    "result": "161.7 mi",
+    "place_overall": 1,
+    "place_gender": 1,
+    "status": "finished",
+    "source": "ultrasignup"
+  },
+  {
     "date": "9/8/2012 1",
     "race": "IAU 24 Hour World Championship - Katowice - 24hrs",
     "result": "148.62888",

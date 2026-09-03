@@ -44,6 +44,13 @@
       "source": "https://www.marathontrainingacademy.com/harvey-lewis"
     },
     {
+      "platform": "ChasingDemocracy250",
+      "url": "https://chasingdemocracy250.com",
+      "confirmed": true,
+      "note": "Chasing Democracy 250 — 250-mile run from NYC to DC celebrating America's 250th anniversary.",
+      "source": "https://chasingdemocracy250.com"
+    },
+    {
       "platform": "Strava",
       "url": null,
       "handle": null,

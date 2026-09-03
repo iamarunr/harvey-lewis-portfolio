@@ -115,8 +115,18 @@ Save findings to file after every 2 web fetches. No accumulating in context.
 - [x] Write `README.md` (full index with story angles, source tiers, what's missing)
 - [x] Final review of all files
 
+### Phase 11 — Recent Races, Media & Chasing Democracy 250 — COMPLETE (2026-09-02)
+- [x] Research Chasing Democracy 250 (chasingdemocracy250.com) — 250 miles NYC to DC (Liberty State Park to MLK Jr. Memorial) celebrating America's 250th anniversary. Runner 01 and media lead.
+- [x] Research Badwater 2024 double (270 miles across Death Valley and back)
+- [x] Update Badwater 135 record to 15 finishes through July 2026
+- [x] Update Big Dog's Backyard Ultra results (2024: 316.7 mi; 2025: 462.51 mi / 111 loops)
+- [x] Update 2024-2026 victories (Mid-State Mile 2026, Black Toe 12HR 2026, Night Owl 2026, Ohio's Backyard 2025)
+- [x] Catalog new podcasts & media (Ageless Athlete 2026, Ultra Running Magazine 2024, *The Edge of Possible* 2025 documentary)
+- [x] Update research dossier markdown files (`01-bio.md`, `02-career-highlights.md`, `04-press.md`, `05-media.md`, `06-sponsors-affiliations.md`, `data/race-results.json`, `data/socials.json`)
+- [x] Update site pages and data (`site/src/data/races.json`, `site/src/pages/`, `site/src/layouts/Base.astro`)
+
 ## Current Phase
-**ALL PHASES COMPLETE — 2026-05-08**
+**Phase 11 Dossier & Website Updates in progress**
 
 ---
 
@@ -125,11 +135,3 @@ Save findings to file after every 2 web fetches. No accumulating in context.
 - Skip: Reddit, forums, fan wikis, AI-generated summaries
 - Public info only — no speculation on family/personal details not on record
 - All claims must link to a source
-
-## Current Phase
-**Phase 5 — Voice & Quotes** (next)
-- Rich Roll ep658 + ep812 indexed — need to mine transcript/quotes
-- No Meat Athlete ep37 indexed — audio-only episode, show notes captured
-- iRunFar interviews (2023 Big Dog's, 2021 Big Dog's, 2021 Badwater) — already indexed
-- Marathon Training Academy episode — not yet fetched
-- Aim for 30+ verbatim quotes grouped by theme

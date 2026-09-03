@@ -101,10 +101,15 @@ Full narrative biography written in `01-bio.md`. Key Phase 4 findings:
 - `06-sponsors-affiliations.md` — Brooks, InsideTracker, Dream Recovery, Team USA, RunQuest, Viva!, crew
 - `07-open-questions.md` — conflicts resolved + 10 open questions + verification flags
 - `README.md` — master index with story angles and source tiers
-- `data/race-results.json` — 124 races (UltraSignup)
-- `data/socials.json` — all handles confirmed
+### Phase 11 — Recent Races, Media & Chasing Democracy 250 — COMPLETE (2026-09-02)
 
----
+Comprehensive research on Harvey Lewis's 2024–2026 racing achievements, media appearances, and his landmark 2026 expedition:
+1. **Chasing Democracy 250 (June–July 2026)**: In celebration of the 250th anniversary of the United States (America250), Harvey led/co-ran a 250-mile journey from Liberty State Park to Washington, D.C. (finishing at the MLK Jr. Memorial) over 5 days. Core mission: "A Run For The Stories That Keep Us Moving", highlighting marginalized community histories. Runner 01 and primary media contact. Website: `chasingdemocracy250.com`. Beneficiary non-profits: Touching Land & Rising Hearts.
+2. **Badwater Double (July 2024)**: Completed Badwater 135 in 36:41:22, then turned around at Mt. Whitney Portal and ran back to Badwater Basin across Death Valley, totaling 270 miles.
+3. **Badwater 135 Longevity**: 14th finish in July 2025 (7th overall, 26:17:01) and 15th finish in July 2026 (11th overall, 25:55:41).
+4. **Big Dog's Backyard Ultra**: October 2024 (4th, 316.7 mi) and October 2025 (3rd, 462.51 mi / 111 loops, exceeding his 2023 world record mileage).
+5. **Additional 2024–2026 Victories & Podiums**: Mid-State Mile 2026 win (161.7 mi), Black Toe Run 12HR 2026 win (60 mi), Night Owl Marathon 2026 win, Ohio's Backyard Ultra 2025 win (208.33 mi), Bigfoot 200 2024 3rd overall (50:32:58).
+6. **New Media & Podcasts**: Ageless Athlete Podcast (Jan 2026), Ultra Running Magazine Podcast (June 2024), *The Edge of Possible: A Barkley Marathons Tale* (2025 documentary).
 
 ## Errors & Dead Links
 

@@ -1,0 +1,370 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import talks from '../data/talks.json';
+import speakingFacts from '../data/speaking-facts.json';
+import site from '../data/site.json';
+import speakingStudents from '../assets/photos/speaking-students.jpg';
+import after450 from '../assets/photos/after-450.jpg';
+
+const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('Speaking enquiry')}`;
+
+// What a booker actually needs to know before they enquire.
+const audiences = [
+  {
+    kind: 'Corporate',
+    title: 'Teams facing work with no visible finish line',
+    body: 'Pacing, recovery and decision-making under fatigue — argued from a 108-hour race rather than from a management book. Best for offsites, all-hands and leadership days.',
+  },
+  {
+    kind: 'Schools',
+    title: 'Students who have been told what they are not good at',
+    body: 'He is a full-time high school teacher, so he pitches to the room rather than over it. Assemblies, sports banquets and graduation. He will take questions until they run out.',
+  },
+  {
+    kind: 'Endurance events',
+    title: 'Race fields, expos and pre-race dinners',
+    body: 'Fifteen Badwater starts, five Team USA 24-hour appearances and two backyard world records. Specific, technical, and honest about what went wrong.',
+  },
+];
+
+const proof = [
+  { value: '108', label: 'Hours he can describe from memory' },
+  { value: '2×', label: 'Rich Roll Podcast guest' },
+  { value: '180', label: 'School days a year in front of a class' },
+];
+---
+
+<Base
+  title="Speaking — Harvey Lewis"
+  description="Book Harvey Lewis to speak: keynotes for corporate teams, schools and endurance events. Two-time Badwater 135 champion and a full-time high school teacher in Cincinnati."
+>
+  <section class="page-head" data-reveal-group data-reveal-step="100">
+    <p class="eyebrow eyebrow-rust" data-reveal>Speaking</p>
+    <h1 data-reveal>A teacher who can tell you exactly what the fifth day feels like</h1>
+    <p class="standfirst" data-reveal>
+      Harvey speaks the way he teaches: specific, unhurried, evidence first. No hype, no
+      beast-mode. He has held rooms of ninth graders and rooms of executives with the same
+      three stories.
+    </p>
+    <div class="cta-row" data-reveal>
+      <a href={speakingHref} class="btn btn-solid">Check a date →</a>
+      <a href="/media" class="btn btn-outline">Media kit</a>
+    </div>
+  </section>
+
+  <section class="section-inner">
+    <div class="section-head" data-reveal>
+      <span>The talks</span>
+      <span>Each adaptable to your run time</span>
+    </div>
+    <div class="talks hairline-grid" data-reveal-group data-reveal-step="100">
+      {
+        talks.map((talk) => (
+          <div class="talk lift" data-reveal>
+            <div class="talk-tag">{talk.tag}</div>
+            <div class="talk-title">{talk.title}</div>
+            <p>{talk.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="band-deep">
+    <div class="section-inner split">
+      <div>
+        <p class="eyebrow">Who he speaks to</p>
+        <div class="audiences hairline-grid" data-reveal-group data-reveal-step="90">
+          {
+            audiences.map((audience) => (
+              <div class="audience lift" data-reveal>
+                <div class="audience-kind">{audience.kind}</div>
+                <div class="audience-title">{audience.title}</div>
+                <p>{audience.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <Image
+          src={speakingStudents}
+          alt="Harvey Lewis speaking to hundreds of schoolchildren outdoors"
+          class="speaking-photo"
+          widths={[400, 800]}
+          sizes="(max-width: 800px) 90vw, 560px"
+        />
+        <div class="facts hairline-grid">
+          {
+            speakingFacts.map((fact) => (
+              <div class="fact">
+                <span class="fact-label">{fact.label}</span>
+                <span class="fact-value">{fact.value}</span>
+              </div>
+            ))
+          }
+        </div>
+        <a href={speakingHref} class="speaking-cta">Check a date →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-inner">
+    <div class="proof hairline-grid" data-reveal-group data-reveal-step="100">
+      {
+        proof.map((item) => (
+          <div class="proof-cell" data-reveal>
+            <div class="proof-value" data-count>{item.value}</div>
+            <div class="proof-label">{item.label}</div>
+          </div>
+        ))
+      }
+    </div>
+
+    <figure class="quote" data-reveal>
+      <blockquote>
+        “We are all capable of incredible feats. No matter your pursuits, <span
+          >we can all go so much further than we think.</span
+        >”
+      </blockquote>
+      <figcaption>Rich Roll Podcast, ep. 812</figcaption>
+    </figure>
+  </section>
+
+  <section class="closer band-deep">
+    <div class="section-inner closer-grid">
+      <div class="closer-photo-frame" data-reveal>
+        <Image
+          src={after450}
+          alt="Harvey Lewis after finishing a backyard ultra, scraped but standing"
+          class="closer-photo"
+          widths={[420, 640, 1072]}
+          sizes="(max-width: 860px) 92vw, 440px"
+          loading="lazy"
+        />
+      </div>
+      <div class="closer-copy" data-reveal>
+        <p class="eyebrow eyebrow-rust">Book a date</p>
+        <p class="closer-headline">He answers his own email.</p>
+        <a href={speakingHref} class="btn btn-solid">Speaking enquiry →</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .talks {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 34px;
+  }
+
+  .talk {
+    background: var(--bg);
+    padding: 30px 26px;
+  }
+
+  .talk-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .talk-title {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.2;
+    margin-top: 12px;
+  }
+
+  .talk p {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.66;
+    color: rgba(237, 228, 211, 0.78);
+    text-wrap: pretty;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(30px, 5vw, 70px);
+    align-items: start;
+  }
+
+  .audiences {
+    margin-top: 20px;
+  }
+
+  .audience {
+    background: var(--bg-deep);
+    padding: 26px 24px;
+  }
+
+  .audience-kind {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .audience-title {
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.25;
+    margin-top: 10px;
+  }
+
+  .audience p {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.62;
+    color: rgba(237, 228, 211, 0.78);
+    text-wrap: pretty;
+  }
+
+  .speaking-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .facts {
+    margin-top: 8px;
+  }
+
+  .fact {
+    background: var(--bg-deep);
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .fact-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.65);
+  }
+
+  .fact-value {
+    font-size: 15px;
+    text-align: right;
+  }
+
+  .speaking-cta {
+    display: block;
+    margin-top: 8px;
+    padding: 16px 22px;
+    background: var(--rust);
+    color: var(--bg);
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.15s ease;
+  }
+
+  .speaking-cta:hover {
+    background: var(--ink);
+  }
+
+  .proof {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .proof-cell {
+    background: var(--bg);
+    padding: 26px 24px;
+  }
+
+  .proof-value {
+    font-family: var(--font-num);
+    font-size: 40px;
+    line-height: 1;
+    color: var(--rust);
+  }
+
+  .proof-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.68);
+    margin-top: 10px;
+  }
+
+  .quote {
+    margin: 70px auto 0;
+    max-width: 900px;
+  }
+
+  blockquote {
+    text-align: center;
+    font-weight: 500;
+    font-size: clamp(22px, 2.8vw, 40px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+
+  blockquote span {
+    color: var(--rust);
+  }
+
+  figcaption {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.62);
+    margin-top: 20px;
+  }
+
+  /* after-450 is a 1072x2048 portrait. A full-bleed band cropped ~80% of it away,
+     which is what made the framing look accidental. It sits in an upright frame
+     beside the copy instead, so the photo is read rather than sliced. */
+  .closer-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 440px) 1fr;
+    gap: clamp(30px, 5vw, 70px);
+    align-items: center;
+  }
+
+  .closer-photo-frame {
+    overflow: hidden;
+  }
+
+  .closer-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    /* Weighted to the top of the frame — his face and the bandana, not his knees. */
+    object-position: 50% 18%;
+  }
+
+  .closer-headline {
+    font-weight: 600;
+    font-size: clamp(24px, 3.2vw, 46px);
+    line-height: 1.12;
+    margin: 14px 0 28px;
+    max-width: 16ch;
+  }
+
+  /* Stack below the two-up breakpoint, photo first. */
+  @media (max-width: 860px) {
+    .closer-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .closer-photo {
+      aspect-ratio: 4 / 5;
+    }
+  }
+</style>

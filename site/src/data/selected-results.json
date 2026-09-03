@@ -1,0 +1,17 @@
+[
+  { "year": "2026", "event": "Last Soul Ultra (Germany)", "detail": "195.8 mi / 47 yards", "place": "14th", "win": false, "sourceDate": "2026-08-14" },
+  { "year": "2026", "event": "Badwater 135", "detail": "25:55:41 · 15th finish", "place": "11th", "win": false, "sourceDate": "2026-07-22" },
+  { "year": "2026", "event": "Chasing Democracy 250", "detail": "250 mi · NYC to DC (America250)", "place": "Lead Runner", "win": false, "sourceDate": "2026-06-28" },
+  { "year": "2026", "event": "Mid-State Mile", "detail": "161.7 mi / 147 yards", "place": "1st · Winner", "win": true, "sourceDate": "2026-06-20" },
+  { "year": "2025", "event": "Big Dog's Backyard Ultra", "detail": "462.51 mi / 111 yards", "place": "3rd", "win": false, "sourceDate": "2025-10-18" },
+  { "year": "2024", "event": "Badwater Double", "detail": "270 mi (out & back through Death Valley)", "place": "Finish", "win": false, "sourceDate": "2024-07-25" },
+  { "year": "2023", "event": "Big Dog's Backyard Ultra", "detail": "450.00 mi / 108 yards", "place": "1st · WR then", "win": true, "sourceDate": "2023-10-21" },
+  { "year": "2021", "event": "Big Dog's Backyard Ultra", "detail": "354.16 mi / 85 yards", "place": "1st · WR then", "win": true, "sourceDate": "2021-10-16" },
+  { "year": "2021", "event": "Badwater 135", "detail": "25:50:23", "place": "1st", "win": true, "sourceDate": "2021-07-19" },
+  { "year": "2014", "event": "Badwater 135", "detail": "~23:53", "place": "1st", "win": true, "sourceDate": "2014-07-21" },
+  { "year": "2019", "event": "IAU 24-Hour World Champs", "detail": "160.34 mi · Team USA", "place": "14th", "win": false, "sourceDate": "2019-10-26" },
+  { "year": "2018", "event": "Appalachian Trail", "detail": "2,190 mi / 49d 14h", "place": "Finish", "win": false, "sourceDate": null },
+  { "year": "2016", "event": "Badwater 135", "detail": "23:40:52", "place": "2nd", "win": false, "sourceDate": "2016-07-18" },
+  { "year": "2024", "event": "Bigfoot 200", "detail": "50:32:58", "place": "3rd", "win": false, "sourceDate": "2024-08-09" }
+]
+

@@ -1,0 +1,40 @@
+---
+import '@fontsource-variable/archivo';
+import '@fontsource-variable/archivo/wght-italic.css';
+import '@fontsource/anton';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import Motion from '../components/Motion.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Harvey Lewis — two-time Badwater 135 champion, twice a backyard ultra world record setter, and a full-time high school teacher in Cincinnati, Ohio.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0a09" />
+    <script is:inline>
+      document.documentElement.classList.add('js-motion');
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a href="#story" class="skip-link">Skip to main content</a>
+    <slot />
+    <Motion />
+  </body>
+</html>

@@ -1,12 +1,32 @@
 [
   {
+    "date": "2026-08-14",
+    "year": 2026,
+    "race": "Last Soul Ultra - Last Person Standing (Germany)",
+    "result": "195.8 mi / 47 laps",
+    "resultType": "distance",
+    "placeOverall": 14,
+    "placeGender": 12,
+    "status": "finished"
+  },
+  {
+    "date": "2026-07-22",
+    "year": 2026,
+    "race": "Badwater 135 - 135 Miler",
+    "result": "25:55:41",
+    "resultType": "time",
+    "placeOverall": 11,
+    "placeGender": 8,
+    "status": "finished"
+  },
+  {
     "date": "2026-06-20",
     "year": 2026,
     "race": "Mid-State Mile - Last Person Standing",
-    "result": "0.0 mi",
+    "result": "161.7 mi",
     "resultType": "distance",
-    "placeOverall": 0,
-    "placeGender": 0,
+    "placeOverall": 1,
+    "placeGender": 1,
     "status": "finished"
   },
   {

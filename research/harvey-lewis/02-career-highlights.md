@@ -40,14 +40,15 @@ The marquee event of his career. Harvey Lewis has started Badwater 15+ times, ma
 | 2023 | 27:06:49 | 5th | 3rd |
 | 2024 | 36:41:22 | 27th | 19th |
 | 2025 | 26:17:01 | 7th | 6th |
+| 2026 | 25:55:41 | 11th | 8th |
 
-> Note: 2014 not in UltraSignup — time from Wikipedia. 2015 and 2018 anomalously slow (38–39 hrs) — possible crew/pacing strategy or difficult conditions, not confirmed.
+> Note: 2014 not in UltraSignup — time from Cincinnati Enquirer (23:52). July 2026 marked his **15th official Badwater finish** at age 50. In 2024, after crossing the Mt. Whitney Portal finish line, Lewis turned around and ran all the way back across Death Valley to Badwater Basin, completing the storied **"Badwater Double" (270 miles)**.
 
 ---
 
 ## Big Dog's Backyard Ultra
 
-Five appearances at the world's most prestigious backyard ultra event in Bell Buckle, Tennessee. Two wins, both world records at the time.
+Appearances at the world's most prestigious backyard ultra event in Bell Buckle, Tennessee. Two wins, both world records at the time, and pushing past 110 yards.
 
 ### Format
 4.166667-mile loop ("yard") starting every hour. Runners alternate between a trail loop (day) and a road loop (night). Last person standing wins; they must then complete a solo yard to be official.
@@ -68,7 +69,7 @@ Five appearances at the world's most prestigious backyard ultra event in Bell Bu
 - **Place**: 1st (last person standing) — new world record at the time
 - **Previous world record**: 68 laps
 - **Final three**: Harvey Lewis (Cincinnati, OH), Terumichi Morishita (Toyota City, Japan), Chris Roberts (Kirkwood, MO)
-- **Narrative**: Lewis entered as a favorite, having twice previously gotten "the assist." He had lasted 67 loops in a prior attempt. 35 starters in 2021, including Courtney Dauwalter (early finisher). The final three raced into a third day. Morishita dropped at 85 laps; Roberts stepped off. Lewis completed his solo 86th yard to claim the win.
+- **Narrative**: Lewis entered as a favorite, having twice previously gotten "the assist." The final three raced into a third day. Morishita dropped at 85 laps; Roberts stepped off. Lewis completed his solo 86th yard to claim the win with a fractured hand.
 - (Source: iRunFar, Alex Potter, October 19, 2021)
 
 ### 2023 — Second Win (New World Record)
@@ -83,8 +84,13 @@ Five appearances at the world's most prestigious backyard ultra event in Bell Bu
 - (Source: iRunFar, Sarah Brady, October 25, 2023)
 
 ### 2024
-- **Distance**: 316.66 miles
+- **Distance**: 316.66 miles (76 laps)
 - **Place**: 4th overall (3rd gender)
+
+### 2025
+- **Distance**: 462.51 miles (111 laps)
+- **Place**: 3rd overall
+- Exceeded his own 2023 world-record distance (450 miles), surviving 111 consecutive hours on foot.
 
 ---
 
@@ -208,6 +214,30 @@ Home-state race. Multiple wins:
 ### Ohio's Backyard Ultra
 - **2021**: 229.16 miles — **1st** (win)
 - **2025**: 208.33 miles — **1st** (win)
+
+### Mid-State Mile (Franklin, TN)
+- **2026**: 147 loops (161.7 miles) — **1st overall / Winner** (Last Person Standing)
+
+### Last Soul Ultra / Last Soul Standing (Germany)
+- **Date**: August 14, 2026
+- **Location**: Rural North Rhine-Westphalia, Germany (former military base)
+- **Format**: Backyard Ultra (6.706 km / 4.167 mi loop every hour)
+- **Result**: **47 laps / yards (195.8 miles / 315 km)** — **14th overall**
+- **Notes**: Competed against an elite international field just weeks after his 15th Badwater finish and the 250-mile Chasing Democracy run. Completed nearly 48 hours of racing. Won by Mark Dowdle with 94 laps (630.4 km).
+
+---
+
+## Chasing Democracy 250 — 2026
+
+- **Year**: 2026 (Late June – Early July)
+- **Distance**: 250 miles
+- **Route**: Liberty State Park (Jersey City, NJ / Statue of Liberty) to Washington, D.C. (finishing at the Martin Luther King Jr. Memorial)
+- **Duration**: 5 days
+- **Significance**: Commemoration of America's 250th anniversary (Semiquincentennial, America250). Designed to look beyond the history books and honor the diverse, often marginalized communities that forged American democracy.
+- **Role**: Runner 01 and lead media contact.
+- **Team**: Harvey Lewis, Greg Armstrong, Gregg Lawson, Kristen Soinski, with support crew Carolina Rubio-MacWright and Naresh Kumar.
+- **Website**: [chasingdemocracy250.com](https://chasingdemocracy250.com/) | Live tracker: [mlk-run.pages.dev](https://mlk-run.pages.dev/)
+- **Charity Beneficiaries**: *Touching Land* and *Rising Hearts*.
 
 ---
 

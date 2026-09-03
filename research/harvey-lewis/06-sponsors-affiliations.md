@@ -50,6 +50,18 @@ Source: [Great Vegan Athletes](https://www.greatveganathletes.com/harvey-lewis-u
 
 ---
 
+### Chasing Democracy 250 (America250)
+
+- 250-mile journey from Liberty State Park to the U.S. Capitol / MLK Jr. Memorial (Summer 2026)
+- Website: https://chasingdemocracy250.com
+- Live tracker: https://mlk-run.pages.dev/
+- **Beneficiary Non-Profit Partners**:
+  - **Touching Land** (https://www.touchingland.org/) — Led by immigration attorney Carolina Rubio-MacWright
+  - **Rising Hearts** (https://www.risinghearts.org/) — Indigenous-led grassroots organization
+- **Team**: Harvey Lewis (Runner 01 / media lead), Greg Armstrong, Gregg Lawson, Kristen Soinski; Crew: Carolina Rubio-MacWright, Naresh Kumar.
+
+---
+
 ## Vegan / Advocacy Affiliations
 
 | Organization | Notes | Source |

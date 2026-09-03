@@ -520,12 +520,50 @@ Saved after every 2 web fetches per the 2-Action Rule.
 
 ---
 
-## Phase 7 — Press
+## Phase 11 — Recent Updates: 2024–2026 Races, Media & Chasing Democracy 250 (2026-09-02)
 
-*(findings logged here)*
+### 1. Chasing Democracy 250 (June–July 2026)
+- **Website**: https://chasingdemocracy250.com
+- **Live tracking**: https://mlk-run.pages.dev/
+- **Route**: 250 miles from Liberty State Park (NJ, shadow of Statue of Liberty) to Washington, D.C., finishing at the Martin Luther King Jr. Memorial.
+- **Timing**: 5-day journey in late June to early July 2026, commemorating the 250th anniversary of the United States (America250 / Semiquincentennial, 1776–2026).
+- **Core Purpose**: "A Run For The Stories That Keep Us Moving." Uncovering and honoring stories of immigrants, activists, artists, and everyday Americans whose stories are vital to American democracy.
+- **Harvey's Role**: Runner 01 and primary media contact. High school government teacher at SCPA and ultrarunner.
+- **Harvey Quote**: "As a teacher and ultrarunner, I wanted to celebrate America’s 250th birthday by running 250 miles and highlighting the diverse communities whose struggles and triumphs have built America. I’m running to go beyond the textbook and share stories that are often marginalized but vital to the formation of our democracy and nation."
+- **Team**:
+  - Runner 01: Harvey Lewis (Teacher & ultrarunner, Cincinnati, OH)
+  - Runner 02: Greg Armstrong (High school science teacher, Lebanon, TN)
+  - Runner 03: Gregg Lawson (Former Military Intelligence Analyst, 75th Ranger Regiment, U.S. Army veteran)
+  - Runner 04: Kristen Soinski (Wellness consultant, coach, ultrarunner, Cleveland, OH)
+  - Crew 05: Carolina Rubio-MacWright (Immigration attorney, Executive Director of Touching Land)
+  - Crew 06: Naresh Kumar (Engineer & social entrepreneur, St. Louis, MO / India)
+- **Supported Nonprofits**:
+  - *Touching Land* (touchingland.org)
+  - *Rising Hearts* (risinghearts.org)
+- **Socials**: Instagram @chasingdemocracy250, video "The Purpose Behind Chasing Democracy 250" (https://www.instagram.com/p/DZw-TNGRH8J/).
 
----
+### 2. Palmarès & Race Results (2024–2026)
+- **2026 Season**:
+  - Badwater 135 (July 2026): 25:55:41, 11th overall. **15th career Badwater finish!**
+  - Mid-State Mile (June 2026): **1st overall / Winner**, 147 loops (161.7 miles).
+  - Black Toe Run 12HR (Feb 2026): **1st overall / Winner**, 60.0 miles.
+  - Last Soul Ultra (Germany, Aug 14, 2026): **47 laps / yards (195.8 miles / 315 km)**, 14th overall in North Rhine-Westphalia, Germany. Lasted nearly 48 hours in the elite international backyard field.
+- **2025 Season**:
+  - Big Dog’s Backyard Ultra (Oct 2025): **3rd overall, 462.51 miles (111 loops)** — pushed beyond his 2023 world record distance (450 mi)!
+  - Bigfoot 200 Endurance Run (Aug 2025): 65:22:57.
+  - Badwater 135 (July 2025): 7th overall, 26:17:01 (14th finish).
+  - Ohio’s Backyard Ultra (March 2025): **1st overall / Winner**, 208.33 miles.
+  - Rocks and Roots Trail Series (Jan & Feb 2025): 2nd place in both 50K races.
+- **2024 Season**:
+  - Big Dog’s Backyard Ultra (Oct 2024): 4th overall, 316.66 miles (76 loops).
+  - Salt Pans Ultra Marathon (Botswana, Sept 2024): 2nd overall (100K).
+  - Bigfoot 200 (Aug 2024): **3rd overall**, 50:32:58.
+  - Badwater 135 (July 2024): Finished in 36:41:22, then executed the legendary **Badwater Double** — turned around at Mt. Whitney Portal and ran all the way back through Death Valley to Badwater Basin, totaling **270 miles**.
+  - Western States 100 (June 2024): Finished in 19:21:46.
+  - The Barkley Marathons (March 2024): Competed (20 miles).
+  - Long Haul 100 (Jan 2024): 15th overall.
 
-## Phase 8 — Sponsors
-
-*(findings logged here)*
+### 3. Recent Media, Podcasts & Documentaries (2024–2026)
+- **Documentary**: *The Edge of Possible: A Barkley Marathons Tale* (2025) — features Harvey's experience at the Barkley Marathons.
+- **Ageless Athlete Podcast** (Jan 2026): "How Harvey Lewis Healed After the World's Wildest Ultra" — deep dive into healing cracked ribs, a torn hamstring, sleep optimization, and longevity.
+- **Ultra Running Magazine Podcast** (June 2024): "Pre-WS100 w/ Harvey Lewis" — discussing his Western States 100 prep, his marriage, and Backyard Ultra dominance.

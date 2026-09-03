@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import students from '../assets/photos/speaking-students.jpg';
+import finishNight from '../assets/photos/badwater-finish-night.jpg';
+---
+
+<section class="band-deep">
+  <div class="intro-inner" data-reveal-group data-reveal-step="90">
+    <div data-reveal>
+      <div class="eyebrow">Who he is</div>
+      <h2>
+        Most runners fight the extremes. Harvey Lewis smiles through them.
+      </h2>
+      <p>
+        Known across the endurance world for his trademark warmth and boundless positivity,
+        Harvey has spent thirty years exploring the outer edges of human potential—not by escaping
+        daily life, but by running straight through it. He run-commutes through Ohio blizzards,
+        fuels entirely on plants, teaches public high school history in Cincinnati, and reminds every
+        student that they are like giant sequoias, capable of growing further than they can imagine.
+      </p>
+      <div class="cta-row">
+        <a href="/contact" class="btn btn-solid">Sponsorship &amp; speaking →</a>
+        <a href="/media" class="btn btn-outline">Media kit</a>
+      </div>
+      <div><a href="/story" class="see-all">Read the full story →</a></div>
+    </div>
+
+    <div class="intro-photos" data-reveal>
+      <Image src={students} alt="Harvey Lewis with students" widths={[400, 800]} sizes="(max-width: 700px) 45vw, 300px" />
+      <Image src={finishNight} alt="Harvey Lewis finishing at night" widths={[400, 800]} sizes="(max-width: 700px) 45vw, 300px" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: var(--section-y) var(--pad-x);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: clamp(32px, 6vw, 90px);
+    align-items: center;
+  }
+
+  h2 {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: clamp(30px, 3.6vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    max-width: 24ch;
+  }
+
+  p {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 1.68;
+    color: rgba(237, 228, 211, 0.8);
+    max-width: 52ch;
+    text-wrap: pretty;
+  }
+
+  .intro-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .intro-photos :global(img) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+</style>

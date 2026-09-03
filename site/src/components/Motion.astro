@@ -1,0 +1,202 @@
+---
+// The site's whole motion layer. Three behaviours, all opt-in per element:
+//   data-reveal        — fade + rise into view
+//   data-reveal-group  — stagger this element's [data-reveal] children
+//   data-count         — count a numeral up when it scrolls into view
+// Everything degrades to the finished state when JS or IntersectionObserver
+// is unavailable, or when the visitor prefers reduced motion.
+---
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function initReveals() {
+    // Stagger: give each child of a group an incrementing delay before observing.
+    document.querySelectorAll<HTMLElement>('[data-reveal-group]').forEach((group) => {
+      const step = Number(group.dataset.revealStep ?? 80);
+      group
+        .querySelectorAll<HTMLElement>('[data-reveal]')
+        .forEach((child, i) => child.style.setProperty('--reveal-delay', `${i * step}ms`));
+    });
+
+    const targets = [...document.querySelectorAll<HTMLElement>('[data-reveal]')];
+    if (!targets.length) return;
+
+    const reveal = (el: Element) => el.classList.add('is-visible');
+
+    if (reduced.matches || !('IntersectionObserver' in window)) {
+      targets.forEach(reveal);
+      return;
+    }
+
+    // Anything already on screen animates in on load rather than waiting for the
+    // observer. IntersectionObserver does not fire while a tab is backgrounded, so
+    // gating the first screen on it can leave a hidden tab blank until it is focused.
+    const above: HTMLElement[] = [];
+    const below: HTMLElement[] = [];
+    targets.forEach((el) => {
+      (el.getBoundingClientRect().top < window.innerHeight ? above : below).push(el);
+    });
+
+    // rAF gives the browser a frame to paint the hidden state first, so the entrance
+    // actually animates. But rAF is paused in a background tab, so when the page is
+    // not visible we just reveal outright — there is no animation to miss.
+    if (document.visibilityState === 'visible') {
+      requestAnimationFrame(() => above.forEach(reveal));
+    } else {
+      above.forEach(reveal);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          reveal(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+
+    below.forEach((el) => observer.observe(el));
+
+    // Last-resort safety net: whatever the observer has not reached after a few
+    // seconds gets shown anyway. Content must never be trapped behind motion.
+    window.setTimeout(() => {
+      below.forEach((el) => {
+        if (!el.classList.contains('is-visible')) {
+          reveal(el);
+          observer.unobserve(el);
+        }
+      });
+    }, 4000);
+  }
+
+  function initCounters() {
+    const targets = document.querySelectorAll<HTMLElement>('[data-count]');
+    if (!targets.length) return;
+
+    // Parse "450", "2×", "64k", "TBC" — animate the numeric part, keep the affixes.
+    const parse = (raw: string) => {
+      const match = raw.match(/^(\D*)(\d[\d,.]*)(.*)$/s);
+      if (!match) return null;
+      return {
+        prefix: match[1],
+        value: Number(match[2].replace(/,/g, '')),
+        suffix: match[3],
+        decimals: (match[2].split('.')[1] ?? '').length,
+      };
+    };
+
+    // Reduced motion keeps the final figure — the number is content, not decoration.
+    if (reduced.matches || !('IntersectionObserver' in window)) return;
+
+    const run = (el: HTMLElement) => {
+      const final = el.textContent?.trim() ?? '';
+      const parsed = parse(final);
+      if (!parsed) return;
+
+      // requestAnimationFrame is paused while a tab is backgrounded, which would
+      // freeze a count part-way and leave a wrong figure in the DOM. These numbers
+      // are content, not decoration — so wait for the tab before starting.
+      if (document.visibilityState !== 'visible') {
+        document.addEventListener('visibilitychange', () => run(el), { once: true });
+        return;
+      }
+
+      const { prefix, value, suffix, decimals } = parsed;
+      const duration = 1400;
+      const start = performance.now();
+      el.classList.add('counting');
+
+      const tick = (now: number) => {
+        const t = Math.min((now - start) / duration, 1);
+        if (t >= 1) {
+          // Restore the authored string exactly rather than a reformatted number.
+          el.textContent = final;
+          return;
+        }
+        const eased = 1 - Math.pow(1 - t, 3);
+        const shown = (value * eased).toFixed(decimals);
+        el.textContent = `${prefix}${Number(shown).toLocaleString('en-US', {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals,
+        })}${suffix}`;
+        requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    // Same split as the reveals: on-screen figures run now, the rest on scroll.
+    const below: HTMLElement[] = [];
+    targets.forEach((el) => {
+      if (el.getBoundingClientRect().top < window.innerHeight) run(el);
+      else below.push(el);
+    });
+
+    if (!below.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          run(entry.target as HTMLElement);
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    below.forEach((el) => observer.observe(el));
+  }
+
+  function initHeader() {
+    const header = document.querySelector<HTMLElement>('[data-site-header]');
+    if (!header) return;
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // "Show all N" / "Show fewer" for any long list. The toggle names its panel by id
+  // via data-more-toggle, and carries both labels as data attributes.
+  function initDisclosures() {
+    document.querySelectorAll<HTMLButtonElement>('[data-more-toggle]').forEach((button) => {
+      const panel = document.getElementById(button.dataset.moreToggle ?? '');
+      if (!panel) return;
+
+      button.addEventListener('click', () => {
+        const open = panel.classList.toggle('is-open');
+        button.setAttribute('aria-expanded', String(open));
+        const label = open ? button.dataset.labelLess : button.dataset.labelMore;
+        if (label) button.textContent = label;
+
+        // Collapsing from below the fold would leave the reader stranded mid-page,
+        // so pull the top of the list back into view.
+        if (!open) {
+          const top = panel.parentElement?.getBoundingClientRect().top ?? 0;
+          if (top < 0) {
+            panel.parentElement?.scrollIntoView({
+              behavior: reduced.matches ? 'auto' : 'smooth',
+              block: 'start',
+            });
+          }
+        }
+      });
+    });
+  }
+
+  function init() {
+    initReveals();
+    initCounters();
+    initHeader();
+    initDisclosures();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+</script>

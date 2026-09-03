@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+import students from '../assets/photos/speaking-students.jpg';
+import talks from '../data/talks.json';
+import speakingFacts from '../data/speaking-facts.json';
+import site from '../data/site.json';
+
+const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('Speaking enquiry')}`;
+---
+
+<section id="speaking" class="band-deep">
+  <div class="section-inner">
+    <div class="eyebrow">Speaking</div>
+
+    <div class="split" data-reveal-group data-reveal-step="110">
+      <div data-reveal>
+        <h2>A teacher who can tell you exactly what the fifth day feels like</h2>
+        <p class="lede">
+          Harvey speaks the way he teaches: specific, unhurried, evidence first. No hype, no
+          beast-mode. He has held rooms of ninth graders and rooms of executives with the same
+          three stories.
+        </p>
+
+        <div class="talks hairline-grid" data-reveal-group data-reveal-step="90">
+          {
+            talks.map((talk) => (
+              <div class="talk lift" data-reveal>
+                <div class="talk-tag">{talk.tag}</div>
+                <div class="talk-title">{talk.title}</div>
+                <p>{talk.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <Image
+          src={students}
+          alt="Harvey Lewis speaking with students"
+          class="speaking-photo"
+          widths={[400, 800]}
+          sizes="(max-width: 800px) 90vw, 560px"
+        />
+
+        <div class="facts hairline-grid">
+          {
+            speakingFacts.map((fact) => (
+              <div class="fact">
+                <span class="fact-label">{fact.label}</span>
+                <span class="fact-value">{fact.value}</span>
+              </div>
+            ))
+          }
+        </div>
+
+        <a href={speakingHref} class="speaking-cta">Check a date →</a>
+        <a href="/speaking" class="see-all">Talks, formats &amp; audiences →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(30px, 5vw, 70px);
+    margin-top: 20px;
+    align-items: start;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: clamp(26px, 3.2vw, 46px);
+    line-height: 1.1;
+    max-width: 22ch;
+  }
+
+  .lede {
+    margin-top: 22px;
+    font-size: 18px;
+    line-height: 1.68;
+    color: rgba(237, 228, 211, 0.82);
+    max-width: 52ch;
+    text-wrap: pretty;
+  }
+
+  .talks {
+    margin-top: 34px;
+  }
+
+  .talk {
+    background: var(--bg-deep);
+    padding: 24px;
+  }
+
+  .talk-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .talk-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.25;
+    margin-top: 10px;
+  }
+
+  .talk p {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.62;
+    color: rgba(237, 228, 211, 0.78);
+    text-wrap: pretty;
+  }
+
+  .speaking-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .facts {
+    margin-top: 8px;
+  }
+
+  .fact {
+    background: var(--bg-deep);
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .fact-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.65);
+  }
+
+  .fact-value {
+    font-size: 15px;
+    text-align: right;
+  }
+
+  .speaking-cta {
+    display: block;
+    margin-top: 8px;
+    padding: 16px 22px;
+    background: var(--rust);
+    color: var(--bg);
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.15s ease;
+  }
+
+  .speaking-cta:hover {
+    background: var(--ink);
+  }
+</style>

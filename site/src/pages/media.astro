@@ -46,20 +46,39 @@ const videos = [
     alt: 'Harvey Lewis in white desert gear striding across a highway, seen from above',
   },
   {
+    title: 'The Purpose Behind Chasing Democracy 250',
+    sub: 'Why four runners and two crew took on 250 miles from NYC to DC · 2026',
+    url: 'https://www.instagram.com/p/DZw-TNGRH8J/',
+    thumb: thumbSierra,
+    alt: 'Chasing Democracy 250 runners on the open road',
+  },
+  {
     title: 'Top Mindsets Every Ultrarunner Needs',
     sub: 'Short · May 2025',
     url: 'https://www.youtube.com/shorts/-BitmQ2dL7U',
-    thumb: thumbSierra,
+    thumb: thumbAerial,
     alt: 'Harvey Lewis and a pacer running toward the Sierra Nevada',
   },
 ];
 
 const podcasts = [
   {
+    show: 'Ageless Athlete Podcast',
+    ep: 'How Harvey Lewis Healed After the World’s Wildest Ultra',
+    date: 'Jan 2026',
+    url: 'https://www.youtube.com/watch?v=s9z8rK0u7yA',
+  },
+  {
     show: 'Rich Roll Podcast',
     ep: 'Ep. 812 — The 47-Year-Old High School Teacher Who Ran 450 Miles',
     date: 'Feb 2024',
     url: 'https://richroll.com/podcast/harvey-lewis-812/',
+  },
+  {
+    show: 'Ultra Running Magazine Podcast',
+    ep: 'Pre-WS100 with Harvey Lewis — Big’s Record & Western States',
+    date: 'Jun 2024',
+    url: 'https://ultrarunningmagazine.libsyn.com/',
   },
   {
     show: 'Rich Roll Podcast',
@@ -86,20 +105,167 @@ const podcasts = [
     url: 'https://www.nomeatathlete.com/podcast/radio-37/',
   },
 ];
+
+const articles = [
+  {
+    year: '2026',
+    outlet: 'Chasing Democracy 250',
+    title: 'A Run For The Stories That Keep Us Moving: Four Runners Complete 250 Miles from NYC to DC',
+    note: 'Feature coverage of the 5-day, 250-mile journey from Liberty State Park to the MLK Jr. Memorial celebrating America’s 250th anniversary.',
+    byline: 'July 2026',
+    url: 'https://chasingdemocracy250.com/',
+  },
+  {
+    year: '2026',
+    outlet: 'Badwater 135',
+    title: 'Harvey Lewis Logs 15th Career Badwater Finish at Age 50',
+    note: 'Crossing the Mt. Whitney Portal in 25:55:41 for his 15th official finish of "the world’s toughest footrace."',
+    byline: 'July 2026',
+    url: 'https://www.badwater.com/',
+  },
+  {
+    year: '2024',
+    outlet: 'Newton Running / Trail Media',
+    title: 'Harvey Lewis Pulls Off the "Badwater Double" — 270 Miles Across Death Valley and Back',
+    note: 'After finishing the 135-mile Badwater in 36:41:22, Lewis turned around at the Mt. Whitney Portal and ran all the way back to Badwater Basin.',
+    byline: 'July 2024',
+    url: 'https://www.newtonrunning.com/',
+  },
+  {
+    year: '2024',
+    outlet: 'iRunFar',
+    title: 'The Educator Effect: Teachers in Ultrarunning',
+    note: 'Feature with Harvey as central subject — the run-commute, racing the bus, and teaching 48 hours after 450 miles.',
+    byline: 'Robbie Harms · May 22, 2024',
+    url: 'https://www.irunfar.com/the-educator-effect-teachers-in-ultrarunning',
+  },
+  {
+    year: '2023',
+    outlet: 'iRunFar',
+    title: 'A Different Mode: An Interview with Harvey Lewis After His Record-Breaking Win at the 2023 Big Dog\'s Backyard Ultra',
+    note: 'Full Q&A after the 450-mile world record — sleep strategy, vegan fueling, and what comes next.',
+    byline: 'Sarah Brady · Nov 10, 2023',
+    url: 'https://www.irunfar.com/harvey-lewis-2023-big-dogs-backyard-ultra-interview',
+  },
+  {
+    year: '2023',
+    outlet: 'iRunFar',
+    title: '2023 Big Dog\'s Backyard Ultra Results: Harvey Lewis Wins After 108 Hours, 450 Miles of Running',
+    note: 'The race report — six runners past 100 hours, and one left standing.',
+    byline: 'Sarah Brady · Oct 25, 2023',
+    url: 'https://www.irunfar.com/2023-big-dogs-backyard-ultra-results',
+  },
+  {
+    year: '2023',
+    outlet: 'Miriam Diaz Gilbert',
+    title: 'Harvey Lewis on Training, Racing, Crewing, Diet, Gardening, and His Documentary',
+    note: 'Long-form interview while packing for Australia — crew philosophy and life beyond racing.',
+    byline: 'June 2023',
+    url: 'https://www.miriamdiazgilbert.com/post/harvey-lewis-on-racing-his-plant-based-diet-gardening-and-his-documentary-like-harvey-like-son',
+  },
+  {
+    year: '2021',
+    outlet: 'iRunFar',
+    title: 'Harvey Lewis is the Last Person Standing at the 2021 Big Dog\'s Backyard Ultra',
+    note: '85 laps, 354 miles — a new world record in Bell Buckle, Tennessee.',
+    byline: 'Alex Potter · Oct 19, 2021',
+    url: 'https://www.irunfar.com/harvey-lewis-is-the-last-person-standing-at-the-2021-big-dogs-backyard-ultra',
+  },
+  {
+    year: '2021',
+    outlet: 'Trail Running Magazine',
+    title: 'Harvey Lewis Ran the Final Few Yards at Big\'s with a Hand Fracture',
+    note: 'The broken fourth metacarpal he told no one about. "It\'s kind of like a poker game."',
+    byline: 'Oct 2021',
+    url: 'https://runningmagazine.ca/trail-running/harvey-lewis-ran-final-few-yards-at-bigs-with-a-hand-fracture/',
+  },
+  {
+    year: '2021',
+    outlet: 'iRunFar',
+    title: '2021 Badwater 135 Results: Lewis Gains Second Men\'s Win',
+    note: 'From an hour down at mile 90 to champion at 45 — 25:50:23.',
+    byline: 'Sam Anderson · Jul 21, 2021',
+    url: 'https://www.irunfar.com/2021-badwater-135-race-results',
+  },
+  {
+    year: '2021',
+    outlet: 'Plant Based News',
+    title: 'Vegan Athlete Wins \'World\'s Toughest Race\' for the Second Time',
+    note: 'Coverage of the 2021 Badwater win through the plant-based lens.',
+    byline: 'Aug 2021',
+    url: 'https://plantbasednews.org/culture/sport/vegan-athlete-worlds-toughest-race/',
+  },
+  {
+    year: '2020',
+    outlet: 'Cincinnati Enquirer',
+    title: '\'Everything Is About the Mental Strength.\' Local Runner Breaks 29-Year-Old World Record',
+    note: 'Badwater Basin to Mt. Whitney in 33:32 — breaking Marshall Ulrich\'s 1991 mark.',
+    byline: 'Madeline Mitchell · Aug 14, 2020',
+    url: 'https://www.cincinnati.com/story/news/2020/08/14/cincinnati-runner-breaks-world-record-runs-lowest-highest-points-u-s/3373809001/',
+  },
+  {
+    year: '2020',
+    outlet: 'CityBeat Cincinnati',
+    title: 'A Look Inside the Life of Cincinnati Ultramarathon Runner and Educator Harvey Lewis',
+    note: 'The immersive profile — CityBeat ran the morning commute with him.',
+    byline: 'Nov 2020',
+    url: 'https://www.citybeat.com/cincinnati/a-look-inside-the-life-of-cincinnati-ultramarathon-runner-and-educator-harvey-lewis/Slideshow/12233155',
+  },
+  {
+    year: '2020',
+    outlet: 'CityBeat Cincinnati',
+    title: 'SCPA Teacher Harvey Lewis Is Topic of New Athletic Documentary \'Like Harvey Like Son\'',
+    note: 'Documentary preview ahead of the Mariemont Theatre premiere.',
+    byline: 'Nov 2020',
+    url: 'https://www.citybeat.com/arts/cincinnati-ultramarathon-runner-and-scpa-teacher-harvey-lewis-is-topic-of-new-athletic-documentary-like-harvey-like-son-12169662/',
+  },
+  {
+    year: '2018',
+    outlet: 'Cincinnati Enquirer',
+    title: 'Cincinnati Teacher Ran 2,198 Miles Under 50 Days',
+    note: 'The Appalachian Trail journey, documented as it happened.',
+    byline: 'Jul 19, 2018',
+    url: 'https://www.cincinnati.com/story/news/2018/07/19/cincinnati-teacher-ran-2-198-miles-under-50-days/799932002/',
+  },
+  {
+    year: '2014',
+    outlet: 'WVXU (Cincinnati Public Radio)',
+    title: 'SCPA Teacher Wins Badwater Race',
+    note: 'The first Badwater win, and the broken-neck story in his own words.',
+    byline: 'Jul 22, 2014',
+    url: 'https://www.wvxu.org/sports/2014-07-22/scpa-teacher-wins-badwater-race',
+  },
+  {
+    year: '1999',
+    outlet: 'Cincinnati Enquirer',
+    title: 'Finishing Strong',
+    note: 'The earliest known press mention — the same year the Flying Pig streak began.',
+    byline: 'May 10, 1999',
+    url: null,
+  },
+];
+
+// Only the five most recent are shown up front; the rest sit behind "Show all".
+const PRESS_PREVIEW = 5;
+const shownArticles = articles.slice(0, PRESS_PREVIEW);
+const restArticles = articles.slice(PRESS_PREVIEW);
 ---
 
-<Base title="Media — Harvey Lewis" description="Like Harvey Like Son — the award-winning documentary — plus podcasts and video features on ultrarunner Harvey Lewis.">
+<Base title="Media & Press — Harvey Lewis" description="The award-winning documentary, press coverage, podcasts, and video features on ultrarunner Harvey Lewis — from 1999 to today.">
   <section class="media-hero">
     <div class="container">
-      <p class="eyebrow">Media</p>
-      <h1 class="media-title">The film, the podcasts, <em>the interviews.</em></h1>
+      <p class="eyebrow">Media &amp; Press</p>
+      <h1 data-reveal class="media-title">The films, podcasts, <em>and headlines.</em></h1>
+      <p data-reveal class="media-sub">
+        Interviews, race coverage, documentary films, and audio features from 1999 to today. For press requests, see the <a href="/contact">contact page</a>.
+      </p>
     </div>
   </section>
 
   <!-- ============ DOCUMENTARY ============ -->
   <section class="doc">
     <div class="container doc-grid">
-      <div class="doc-poster">
+      <div data-reveal class="doc-poster">
         <Image
           src={posterPhoto}
           alt="Two runners on a Death Valley highway wearing shirts reading Your Thoughts Are The Architects Of Your Destiny"
@@ -108,7 +274,7 @@ const podcasts = [
           quality={80}
         />
       </div>
-      <div class="doc-body">
+      <div data-reveal class="doc-body">
         <p class="mono-label">01 / The Documentary</p>
         <h2 class="doc-title"><em>Like Harvey Like Son</em></h2>
         <p class="doc-award">★ Best Feature Film — Woodbury Film Festival, 2019</p>
@@ -134,11 +300,97 @@ const podcasts = [
     </div>
   </section>
 
+  <!-- ============ PRESS ============ -->
+  <section class="press-section">
+    <div class="container">
+      <p class="mono-label">02 / In The Press</p>
+      <div data-reveal-group data-reveal-step="50" class="press-list">
+        {
+          shownArticles.map((a) => (
+            <article data-reveal class="press-item">
+              <span class="press-year">{a.year}</span>
+              <div class="press-body">
+                <p class="press-outlet">{a.outlet}</p>
+                {a.url ? (
+                  <a class="press-headline" href={a.url} rel="noopener" target="_blank">
+                    {a.title}
+                  </a>
+                ) : (
+                  <span class="press-headline">{a.title}</span>
+                )}
+                <p class="press-note">{a.note}</p>
+                <p class="press-byline">{a.byline}</p>
+              </div>
+            </article>
+          ))
+        }
+
+        {
+          restArticles.length > 0 && (
+            <div class="more-panel" id="press-more">
+              {restArticles.map((a) => (
+                <article class="press-item">
+                  <span class="press-year">{a.year}</span>
+                  <div class="press-body">
+                    <p class="press-outlet">{a.outlet}</p>
+                    {a.url ? (
+                      <a class="press-headline" href={a.url} rel="noopener" target="_blank">
+                        {a.title}
+                      </a>
+                    ) : (
+                      <span class="press-headline">{a.title}</span>
+                    )}
+                    <p class="press-note">{a.note}</p>
+                    <p class="press-byline">{a.byline}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )
+        }
+      </div>
+
+      {
+        restArticles.length > 0 && (
+          <button
+            type="button"
+            class="more-toggle"
+            data-more-toggle="press-more"
+            data-label-more={`Show all ${articles.length} \u2193`}
+            data-label-less="Show fewer \u2191"
+            aria-expanded="false"
+            aria-controls="press-more"
+          >
+            {`Show all ${articles.length} \u2193`}
+          </button>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- ============ PODCASTS ============ -->
+  <section class="podcasts">
+    <div class="container">
+      <p class="mono-label">03 / On Air</p>
+      <div data-reveal-group data-reveal-step="50" class="podcast-list">
+        {
+          podcasts.map((p) => (
+            <a class="podcast-row" href={p.url} rel="noopener">
+              <span class="podcast-show">{p.show}</span>
+              <span class="podcast-ep">{p.ep}</span>
+              <span class="podcast-date">{p.date}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <!-- ============ VIDEO ============ -->
   <section class="videos">
     <div class="container">
-      <p class="mono-label">02 / On Camera</p>
-      <div class="video-grid">
+      <p class="mono-label">04 / On Camera</p>
+      <div data-reveal-group data-reveal-step="80" class="video-grid">
         {
           videos.map((v) => (
             <a class="video-card" href={v.url} rel="noopener">
@@ -153,24 +405,6 @@ const podcasts = [
               </div>
               <h3 class="video-title">{v.title}</h3>
               <p class="video-sub">{v.sub}</p>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PODCASTS ============ -->
-  <section class="podcasts">
-    <div class="container">
-      <p class="mono-label">03 / On Air</p>
-      <div class="podcast-list">
-        {
-          podcasts.map((p) => (
-            <a class="podcast-row" href={p.url} rel="noopener">
-              <span class="podcast-show">{p.show}</span>
-              <span class="podcast-ep">{p.ep}</span>
-              <span class="podcast-date">{p.date}</span>
             </a>
           ))
         }
@@ -390,6 +624,85 @@ const podcasts = [
     text-align: right;
   }
 
+  /* Press section */
+  .media-sub {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+    margin-top: 16px;
+    max-width: 680px;
+  }
+
+  .media-sub a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--rust);
+  }
+
+  .press-section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .press-list {
+    margin-top: 36px;
+  }
+
+  .press-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .press-year {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--rust);
+    padding-top: 4px;
+  }
+
+  .press-outlet {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 8px;
+  }
+
+  .press-headline {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 1.25;
+    color: var(--ink);
+    max-width: 760px;
+    transition: color 0.15s ease;
+  }
+
+  a.press-headline:hover {
+    color: var(--rust);
+  }
+
+  .press-note {
+    font-size: 15px;
+    color: var(--ink-dim);
+    line-height: 1.6;
+    margin: 10px 0 6px;
+    max-width: 720px;
+  }
+
+  .press-byline {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink-dim);
+    opacity: 0.75;
+  }
+
   /* Mobile < 640px */
   @media (max-width: 640px) {
     .media-hero {
@@ -411,6 +724,15 @@ const podcasts = [
 
     .doc-title {
       font-size: 32px;
+    }
+
+    .press-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .press-headline {
+      font-size: 20px;
     }
 
     .video-grid {

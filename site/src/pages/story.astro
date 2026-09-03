@@ -77,11 +77,16 @@ const chapters = [
   {
     n: '05',
     kicker: 'Running as Witness',
-    title: 'Gandhi\'s Salt March. Selma to Montgomery.',
+    title: 'Gandhi\'s Salt March. Selma. Chasing Democracy 250.',
     paras: [
       'In 2008, Lewis earned a grant to retrace Mahatma Gandhi\'s 1930 Salt March — 241 miles from Ahmedabad to the coastal city of Dandi, India. In 2009, he ran Dr. Martin Luther King Jr.\'s Selma to Montgomery march.',
       'Afterward he met 99-year-old civil rights icon Amelia Boynton Robinson, who told him: "I believe God kept me alive 99 years so I can share my story with young people." Ever the teacher.',
+      'In summer 2026, celebrating America\'s 250th anniversary, he carried this witness forward on the roads with Chasing Democracy 250 — a 250-mile journey from Liberty State Park under the Statue of Liberty to the Martin Luther King Jr. Memorial in Washington, D.C. Running alongside educators and veterans over five days, he ran to illuminate the stories of marginalized communities whose struggles forged the nation.',
     ],
+    quote: {
+      text: 'I wanted to celebrate America’s 250th birthday by running 250 miles and highlighting the diverse communities whose struggles and triumphs have built America. I’m running to go beyond the textbook.',
+      cite: 'Chasing Democracy 250, 2026',
+    },
   },
   {
     n: '06',
@@ -95,10 +100,10 @@ const chapters = [
   {
     n: '07',
     kicker: 'The Record Book',
-    title: 'Last man standing. Twice.',
+    title: 'Last man standing. Fifteen Badwaters.',
     paras: [
-      'Lewis has won Badwater 135 — "the world\'s toughest footrace" — twice: 2014 (23:52) and 2021 (25:50:23), the second at age 45 after coming from an hour behind at mile 90. In 2020 he set the world record from Badwater Basin to the summit of Mt. Whitney — the lowest point in the contiguous U.S. to the highest — in 33 hours 32 minutes.',
-      'At Big\'s Backyard Ultra he set the backyard world record twice: 85 laps (354 miles) in 2021 — running the final yards with a broken hand he told no one about — and 108 laps (450 miles) in 2023, when six runners passed 100 hours for the first time in history.',
+      'Lewis has won Badwater 135 twice: 2014 (23:52) and 2021 (25:50:23), the second at age 45 after coming from an hour behind at mile 90. In 2024, after finishing the race, he turned around and ran all the way back across Death Valley to complete the legendary 270-mile "Badwater Double." In 2026 at age 50, he logged his 15th career Badwater finish.',
+      'At Big\'s Backyard Ultra he set the backyard world record twice: 85 laps (354 miles) in 2021 — running the final yards with a broken hand — and 108 laps (450 miles) in 2023. In 2025, he pushed further still to 111 laps (462.51 miles). And in August 2026, he completed 47 yards (195.8 miles) at Germany\'s Last Soul Ultra.',
       'After the 2023 win, he slept in a tent, drove home to Cincinnati, and was back in his classroom Friday morning. Less than 48 hours after finishing 450 miles, he ran to school. He had to go teach.',
     ],
     quote: {
@@ -122,10 +127,10 @@ const chapters = [
   <section class="story-hero">
     <div class="container">
       <p class="eyebrow">The Story</p>
-      <h1 class="story-hero-title">
+      <h1 data-reveal class="story-hero-title">
         From a broken neck to <em>the record book.</em>
       </h1>
-      <p class="story-hero-sub">
+      <p data-reveal class="story-hero-sub">
         A teacher from Cincinnati who became one of the greatest endurance
         athletes alive — without ever quitting his day job.
       </p>
@@ -136,11 +141,11 @@ const chapters = [
     chapters.map((c, i) => (
       <section class="chapter">
         <div class="container chapter-grid">
-          <div class="chapter-meta">
+          <div data-reveal class="chapter-meta">
             <p class="chapter-n">{c.n}</p>
             <p class="eyebrow">{c.kicker}</p>
           </div>
-          <div class="chapter-body">
+          <div data-reveal class="chapter-body">
             <h2 class="chapter-title">{c.title}</h2>
             {c.paras.map((p) => (
               <p class="chapter-para">{p}</p>
@@ -152,7 +157,7 @@ const chapters = [
               </blockquote>
             )}
           </div>
-          <div class="chapter-photo">
+          <div data-reveal class="chapter-photo">
             <div class="chapter-photo-box">
               <Image
                 src={chapterPhotos[i].src}

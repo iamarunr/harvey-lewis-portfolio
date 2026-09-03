@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import EnquiryCards from '../components/EnquiryCards.astro';
 import sunsetPortrait from '../assets/photos/sunset-portrait.jpg';
 
 const sponsors = [
@@ -9,6 +10,8 @@ const sponsors = [
   { name: 'Dream Recovery', cat: 'Sleep optimization' },
 ];
 
+// Chasing Democracy 250 is an event, not an affiliation — it lives as a career
+// pillar and a 2026 results row instead.
 const affiliations = [
   { name: 'Team USA — IAU 24-Hour', note: '5 appearances (2012–2019) — a U.S. record' },
   { name: 'RunQuest Travel', note: 'Harvey\'s international running expedition company', url: 'https://www.runquesttravel.com' },
@@ -18,6 +21,7 @@ const affiliations = [
 
 const socials = [
   { label: 'Instagram', handle: '@harveylewisultrarunner', url: 'https://www.instagram.com/harveylewisultrarunner' },
+  { label: 'Chasing Democracy', handle: '@chasingdemocracy250', url: 'https://www.instagram.com/chasingdemocracy250' },
   { label: 'Facebook', handle: '@harveylewisultrarunner', url: 'https://www.facebook.com/harveylewisultrarunner' },
   { label: 'X / Twitter', handle: '@harveylewisruns', url: 'https://twitter.com/harveylewisruns' },
   { label: 'YouTube', handle: 'Harvey and Kelly', url: 'https://www.youtube.com/@HarveyandKelly' },
@@ -26,17 +30,17 @@ const socials = [
 
 <Base title="Contact — Harvey Lewis" description="Speaking, sponsorship, and media inquiries for ultrarunner and teacher Harvey Lewis.">
   <section class="contact-hero">
-    <div class="container contact-hero-grid">
-      <div>
+    <div class="container contact-hero-grid" data-reveal-group data-reveal-step="100">
+      <div data-reveal>
         <p class="eyebrow">Contact</p>
         <h1 class="contact-title">Speaking, sponsorship, <em>and media.</em></h1>
         <p class="contact-sub">
           Harvey speaks about endurance, mental limits, plant-based performance,
-          and education. The most reliable way to reach him is through his social
-          channels below.
+          and education. Pick the route that fits below — or reach him through his
+          social channels.
         </p>
       </div>
-      <div class="contact-portrait">
+      <div class="contact-portrait" data-reveal>
         <Image
           src={sunsetPortrait}
           alt="Harvey Lewis standing arms crossed on a road at dusk, wooded hills behind him"
@@ -48,8 +52,14 @@ const socials = [
     </div>
   </section>
 
+  <section class="enquiries">
+    <div class="container">
+      <EnquiryCards />
+    </div>
+  </section>
+
   <section class="contact-body">
-    <div class="container contact-grid">
+    <div class="container contact-grid" data-reveal-group data-reveal-step="120">
       <div>
         <p class="mono-label">Reach out</p>
         <ul class="social-list">
@@ -100,6 +110,10 @@ const socials = [
 </Base>
 
 <style>
+  .enquiries {
+    padding-bottom: 8px;
+  }
+
   .contact-hero {
     padding: 96px 0 72px;
     border-bottom: 1px solid var(--line);

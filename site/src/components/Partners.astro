@@ -1,0 +1,141 @@
+---
+import partners from '../data/partners.json';
+import reach from '../data/reach.json';
+---
+
+<section id="partners">
+  <div class="section-inner">
+    <div class="section-head" data-reveal>
+      <span>Partners &amp; affiliations</span>
+      <span>Audience figures to confirm</span>
+    </div>
+
+    <!-- When real logos arrive, replace these name cards with logo lockups on --bg. -->
+    <div class="partners hairline-grid" data-reveal-group data-reveal-step="70">
+      {
+        partners.map((partner) => (
+          <div class="partner lift" data-reveal>
+            <div class="partner-kind">{partner.kind}</div>
+            <div>
+              <div class="partner-name">
+                {partner.href ? (
+                  <a
+                    href={partner.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="partner-link"
+                    aria-label={`${partner.name} (opens in a new tab)`}
+                  >
+                    {partner.name} <span class="partner-arrow" aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  partner.name
+                )}
+              </div>
+              <div class="partner-note">{partner.note}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="reach hairline-grid" data-reveal-group data-reveal-step="80">
+      {
+        reach.map((item) => (
+          <div class="reach-cell" data-reveal>
+            <div class="reach-value" data-count>{item.value}</div>
+            <div class="reach-label">{item.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* The handoff specifies minmax(220px), which resolves to 5 tracks in the 1240px
+     container and orphans a single card under a full row. 340px gives a clean 3x2
+     for the current six partners, and still steps to 2-up then 1-up on narrower
+     screens. Revisit the minimum if the partner count changes. */
+  .partners {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    margin-top: 34px;
+  }
+
+  .partner {
+    background: var(--bg);
+    padding: 26px 24px;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .partner-kind {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.62);
+  }
+
+  .partner-name {
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.2;
+  }
+
+  .partner-link {
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .partner-link:hover {
+    color: var(--rust);
+  }
+
+  .partner-arrow {
+    display: inline-block;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  }
+
+  .partner-link:hover .partner-arrow {
+    opacity: 1;
+    transform: translate(3px, -3px);
+  }
+
+  .partner-note {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(237, 228, 211, 0.72);
+    margin-top: 6px;
+  }
+
+  .reach {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-top: 8px;
+  }
+
+  .reach-cell {
+    background: var(--bg);
+    padding: 24px 22px;
+  }
+
+  .reach-value {
+    font-family: var(--font-num);
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .reach-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(237, 228, 211, 0.68);
+    margin-top: 8px;
+  }
+</style>
