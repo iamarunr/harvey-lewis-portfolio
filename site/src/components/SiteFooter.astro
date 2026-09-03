@@ -33,14 +33,14 @@ const elsewhere = [
     <div>
       <p class="col-label">Follow</p>
       <ul>
-        {follow.map((item) => <li><a href={item.href} rel="noopener">{item.label}</a></li>)}
+        {follow.map((item) => <li><a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a></li>)}
       </ul>
     </div>
 
     <div>
       <p class="col-label">Elsewhere</p>
       <ul>
-        {elsewhere.map((item) => <li><a href={item.href} rel="noopener">{item.label}</a></li>)}
+        {elsewhere.map((item) => <li><a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a></li>)}
       </ul>
     </div>
   </div>

@@ -1,13 +1,29 @@
 ---
 import EnquiryCards from './EnquiryCards.astro';
+import site from '../data/site.json';
 ---
 
 <section id="contact">
   <div class="section-inner">
-    <div class="eyebrow">Enquiries</div>
+    <div class="eyebrow">Enquiries &amp; Contact</div>
     <h2 data-reveal>Three ways to bring him in</h2>
     <EnquiryCards />
-    <a href="/contact" class="see-all">Socials, sponsors &amp; affiliations →</a>
+
+    <div class="contact-footer-row" data-reveal>
+      <div class="direct-contact">
+        <span class="direct-label">Direct message:</span>
+        <a
+          href={site.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="direct-link"
+          aria-label={`Message Harvey on Instagram ${site.instagramHandle} (opens in a new tab)`}
+        >
+          Instagram · {site.instagramHandle} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <a href="/contact" class="see-all">All socials, sponsors &amp; affiliations →</a>
+    </div>
   </div>
 </section>
 
@@ -17,5 +33,48 @@ import EnquiryCards from './EnquiryCards.astro';
     font-weight: 600;
     font-size: clamp(26px, 3.6vw, 52px);
     line-height: 1.08;
+  }
+
+  .contact-footer-row {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .direct-contact {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 15px;
+    flex-wrap: wrap;
+  }
+
+  .direct-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .direct-link {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--rust);
+    transition: color 0.15s ease;
+  }
+
+  .direct-link:hover {
+    color: var(--ink);
+  }
+
+  .contact-footer-row .see-all {
+    margin-top: 0;
   }
 </style>

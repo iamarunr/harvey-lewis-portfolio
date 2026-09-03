@@ -66,9 +66,9 @@ const socials = [
           {
             socials.map((s) => (
               <li>
-                <a class="social-row" href={s.url} rel="noopener">
+                <a class="social-row" href={s.url} target="_blank" rel="noopener noreferrer">
                   <span class="social-label">{s.label}</span>
-                  <span class="social-handle">{s.handle}</span>
+                  <span class="social-handle">{s.handle} <span aria-hidden="true">↗</span></span>
                 </a>
               </li>
             ))
