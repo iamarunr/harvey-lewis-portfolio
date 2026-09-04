@@ -41,7 +41,7 @@ const facts = [
         Two-time Badwater 135 champion, five-time Team USA runner, and Cincinnati teacher.
         Thirty years of exploring human resilience on foot.
       </p>
-      <div class="cta-row desktop-cta" data-reveal>
+      <div class="cta-row" data-reveal>
         <a href="/contact" class="btn btn-solid">Sponsorship &amp; speaking →</a>
         <a href="/media" class="btn btn-outline hero-secondary">Media kit <span class="cta-arrow" aria-hidden="true">→</span></a>
       </div>
@@ -62,10 +62,6 @@ const facts = [
           </div>
         ))
       }
-    </div>
-    <div class="mobile-cta" data-reveal>
-      <a href="/contact" class="btn btn-solid">Sponsorship &amp; speaking →</a>
-      <a href="/media" class="btn btn-outline hero-secondary">Media kit <span class="cta-arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -249,45 +245,61 @@ const facts = [
   }
 
   /* ---- phone ----
-     Stacked editorial mobile presentation:
-     - The runner photo sits prominently at the top, unobstructed and crystal clear.
-     - Headline, bio, and figures sit cleanly on solid dark background below.
-     - Buttons are pushed to the bottom of the section below the stats. */
+     Full-screen Athlete Campaign Hero:
+     - Full-bleed cinematic canvas: runner silhouette is prominent & clean in the upper sky.
+     - Lower half dissolves to solid black ground with headline and immediate primary CTA.
+     - Stats form an impactful proof strip immediately below the first viewport. */
   @media (max-width: 860px) {
     .hero {
+      position: relative;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
-      min-height: auto;
+      justify-content: space-between;
+      overflow: visible;
       background: var(--bg);
     }
 
     .hero-photo-wrap {
-      order: 2;
-      position: relative;
-      top: auto;
-      right: auto;
-      bottom: auto;
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: clamp(260px, 35vh, 340px);
+      height: 100svh;
+      z-index: 1;
       overflow: hidden;
-      mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      mask-image: none;
+      -webkit-mask-image: none;
     }
 
+    /* Cinematic gradient: runner in the upper third is clean and visible against dusk sky,
+       then ground melts smoothly into pure solid --bg (#0b0a09) behind headline & buttons */
     .hero-photo-wrap::after {
-      display: none;
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 10, 9, 0.12) 0%,
+        rgba(11, 10, 9, 0.25) 28%,
+        rgba(11, 10, 9, 0.85) 50%,
+        var(--bg) 66%,
+        var(--bg) 100%
+      );
     }
 
     .hero-photo {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 48% 20%;
+      object-position: 50% 12%;
     }
 
     .hero-center {
-      order: 3;
-      padding: 24px var(--pad-x) 16px;
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      padding: 0 var(--pad-x) 32px;
+      width: 100%;
     }
 
     .hero-content {
@@ -295,77 +307,51 @@ const facts = [
     }
 
     .hero-eyebrow {
-      color: var(--ink-dim);
+      color: var(--rust);
       font-size: 11px;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
     .hero-center h1 {
-      margin-top: 14px;
-      font-size: clamp(28px, 7.5vw, 38px);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      max-width: 100%;
+      margin-top: 10px;
+      font-size: clamp(30px, 8.2vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      max-width: 16ch;
+      font-weight: 600;
     }
 
     .hero-body {
-      margin-top: 14px;
+      margin-top: 12px;
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.55;
       color: var(--ink-subtle);
-      max-width: 42ch;
+      max-width: 40ch;
     }
 
-    .desktop-cta {
-      display: none;
-    }
-
-    .scroll-cue {
-      display: none;
-    }
-
-    .hero-bottom {
-      order: 4;
-      padding: 12px var(--pad-x) clamp(32px, 5vh, 48px);
-    }
-
-    .fact-rail {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px 20px;
-      padding-top: 16px;
-    }
-
-    .fact-rail :global(.figure) {
-      font-size: 28px;
-    }
-
-    .fact-label {
-      font-size: 10.5px;
-      letter-spacing: 0.1em;
-      margin-top: 4px;
-      color: var(--ink-dim);
-    }
-
-    /* Buttons pushed cleanly to the bottom */
-    .mobile-cta {
-      display: flex;
+    /* Single primary full-width button + quiet secondary text link right above the fold */
+    .hero-center :global(.cta-row) {
+      margin-top: 22px;
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
-      margin-top: 28px;
     }
 
-    .mobile-cta .btn-solid {
+    .hero-center :global(.cta-row .btn-solid) {
       width: 100%;
       text-align: center;
       padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(232, 81, 31, 0.25);
     }
 
-    .mobile-cta .hero-secondary {
+    .hero-center :global(.cta-row .hero-secondary) {
       border: 0;
       background: transparent;
-      padding: 6px 0;
-      min-height: 40px;
+      padding: 4px 0;
+      min-height: 36px;
       font-family: var(--font-mono);
       font-size: 12px;
       letter-spacing: 0.12em;
@@ -380,29 +366,64 @@ const facts = [
       transition: color 0.15s ease, text-decoration-color 0.15s ease;
     }
 
-    .mobile-cta .hero-secondary:hover {
+    .hero-center :global(.cta-row .hero-secondary:hover) {
       color: var(--ink);
       text-decoration-color: var(--rust);
+    }
+
+    .scroll-cue {
+      display: none;
+    }
+
+    /* Stats proof rail sits immediately below the 100svh fold as you scroll */
+    .hero-bottom {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      background: var(--bg-deep);
+      border-top: 1px solid var(--line);
+      padding: 28px var(--pad-x) 36px;
+    }
+
+    .fact-rail {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 24px;
+      padding-top: 0;
+    }
+
+    .fact-rail::before {
+      display: none;
+    }
+
+    .fact-rail :global(.figure) {
+      font-size: 32px;
+    }
+
+    .fact-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      margin-top: 6px;
+      color: var(--ink-dim);
     }
   }
 
   /* Small phones */
   @media (max-width: 380px) {
-    .hero-photo-wrap {
-      height: 240px;
-    }
-
     .hero-center h1 {
       font-size: 27px;
     }
 
     .hero-body {
       font-size: 14px;
-      margin-top: 12px;
+      margin-top: 10px;
+    }
+
+    .hero-center :global(.cta-row) {
+      margin-top: 16px;
     }
 
     .fact-rail :global(.figure) {
-      font-size: 24px;
+      font-size: 26px;
     }
   }
 </style>
