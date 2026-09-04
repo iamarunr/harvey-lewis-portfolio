@@ -1,5 +1,9 @@
 ---
 import { Image } from 'astro:assets';
+// Bitter is the display face for chapter headings and is used on this page only,
+// so it loads here rather than in the shared layout.
+import '@fontsource-variable/bitter';
+import '@fontsource-variable/bitter/wght-italic.css';
 import Base from '../layouts/Base.astro';
 import trailRiver from '../assets/photos/trail-river.jpg';
 import veganFriends from '../assets/photos/vegan-friends.jpg';
@@ -165,7 +169,8 @@ const chapters = [
                 widths={[480, 720, 1080]}
                 sizes="(max-width: 900px) 100vw, 33vw"
                 quality={80}
-              />
+      loading="lazy"
+    />
             </div>
           </div>
         </div>

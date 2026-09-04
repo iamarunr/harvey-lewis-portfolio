@@ -34,21 +34,21 @@ const gallery = [
 
     <div class="panels hairline-grid" data-reveal-group data-reveal-step="100">
       <div class="panel">
-        <div class="panel-title">Quick facts</div>
+        <h3 class="panel-title">Quick facts</h3>
         <div class="panel-list">
           {mediaKit.quickFacts.map((fact) => <div>{fact}</div>)}
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-title">Press</div>
+        <h3 class="panel-title">Press</h3>
         <div class="panel-list">
           {mediaKit.press.map((item) => <div>{item}</div>)}
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-title">Downloads</div>
+        <h3 class="panel-title">Downloads</h3>
         <div class="downloads">
           {
             mediaKit.downloads.map((download) => {
@@ -136,6 +136,7 @@ const gallery = [
   }
 
   .panel-title {
+    margin: 0;
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.16em;

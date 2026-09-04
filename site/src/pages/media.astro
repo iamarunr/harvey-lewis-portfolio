@@ -272,11 +272,12 @@ const restArticles = articles.slice(PRESS_PREVIEW);
           widths={[480, 720, 1024]}
           sizes="(max-width: 640px) 100vw, 40vw"
           quality={80}
-        />
+      loading="lazy"
+    />
       </div>
       <div data-reveal class="doc-body">
-        <p class="mono-label">01 / The Documentary</p>
-        <h2 class="doc-title"><em>Like Harvey Like Son</em></h2>
+        <h2 class="mono-label"><span aria-hidden="true">01 / </span>The Documentary</h2>
+        <h3 class="doc-title"><em>Like Harvey Like Son</em></h3>
         <p class="doc-award">★ Best Feature Film · Woodbury Film Festival, 2019</p>
         <p class="doc-para">
           In 2018, Harvey Lewis III ran the 2,190-mile Appalachian Trail in 49
@@ -303,7 +304,7 @@ const restArticles = articles.slice(PRESS_PREVIEW);
   <!-- ============ PRESS ============ -->
   <section id="press" class="press-section">
     <div class="container">
-      <p class="mono-label">02 / In The Press</p>
+      <h2 class="mono-label"><span aria-hidden="true">02 / </span>In The Press</h2>
       <div data-reveal-group data-reveal-step="50" class="press-list">
         {
           shownArticles.map((a) => (
@@ -311,13 +312,15 @@ const restArticles = articles.slice(PRESS_PREVIEW);
               <span class="press-year">{a.year}</span>
               <div class="press-body">
                 <p class="press-outlet">{a.outlet}</p>
-                {a.url ? (
-                  <a class="press-headline" href={a.url} rel="noopener" target="_blank">
-                    {a.title}
-                  </a>
-                ) : (
-                  <span class="press-headline">{a.title}</span>
-                )}
+                <h3 class="press-headline-wrap">
+                  {a.url ? (
+                    <a class="press-headline" href={a.url} rel="noopener" target="_blank">
+                      {a.title}
+                    </a>
+                  ) : (
+                    <span class="press-headline">{a.title}</span>
+                  )}
+                </h3>
                 <p class="press-note">{a.note}</p>
                 <p class="press-byline">{a.byline}</p>
               </div>
@@ -333,13 +336,15 @@ const restArticles = articles.slice(PRESS_PREVIEW);
                   <span class="press-year">{a.year}</span>
                   <div class="press-body">
                     <p class="press-outlet">{a.outlet}</p>
-                    {a.url ? (
-                      <a class="press-headline" href={a.url} rel="noopener" target="_blank">
-                        {a.title}
-                      </a>
-                    ) : (
-                      <span class="press-headline">{a.title}</span>
-                    )}
+                    <h3 class="press-headline-wrap">
+                      {a.url ? (
+                        <a class="press-headline" href={a.url} rel="noopener" target="_blank">
+                          {a.title}
+                        </a>
+                      ) : (
+                        <span class="press-headline">{a.title}</span>
+                      )}
+                    </h3>
                     <p class="press-note">{a.note}</p>
                     <p class="press-byline">{a.byline}</p>
                   </div>
@@ -371,7 +376,7 @@ const restArticles = articles.slice(PRESS_PREVIEW);
   <!-- ============ PODCASTS ============ -->
   <section class="podcasts">
     <div class="container">
-      <p class="mono-label">03 / On Air</p>
+      <h2 class="mono-label"><span aria-hidden="true">03 / </span>On Air</h2>
       <div data-reveal-group data-reveal-step="50" class="podcast-list">
         {
           podcasts.map((p) => (
@@ -395,7 +400,7 @@ const restArticles = articles.slice(PRESS_PREVIEW);
   <!-- ============ VIDEO ============ -->
   <section class="videos">
     <div class="container">
-      <p class="mono-label">04 / On Camera</p>
+      <h2 class="mono-label"><span aria-hidden="true">04 / </span>On Camera</h2>
       <div data-reveal-group data-reveal-step="80" class="video-grid">
         {
           videos.map((v) => (
@@ -413,7 +418,8 @@ const restArticles = articles.slice(PRESS_PREVIEW);
                   widths={[400, 640]}
                   sizes="(max-width: 640px) 100vw, 33vw"
                   quality={80}
-                />
+      loading="lazy"
+    />
               </div>
               <h3 class="video-title">{v.title}</h3>
               <p class="video-sub">{v.sub}</p>
@@ -689,6 +695,11 @@ const restArticles = articles.slice(PRESS_PREVIEW);
     text-transform: uppercase;
     color: var(--ink-dim);
     margin-bottom: 8px;
+  }
+
+  .press-headline-wrap {
+    margin: 0;
+    font: inherit;
   }
 
   .press-headline {

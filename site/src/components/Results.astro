@@ -49,6 +49,14 @@ const firstYear = Math.min(...races.map((race) => race.year));
     opacity: 0.85;
   }
 
+  /* Tabular data needs a tighter measure than hero copy. At the full 1520px
+     canvas the year and the placing sit so far apart the eye loses the row, so
+     the table caps well short of the container. */
+  .rows,
+  .section-head {
+    max-width: 1180px;
+  }
+
   .rows {
     margin-top: 8px;
   }
