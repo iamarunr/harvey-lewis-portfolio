@@ -41,7 +41,7 @@ const facts = [
         Two-time Badwater 135 champion, five-time Team USA runner, and Cincinnati teacher.
         Thirty years of exploring human resilience on foot.
       </p>
-      <div class="cta-row" data-reveal>
+      <div class="cta-row desktop-cta" data-reveal>
         <a href="/contact" class="btn btn-solid">Sponsorship &amp; speaking →</a>
         <a href="/media" class="btn btn-outline hero-secondary">Media kit <span class="cta-arrow" aria-hidden="true">→</span></a>
       </div>
@@ -62,6 +62,10 @@ const facts = [
           </div>
         ))
       }
+    </div>
+    <div class="mobile-cta" data-reveal>
+      <a href="/contact" class="btn btn-solid">Sponsorship &amp; speaking →</a>
+      <a href="/media" class="btn btn-outline hero-secondary">Media kit <span class="cta-arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -239,65 +243,61 @@ const facts = [
     color: var(--ink-dim);
     margin-top: 8px;
   }
+
+  .mobile-cta {
+    display: none;
+  }
+
   /* ---- phone ----
-     Refined editorial mobile presentation:
-     - Atmosphere over distraction: progressive dark dissolve lets the runner's
-       silhouette float in the upper third while copy and figures rest on pure black.
-     - Single primary action: full-width sponsorship CTA paired with an understated
-       Media kit link prevents competing button rectangles.
-     - Quiet eyebrow: subdued sand instead of aggressive orange for calm hierarchy.
-     - Uncramped rhythm: natural vertical breathing room for headline, body, and stats. */
+     Stacked editorial mobile presentation:
+     - The runner photo sits prominently at the top, unobstructed and crystal clear.
+     - Headline, bio, and figures sit cleanly on solid dark background below.
+     - Buttons are pushed to the bottom of the section below the stats. */
   @media (max-width: 860px) {
     .hero {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 100svh;
-      padding-bottom: 24px;
+      min-height: auto;
+      background: var(--bg);
     }
 
     .hero-photo-wrap {
-      position: absolute;
-      inset: 0;
+      order: 2;
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
       width: 100%;
-      height: 100%;
-      mask-image: none;
-      -webkit-mask-image: none;
+      height: clamp(260px, 35vh, 340px);
+      overflow: hidden;
+      mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     }
 
-    /* Progressive dark dissolve: runner's stride is visible at dusk in the upper third,
-       then melts into solid --bg behind all headline, text, and numbers */
     .hero-photo-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(11, 10, 9, 0.45) 0%,
-        rgba(11, 10, 9, 0.72) 22%,
-        rgba(11, 10, 9, 0.94) 45%,
-        var(--bg) 70%,
-        var(--bg) 100%
-      );
+      display: none;
     }
 
     .hero-photo {
-      object-position: 62% 16%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 48% 20%;
     }
 
     .hero-center {
-      padding: clamp(24px, 4.5vh, 40px) var(--pad-x) 16px;
+      order: 3;
+      padding: 24px var(--pad-x) 16px;
     }
 
     .hero-content {
       max-width: 100%;
     }
 
-    /* Subdued eyebrow for calm hierarchy */
     .hero-eyebrow {
       color: var(--ink-dim);
       font-size: 11px;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
     }
 
     .hero-center h1 {
@@ -311,26 +311,57 @@ const facts = [
     .hero-body {
       margin-top: 14px;
       font-size: 15px;
-      line-height: 1.55;
-      color: var(--ink-dim);
-      max-width: 40ch;
+      line-height: 1.6;
+      color: var(--ink-subtle);
+      max-width: 42ch;
     }
 
-    /* Single primary full-width button + quiet secondary text link */
-    .hero-center :global(.cta-row) {
-      margin-top: 22px;
+    .desktop-cta {
+      display: none;
+    }
+
+    .scroll-cue {
+      display: none;
+    }
+
+    .hero-bottom {
+      order: 4;
+      padding: 12px var(--pad-x) clamp(32px, 5vh, 48px);
+    }
+
+    .fact-rail {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 20px;
+      padding-top: 16px;
+    }
+
+    .fact-rail :global(.figure) {
+      font-size: 28px;
+    }
+
+    .fact-label {
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+      color: var(--ink-dim);
+    }
+
+    /* Buttons pushed cleanly to the bottom */
+    .mobile-cta {
+      display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
+      margin-top: 28px;
     }
 
-    .hero-center :global(.cta-row .btn-solid) {
+    .mobile-cta .btn-solid {
       width: 100%;
       text-align: center;
-      padding: 15px 20px;
+      padding: 16px 20px;
     }
 
-    .hero-center :global(.cta-row .hero-secondary) {
+    .mobile-cta .hero-secondary {
       border: 0;
       background: transparent;
       padding: 6px 0;
@@ -349,40 +380,18 @@ const facts = [
       transition: color 0.15s ease, text-decoration-color 0.15s ease;
     }
 
-    .hero-center :global(.cta-row .hero-secondary:hover) {
+    .mobile-cta .hero-secondary:hover {
       color: var(--ink);
       text-decoration-color: var(--rust);
-    }
-
-    .scroll-cue {
-      display: none;
-    }
-
-    .hero-bottom {
-      padding: 12px var(--pad-x) 0;
-    }
-
-    /* Clean two-up stats sitting on pure dark ground */
-    .fact-rail {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px 20px;
-      padding-top: 16px;
-    }
-
-    .fact-rail :global(.figure) {
-      font-size: 28px;
-    }
-
-    .fact-label {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      margin-top: 4px;
-      color: var(--ink-faint);
     }
   }
 
   /* Small phones */
   @media (max-width: 380px) {
+    .hero-photo-wrap {
+      height: 240px;
+    }
+
     .hero-center h1 {
       font-size: 27px;
     }
