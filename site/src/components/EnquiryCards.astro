@@ -13,7 +13,7 @@ const cards = enquiries.map((card) => ({
     cards.map((card) => (
       <a href={card.href} class="card" data-reveal>
         <div class="card-eyebrow">{card.eyebrow}</div>
-        <div class="card-title">{card.title}</div>
+        <h3 class="card-title">{card.title}</h3>
         <div class="card-body">{card.body}</div>
         <div class="card-arrow" aria-hidden="true">
           →
@@ -25,19 +25,19 @@ const cards = enquiries.map((card) => ({
 
 <style>
   .cards {
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   }
 
   .card {
     background: var(--bg);
     display: flex;
     flex-direction: column;
-    padding: 32px 28px;
-    min-height: 280px;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    padding: clamp(34px, 3vw, 46px) clamp(28px, 2.5vw, 38px);
+    min-height: 310px;
+    transition: background-color 0.18s ease, color 0.18s ease;
   }
 
-  /* Whole card inverts on hover — the one loud interaction on the page. */
+  /* Whole card inverts on hover */
   .card:hover,
   .card:focus-visible {
     background: var(--rust);
@@ -46,39 +46,42 @@ const cards = enquiries.map((card) => ({
 
   .card-eyebrow {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: clamp(12px, 0.85vw, 13px);
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
+    opacity: 0.85;
   }
 
   .card-title {
+    margin: 0;
     font-weight: 600;
-    font-size: 24px;
-    line-height: 1.2;
+    font-size: clamp(24px, 2vw, 30px);
+    line-height: 1.18;
     min-height: 58px;
     display: flex;
     align-items: flex-start;
   }
 
   .card-body {
-    font-size: 15px;
-    line-height: 1.6;
-    margin-top: 10px;
-    opacity: 0.84;
+    font-size: clamp(16px, 1.05vw, 18px);
+    line-height: 1.62;
+    margin-top: 14px;
+    opacity: 0.88;
     min-height: 72px;
+    text-wrap: pretty;
   }
 
   .card-arrow {
     margin-top: auto;
-    padding-top: 20px;
-    font-size: 20px;
+    padding-top: 24px;
+    font-size: 24px;
     display: inline-block;
     transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .card:hover .card-arrow,
   .card:focus-visible .card-arrow {
-    transform: translateX(6px);
+    transform: translateX(8px);
   }
 </style>

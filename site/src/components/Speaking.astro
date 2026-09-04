@@ -2,30 +2,51 @@
 import { Image } from 'astro:assets';
 import students from '../assets/photos/speaking-students.jpg';
 import talks from '../data/talks.json';
-import speakingFacts from '../data/speaking-facts.json';
 import site from '../data/site.json';
 
 const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('Speaking enquiry')}`;
+
+const audiences = [
+  'Corporate Teams & Leadership',
+  'Middle & High Schools',
+  'Universities & Commencements',
+  'Race Expos & Banquets',
+];
+
+const proof = [
+  { value: '108', label: 'Continuous hours on foot' },
+  { value: '2×', label: 'Rich Roll Podcast guest' },
+  { value: '180', label: 'Days in class each year' },
+];
+
+const facts = [
+  { label: 'Formats', value: '30–60 min keynotes, fireside chats, Q&A' },
+  { label: 'Home base', value: 'Cincinnati, OH (CVG) · speaks worldwide' },
+  { label: 'Booking', value: 'Arranged year-round around school terms' },
+];
 ---
 
 <section id="speaking" class="band-deep">
   <div class="section-inner">
-    <div class="eyebrow">Speaking</div>
+    <div class="eyebrow">Speaking &amp; Keynotes</div>
 
     <div class="split" data-reveal-group data-reveal-step="110">
       <div data-reveal>
-        <h2>A teacher who can tell you exactly what the fifth day feels like</h2>
+        <h2>A teacher who can tell you what the fifth day feels like</h2>
         <p class="lede">
-          Specific, unhurried, evidence first. Lessons from thirty years of endurance,
-          brought directly to corporate teams and schools.
+          Specific, unhurried, evidence first. No hype. Harvey brings the mindset of 108 continuous hours of endurance directly to corporate teams and students.
         </p>
+
+        <div class="audience-tags">
+          {audiences.map((aud) => <span class="aud-tag">{aud}</span>)}
+        </div>
 
         <div class="talks hairline-grid" data-reveal-group data-reveal-step="90">
           {
             talks.map((talk) => (
               <div class="talk lift" data-reveal>
                 <div class="talk-tag">{talk.tag}</div>
-                <div class="talk-title">{talk.title}</div>
+                <h3 class="talk-title">{talk.title}</h3>
                 <p>{talk.body}</p>
               </div>
             ))
@@ -33,18 +54,32 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
         </div>
       </div>
 
-      <div class="speaking-sidebar">
-        <Image
-          src={students}
-          alt="Harvey Lewis speaking with students"
-          class="speaking-photo"
-          widths={[400, 800]}
-          sizes="(max-width: 800px) 90vw, 560px"
-        />
+      <div class="speaking-sidebar" data-reveal>
+        <div class="photo-box">
+          <Image
+            src={students}
+            alt="Harvey Lewis speaking with students outdoors"
+            class="speaking-photo"
+            widths={[400, 800, 1200]}
+            sizes="(max-width: 800px) 90vw, 640px"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="speaking-proof hairline-grid">
+          {
+            proof.map((p) => (
+              <div class="proof-stat">
+                <span class="proof-num">{p.value}</span>
+                <span class="proof-lbl">{p.label}</span>
+              </div>
+            ))
+          }
+        </div>
 
         <div class="facts hairline-grid">
           {
-            speakingFacts.map((fact) => (
+            facts.map((fact) => (
               <div class="fact">
                 <span class="fact-label">{fact.label}</span>
                 <span class="fact-value">{fact.value}</span>
@@ -53,8 +88,10 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
           }
         </div>
 
-        <a href={speakingHref} class="speaking-cta">Check a date →</a>
-        <a href="/speaking" class="see-all">Talks, formats &amp; audiences →</a>
+        <div class="speaking-actions">
+          <a href={speakingHref} class="speaking-cta btn-solid">Check a date →</a>
+          <a href="/media" class="speaking-secondary">Media kit &amp; bio →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -63,30 +100,49 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
 <style>
   .split {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: clamp(30px, 5vw, 60px);
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+    gap: clamp(36px, 5vw, 84px);
+    margin-top: 28px;
     align-items: stretch;
   }
 
   h2 {
     font-weight: 600;
-    font-size: clamp(26px, 3.2vw, 46px);
-    line-height: 1.1;
+    font-size: clamp(32px, 3.6vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
     max-width: 22ch;
   }
 
   .lede {
-    margin-top: 16px;
-    font-size: 17px;
-    line-height: 1.6;
-    color: rgba(237, 228, 211, 0.82);
+    margin-top: 20px;
+    font-size: clamp(18px, 1.2vw, 22px);
+    line-height: 1.62;
+    color: var(--ink-subtle);
     max-width: 48ch;
     text-wrap: pretty;
   }
 
+  .audience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .aud-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+  }
+
   .talks {
-    margin-top: 28px;
+    margin-top: 32px;
     display: flex;
     flex-direction: column;
     gap: 1px;
@@ -94,17 +150,17 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
 
   .talk {
     background: var(--bg-deep);
-    padding: 22px 24px;
+    padding: clamp(24px, 2.2vw, 32px) clamp(22px, 2vw, 30px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 130px;
+    min-height: 140px;
     flex: 1;
   }
 
   .talk-tag {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--rust);
@@ -112,16 +168,16 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
 
   .talk-title {
     font-weight: 600;
-    font-size: 19px;
+    font-size: clamp(20px, 1.4vw, 24px);
     line-height: 1.25;
-    margin-top: 6px;
+    margin-top: 8px;
   }
 
   .talk p {
-    margin-top: 6px;
-    font-size: 14px;
-    line-height: 1.58;
-    color: rgba(237, 228, 211, 0.78);
+    margin-top: 8px;
+    font-size: clamp(15px, 1vw, 17px);
+    line-height: 1.6;
+    color: var(--ink-dim);
     text-wrap: pretty;
   }
 
@@ -131,23 +187,60 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
     justify-content: space-between;
   }
 
+  .photo-box {
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
   .speaking-photo {
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
   }
 
+  .speaking-proof {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
+  }
+
+  .proof-stat {
+    background: var(--bg);
+    padding: 16px 10px;
+    text-align: center;
+  }
+
+  .proof-num {
+    font-family: var(--font-num);
+    font-size: clamp(28px, 2.8vw, 38px);
+    line-height: 1;
+    color: var(--rust);
+    display: block;
+  }
+
+  .proof-lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 6px;
+    display: block;
+    line-height: 1.25;
+  }
+
   .facts {
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
   .fact {
-    background: var(--bg-deep);
-    padding: 18px 22px;
+    background: var(--bg);
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
+    font-size: 14px;
   }
 
   .fact-label {
@@ -155,18 +248,28 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.65);
+    color: var(--ink-dim);
   }
 
   .fact-value {
-    font-size: 15px;
     text-align: right;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .speaking-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
   }
 
   .speaking-cta {
-    display: block;
-    margin-top: 8px;
-    padding: 16px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    min-height: 48px;
     background: var(--rust);
     color: var(--bg);
     font-weight: 600;
@@ -176,5 +279,26 @@ const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('
 
   .speaking-cta:hover {
     background: var(--ink);
+  }
+
+  .speaking-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    min-height: 44px;
+    border: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .speaking-secondary:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+    background: var(--surface-hover);
   }
 </style>

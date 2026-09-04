@@ -1,42 +1,47 @@
-# Design
+# Design System
 
 Captured from the live code in `site/src/styles/global.css` and page-level styles.
 
-## Theme
+## Theme & Ethos
 
-Light, professional-athlete editorial, modeled on chrishoy.com (owner-approved reference): white surfaces with off-white alternating bands, full-bleed photo banners carrying white text, one hot accent. Photography supplies the drama; the chrome stays clean.
+Ultra-endurance editorial: dark, disciplined, and physical. Sand type on near-black surfaces, sharp razor corners (zero border-radius), hairline rules, and a single vermilion/rust accent. 
+Hype adjectives ("world-class", "beast-mode"), rounded buttons, glossy SaaS cards, and purple/blue gradients are strictly banned. Photography provides the visceral drama; the typography and chrome provide precision and gravitas.
 
-## Color
+## Color Palette
 
 | Token | Value | Role |
 |---|---|---|
-| `--bg` | `#ffffff` | Page surface |
-| `--bg-deep` | `#f6f5f3` | Alternating bands: ticker, quote, tints |
-| `--panel` | `#edebe8` | Placeholder panels |
-| `--ink` | `#2b3640` | Primary text (slate) |
-| `--ink-dim` | `#68727c` | Secondary text |
-| `--rust` | `#e8511f` | Single hot accent (vermilion): links, key figures, filters |
-| `--line` | `rgba(43,54,64,0.14)` | Hairline rules |
-| `--line-strong` | `rgba(43,54,64,0.3)` | Emphasis rules |
-| `--dark` | `#212a30` | Footer anchor; light text `#f2f0ec` on it |
-
-Strategy: Restrained neutrals + one vermilion accent. Flat color only; gradients are banned by the owner. Text over photos is white with a soft text-shadow (no gradient scrims).
+| `--bg` | `#0b0a09` | Primary page surface (near-black charcoal) |
+| `--bg-deep` | `#100e0d` | Elevated cards, alternating bands, drawer |
+| `--ink` | `#ede4d3` | Primary text (sand / warm parchment) |
+| `--ink-subtle` | `rgba(237, 228, 211, 0.88)` | High-contrast secondary text |
+| `--ink-dim` | `rgba(237, 228, 211, 0.72)` | Body text, captions, secondary details |
+| `--ink-faint` | `rgba(237, 228, 211, 0.52)` | Mono labels, disabled state, subtle metadata |
+| `--rust` | `#e8511f` | Single vermilion accent: key stats, focus outlines, active filters |
+| `--line` | `rgba(237, 228, 211, 0.14)` | Hairline grid borders and dividers |
+| `--line-strong` | `rgba(237, 228, 211, 0.28)` | Emphasis rules and card hover borders |
+| `--surface-hover` | `rgba(237, 228, 211, 0.05)` | Interactive row/card hover feedback |
+| `--surface-active` | `rgba(232, 81, 31, 0.12)` | Active selection background tint |
 
 ## Typography
 
-- **Display**: Bitter Variable (slab serif, Vitesse-adjacent), weight 600–700 for headlines, italic accent spans in vermilion.
-- **Body**: Inter Variable, 14–18px, line-height 1.55–1.7.
-- **Micro**: JetBrains Mono Variable, 11–13px, uppercase, letter-spacing 0.06–0.16em, for eyebrows, labels, data, captions.
-- Hierarchy by scale + weight; hero name 108px desktop / 54px mobile; section headlines 36–64px desktop.
+- **Headlines & Body**: `Archivo Variable`, 300–900 weight. Modern, clean architectural grotesk with high legibility.
+- **Display Serif Contrast**: `Bitter Variable` (`--font-serif`), applied intentionally to pullquotes, documentary highlights, and story chapter titles for literary gravitas.
+- **Numerals & Metrics**: `Anton`, condensed bold display typeface reserved exclusively for heroic race numbers, miles, hours, and world records.
+- **Data, Eyebrows & Labels**: `JetBrains Mono Variable`, uppercase, letter-spacing `0.08em–0.18em`, for numbered section tags, coordinates, dates, and badges.
+- **Fluid Scale**: Base font-size is `clamp(17px, 1.1vw, 19px)`. Hero headline reaches `clamp(38px, 4.8vw, 80px)` and section headings range from `clamp(32px, 3.8vw, 64px)`.
 
-## Layout & Components
+## Canvas & Layout Architecture
 
-- Max width 1200px, 32px side padding (20px mobile).
-- Hairline-ruled grids instead of card shadows; sharp corners everywhere (no border-radius).
-- Numbered mono section labels ("01 / Who he is").
-- Photos: object-fit cover in bordered frames; fixed aspect ratios (4/3 cards, 3/4 chapters, 2/3 poster, 16/9 thumbs).
-- Breakpoints: 640px primary, 900px for 3-column story grid.
+- **Max Width**: `--max-w: 1520px` (fluid wide canvas providing full-width presence on modern Retina displays without narrow column compression).
+- **Fluid Horizontal Padding**: `--pad-x: clamp(24px, 4vw, 64px)`.
+- **Fluid Vertical Rhythm**: `--section-y: clamp(80px, 7vw, 130px)`.
+- **Containers**: Sharp right angles (`border-radius: 0`). Card borders use `1px solid var(--line)` hairline dividers instead of box-shadows.
+- **Touch Targets**: All interactive elements, navigation links, filters, and CTAs strictly adhere to WCAG minimum 44px × 44px tap targets.
 
-## Motion
+## Motion & Interactivity
 
-Minimal. One 0.4s ease transform (video thumb hover zoom). Any future motion: ease-out curves, no layout-property animation, gated by prefers-reduced-motion.
+- Subdued, intentional transitions: `0.2s–0.3s ease`.
+- `Motion.astro` provides progressive viewport reveals (`data-reveal`) driven by `IntersectionObserver` with a single unified rAF batch, preventing layout thrashing.
+- Subtle reading progress indicator (`#reading-progress`) tracking scroll position at the screen top.
+- Full respect for `@media (prefers-reduced-motion: reduce)`, disabling transform offsets while retaining functional opacity.

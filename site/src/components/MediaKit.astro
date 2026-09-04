@@ -51,14 +51,36 @@ const gallery = [
         <div class="panel-title">Downloads</div>
         <div class="downloads">
           {
-            mediaKit.downloads.map((download) => (
-              <a href={download.href} class="download">
-                {download.label}
-                <span class="format">{download.format}</span>
-              </a>
-            ))
+            mediaKit.downloads.map((download) => {
+              // Until the real asset exists, the row requests it by email rather than
+              // pointing at a dead anchor. Set `file` in media-kit.json and the same
+              // row becomes a genuine download with no further changes.
+              const ready = Boolean(download.file);
+              const href = ready
+                ? download.file
+                : `mailto:${site.enquiryEmail}?subject=${encodeURIComponent(
+                    `Media request — ${download.label}`
+                  )}`;
+
+              return (
+                <a
+                  href={href}
+                  class="download"
+                  download={ready ? '' : undefined}
+                  aria-label={
+                    ready
+                      ? `Download ${download.label} (${download.format})`
+                      : `Request ${download.label} by email (${download.format})`
+                  }
+                >
+                  <span class="download-label">{download.label}</span>
+                  <span class="format">{ready ? download.format : `Request · ${download.format}`}</span>
+                </a>
+              );
+            })
           }
         </div>
+        <p class="downloads-note">Sent by return email, usually same day.</p>
       </div>
     </div>
 
@@ -67,95 +89,113 @@ const gallery = [
         <>
           <div class="gallery" data-reveal-group data-reveal-step="70">
             {gallery.map((photo) => (
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                widths={[320, 640]}
-                sizes="(max-width: 640px) 90vw, 280px"
-                loading="lazy"
-              />
+              <div class="photo-cell">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  widths={[320, 640]}
+                  sizes="(max-width: 640px) 90vw, 320px"
+                  loading="lazy"
+                />
+              </div>
             ))}
           </div>
           <div class="credit">{site.photoCredit}</div>
-          <div class="media-links">
-            <a href="/media" class="see-all">Full media kit →</a>
-            <a href="/press" class="see-all">Press archive →</a>
-          </div>
         </>
       )
     }
+
+    <div class="media-links" data-reveal>
+      <a href="/media" class="see-all">Full media kit →</a>
+      <a href="/media#press" class="see-all">Press archive →</a>
+    </div>
   </div>
 </section>
 
 <style>
   h2 {
-    margin: 18px 0 34px;
+    margin: 20px 0 40px;
     font-weight: 600;
-    font-size: clamp(26px, 3.2vw, 46px);
-    line-height: 1.1;
+    font-size: clamp(32px, 3.6vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
   }
 
   .panels {
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   }
 
   .panel {
     background: var(--bg-deep);
-    padding: 28px 26px;
+    padding: clamp(28px, 2.5vw, 38px) clamp(24px, 2vw, 32px);
   }
 
   .panel-title {
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--rust);
   }
 
   .panel-list {
-    margin-top: 16px;
-    font-size: 15px;
-    line-height: 1.9;
-    color: rgba(237, 228, 211, 0.84);
+    margin-top: 20px;
+    font-size: clamp(15px, 1.05vw, 17px);
+    line-height: 1.85;
+    color: var(--ink-subtle);
   }
 
   .downloads {
     margin-top: 16px;
     display: flex;
     flex-direction: column;
-    gap: 11px;
-    font-size: 15px;
   }
 
   .download {
     display: flex;
     justify-content: space-between;
-    gap: 12px;
+    align-items: center;
+    gap: 16px;
     border-bottom: 1px solid var(--line);
-    padding-bottom: 8px;
+    min-height: 48px;
+    padding: 12px 0;
+    font-size: clamp(15px, 1vw, 17px);
     transition: color 0.15s ease;
   }
 
   .downloads .download:last-child {
     border-bottom: 0;
-    padding-bottom: 0;
   }
 
   .download:hover {
     color: var(--rust);
   }
 
+  .downloads-note {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
   .format {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: rgba(237, 228, 211, 0.62);
+    color: var(--ink-dim);
   }
 
   .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 8px;
-    margin-top: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .photo-cell {
+    border: 1px solid var(--line);
+    overflow: hidden;
   }
 
   .gallery :global(img) {
@@ -167,7 +207,8 @@ const gallery = [
   .media-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px 28px;
+    gap: 16px 36px;
+    margin-top: 12px;
   }
 
   .credit {
@@ -175,7 +216,7 @@ const gallery = [
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.62);
-    margin-top: 12px;
+    color: var(--ink-dim);
+    margin-top: 16px;
   }
 </style>

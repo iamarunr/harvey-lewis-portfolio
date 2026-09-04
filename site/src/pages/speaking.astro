@@ -4,66 +4,73 @@ import Base from '../layouts/Base.astro';
 import talks from '../data/talks.json';
 import speakingFacts from '../data/speaking-facts.json';
 import site from '../data/site.json';
-import speakingStudents from '../assets/photos/speaking-students.jpg';
+import races from '../data/races.json';
+import students from '../assets/photos/speaking-students.jpg';
 import after450 from '../assets/photos/after-450.jpg';
 
 const speakingHref = `mailto:${site.enquiryEmail}?subject=${encodeURIComponent('Speaking enquiry')}`;
+const raceCount = races.length;
 
-// What a booker actually needs to know before they enquire.
+// What a booker needs to know before they can say yes.
 const audiences = [
   {
-    kind: 'Corporate',
-    title: 'Teams facing work with no visible finish line',
-    body: 'Pacing, recovery and decision-making under fatigue — argued from a 108-hour race rather than from a management book. Best for offsites, all-hands and leadership days.',
+    kind: 'Corporate teams & leadership',
+    title: 'Work with no visible finish line',
+    body: 'Pacing, recovery and decision-making under fatigue — argued from a 108-hour race rather than a management book. Offsites, all-hands and leadership days.',
   },
   {
-    kind: 'Schools',
-    title: 'Students who have been told what they are not good at',
-    body: 'He is a full-time high school teacher, so he pitches to the room rather than over it. Assemblies, sports banquets and graduation. He will take questions until they run out.',
+    kind: 'Middle & high schools',
+    title: 'Students told what they are not good at',
+    body: 'He teaches full time, so he pitches to the room rather than over it. Assemblies, sports banquets and awards nights. He takes questions until they run out.',
   },
   {
-    kind: 'Endurance events',
-    title: 'Race fields, expos and pre-race dinners',
-    body: 'Fifteen Badwater starts, five Team USA 24-hour appearances and two backyard world records. Specific, technical, and honest about what went wrong.',
+    kind: 'Universities & commencements',
+    title: 'The long game, before it starts',
+    body: 'Thirty years of building something slowly, for an audience about to be told to move fast. Commencements, orientation weeks and athletics departments.',
+  },
+  {
+    kind: 'Race expos & banquets',
+    title: 'A field that knows the terrain',
+    body: 'Fifteen Badwater finishes, five Team USA appearances, two backyard world records. Specific, technical, and honest about what went wrong.',
   },
 ];
 
 const proof = [
-  { value: '108', label: 'Hours he can describe from memory' },
+  { value: '108', label: 'Continuous hours he can describe from memory' },
   { value: '2×', label: 'Rich Roll Podcast guest' },
-  { value: '180', label: 'School days a year in front of a class' },
+  { value: '180', label: 'Days a year in front of a class' },
 ];
 ---
 
 <Base
   title="Speaking — Harvey Lewis"
-  description="Book Harvey Lewis to speak: keynotes for corporate teams, schools and endurance events. Two-time Badwater 135 champion and a full-time high school teacher in Cincinnati."
+  description="Book Harvey Lewis: keynotes for corporate teams, schools, universities and endurance events. Two-time Badwater 135 champion and a full-time high school teacher in Cincinnati."
 >
   <section class="page-head" data-reveal-group data-reveal-step="100">
-    <p class="eyebrow eyebrow-rust" data-reveal>Speaking</p>
-    <h1 data-reveal>A teacher who can tell you exactly what the fifth day feels like</h1>
+    <p class="eyebrow eyebrow-rust" data-reveal>Speaking &amp; keynotes</p>
+    <h1 data-reveal>A teacher who can tell you what the fifth day feels like</h1>
     <p class="standfirst" data-reveal>
-      Harvey speaks the way he teaches: specific, unhurried, evidence first. No hype, no
-      beast-mode. He has held rooms of ninth graders and rooms of executives with the same
-      three stories.
+      Specific, unhurried, evidence first. No hype and no beast-mode. Harvey has held rooms
+      of ninth graders and rooms of executives with the same three stories — and he goes
+      back to a classroom on Monday.
     </p>
     <div class="cta-row" data-reveal>
       <a href={speakingHref} class="btn btn-solid">Check a date →</a>
-      <a href="/media" class="btn btn-outline">Media kit</a>
+      <a href="/media" class="btn btn-outline">Media kit &amp; bio</a>
     </div>
   </section>
 
   <section class="section-inner">
     <div class="section-head" data-reveal>
       <span>The talks</span>
-      <span>Each adaptable to your run time</span>
+      <span>Each adapts to your run time</span>
     </div>
     <div class="talks hairline-grid" data-reveal-group data-reveal-step="100">
       {
         talks.map((talk) => (
           <div class="talk lift" data-reveal>
             <div class="talk-tag">{talk.tag}</div>
-            <div class="talk-title">{talk.title}</div>
+            <h2 class="talk-title">{talk.title}</h2>
             <p>{talk.body}</p>
           </div>
         ))
@@ -73,14 +80,14 @@ const proof = [
 
   <section class="band-deep">
     <div class="section-inner split">
-      <div>
+      <div data-reveal>
         <p class="eyebrow">Who he speaks to</p>
         <div class="audiences hairline-grid" data-reveal-group data-reveal-step="90">
           {
             audiences.map((audience) => (
               <div class="audience lift" data-reveal>
                 <div class="audience-kind">{audience.kind}</div>
-                <div class="audience-title">{audience.title}</div>
+                <h2 class="audience-title">{audience.title}</h2>
                 <p>{audience.body}</p>
               </div>
             ))
@@ -88,14 +95,16 @@ const proof = [
         </div>
       </div>
 
-      <div>
+      <div class="sidebar" data-reveal>
         <Image
-          src={speakingStudents}
+          src={students}
           alt="Harvey Lewis speaking to hundreds of schoolchildren outdoors"
           class="speaking-photo"
-          widths={[400, 800]}
-          sizes="(max-width: 800px) 90vw, 560px"
+          widths={[400, 640]}
+          sizes="(max-width: 860px) 92vw, 520px"
+          loading="lazy"
         />
+
         <div class="facts hairline-grid">
           {
             speakingFacts.map((fact) => (
@@ -106,7 +115,8 @@ const proof = [
             ))
           }
         </div>
-        <a href={speakingHref} class="speaking-cta">Check a date →</a>
+
+        <a href={speakingHref} class="sidebar-cta">Check a date →</a>
       </div>
     </div>
   </section>
@@ -148,6 +158,9 @@ const proof = [
       <div class="closer-copy" data-reveal>
         <p class="eyebrow eyebrow-rust">Book a date</p>
         <p class="closer-headline">He answers his own email.</p>
+        <p class="closer-note">
+          {raceCount} races since 1996, and he still replies between class periods.
+        </p>
         <a href={speakingHref} class="btn btn-solid">Speaking enquiry →</a>
       </div>
     </div>
@@ -156,42 +169,42 @@ const proof = [
 
 <style>
   .talks {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     margin-top: 34px;
   }
 
   .talk {
     background: var(--bg);
-    padding: 30px 26px;
+    padding: clamp(28px, 2.6vw, 38px) clamp(24px, 2.2vw, 30px);
   }
 
   .talk-tag {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--rust);
   }
 
   .talk-title {
+    margin: 12px 0 0;
     font-weight: 600;
-    font-size: 22px;
+    font-size: clamp(21px, 1.6vw, 25px);
     line-height: 1.2;
-    margin-top: 12px;
   }
 
   .talk p {
-    margin-top: 10px;
-    font-size: 15px;
-    line-height: 1.66;
-    color: rgba(237, 228, 211, 0.78);
+    margin-top: 12px;
+    font-size: clamp(15px, 1vw, 16.5px);
+    line-height: 1.65;
+    color: var(--ink-dim);
     text-wrap: pretty;
   }
 
   .split {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: clamp(30px, 5vw, 70px);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: clamp(32px, 4vw, 70px);
     align-items: start;
   }
 
@@ -201,29 +214,29 @@ const proof = [
 
   .audience {
     background: var(--bg-deep);
-    padding: 26px 24px;
+    padding: clamp(24px, 2.2vw, 30px);
   }
 
   .audience-kind {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--rust);
   }
 
   .audience-title {
+    margin: 10px 0 0;
     font-weight: 600;
-    font-size: 19px;
+    font-size: clamp(18px, 1.3vw, 21px);
     line-height: 1.25;
-    margin-top: 10px;
   }
 
   .audience p {
     margin-top: 8px;
-    font-size: 15px;
-    line-height: 1.62;
-    color: rgba(237, 228, 211, 0.78);
+    font-size: clamp(15px, 1vw, 16px);
+    line-height: 1.6;
+    color: var(--ink-dim);
     text-wrap: pretty;
   }
 
@@ -251,18 +264,18 @@ const proof = [
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.65);
+    color: var(--ink-dim);
   }
 
   .fact-value {
-    font-size: 15px;
+    font-size: clamp(14px, 0.95vw, 16px);
     text-align: right;
   }
 
-  .speaking-cta {
+  .sidebar-cta {
     display: block;
     margin-top: 8px;
-    padding: 16px 22px;
+    padding: 18px 22px;
     background: var(--rust);
     color: var(--bg);
     font-weight: 600;
@@ -270,44 +283,45 @@ const proof = [
     transition: background-color 0.15s ease;
   }
 
-  .speaking-cta:hover {
+  .sidebar-cta:hover {
     background: var(--ink);
   }
 
   .proof {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   }
 
   .proof-cell {
     background: var(--bg);
-    padding: 26px 24px;
+    padding: clamp(26px, 2.4vw, 34px) clamp(22px, 2vw, 28px);
   }
 
   .proof-value {
     font-family: var(--font-num);
-    font-size: 40px;
+    font-size: clamp(38px, 3.4vw, 52px);
     line-height: 1;
     color: var(--rust);
   }
 
   .proof-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.68);
-    margin-top: 10px;
+    color: var(--ink-dim);
+    margin-top: 12px;
   }
 
   .quote {
-    margin: 70px auto 0;
+    margin: clamp(56px, 6vw, 84px) auto 0;
     max-width: 900px;
   }
 
   blockquote {
+    margin: 0;
     text-align: center;
     font-weight: 500;
-    font-size: clamp(22px, 2.8vw, 40px);
+    font-size: clamp(23px, 2.8vw, 40px);
     line-height: 1.3;
     letter-spacing: -0.01em;
     text-wrap: pretty;
@@ -320,19 +334,16 @@ const proof = [
   figcaption {
     text-align: center;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.62);
+    color: var(--ink-dim);
     margin-top: 20px;
   }
 
-  /* after-450 is a 1072x2048 portrait. A full-bleed band cropped ~80% of it away,
-     which is what made the framing look accidental. It sits in an upright frame
-     beside the copy instead, so the photo is read rather than sliced. */
   .closer-grid {
     display: grid;
-    grid-template-columns: minmax(260px, 440px) 1fr;
+    grid-template-columns: minmax(260px, 420px) 1fr;
     gap: clamp(30px, 5vw, 70px);
     align-items: center;
   }
@@ -345,19 +356,23 @@ const proof = [
     width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
-    /* Weighted to the top of the frame — his face and the bandana, not his knees. */
     object-position: 50% 18%;
   }
 
   .closer-headline {
     font-weight: 600;
-    font-size: clamp(24px, 3.2vw, 46px);
+    font-size: clamp(28px, 3.2vw, 46px);
     line-height: 1.12;
-    margin: 14px 0 28px;
+    margin: 14px 0 0;
     max-width: 16ch;
   }
 
-  /* Stack below the two-up breakpoint, photo first. */
+  .closer-note {
+    margin: 16px 0 28px;
+    color: var(--ink-dim);
+    max-width: 40ch;
+  }
+
   @media (max-width: 860px) {
     .closer-grid {
       grid-template-columns: minmax(0, 1fr);

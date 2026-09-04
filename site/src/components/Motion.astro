@@ -29,24 +29,7 @@
       return;
     }
 
-    // Anything already on screen animates in on load rather than waiting for the
-    // observer. IntersectionObserver does not fire while a tab is backgrounded, so
-    // gating the first screen on it can leave a hidden tab blank until it is focused.
-    const above: HTMLElement[] = [];
-    const below: HTMLElement[] = [];
-    targets.forEach((el) => {
-      (el.getBoundingClientRect().top < window.innerHeight ? above : below).push(el);
-    });
-
-    // rAF gives the browser a frame to paint the hidden state first, so the entrance
-    // actually animates. But rAF is paused in a background tab, so when the page is
-    // not visible we just reveal outright — there is no animation to miss.
-    if (document.visibilityState === 'visible') {
-      requestAnimationFrame(() => above.forEach(reveal));
-    } else {
-      above.forEach(reveal);
-    }
-
+    // Single non-thrashing IntersectionObserver: browser reports what is already in viewport
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -55,21 +38,20 @@
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -4% 0px' }
     );
 
-    below.forEach((el) => observer.observe(el));
+    targets.forEach((el) => observer.observe(el));
 
-    // Last-resort safety net: whatever the observer has not reached after a few
-    // seconds gets shown anyway. Content must never be trapped behind motion.
+    // Last-resort safety net: whatever the observer has not reached after a few seconds gets shown anyway
     window.setTimeout(() => {
-      below.forEach((el) => {
+      targets.forEach((el) => {
         if (!el.classList.contains('is-visible')) {
           reveal(el);
           observer.unobserve(el);
         }
       });
-    }, 4000);
+    }, 3000);
   }
 
   function initCounters() {
@@ -88,7 +70,6 @@
       };
     };
 
-    // Reduced motion keeps the final figure — the number is content, not decoration.
     if (reduced.matches || !('IntersectionObserver' in window)) return;
 
     const run = (el: HTMLElement) => {
@@ -96,9 +77,6 @@
       const parsed = parse(final);
       if (!parsed) return;
 
-      // requestAnimationFrame is paused while a tab is backgrounded, which would
-      // freeze a count part-way and leave a wrong figure in the DOM. These numbers
-      // are content, not decoration — so wait for the tab before starting.
       if (document.visibilityState !== 'visible') {
         document.addEventListener('visibilitychange', () => run(el), { once: true });
         return;
@@ -112,7 +90,6 @@
       const tick = (now: number) => {
         const t = Math.min((now - start) / duration, 1);
         if (t >= 1) {
-          // Restore the authored string exactly rather than a reformatted number.
           el.textContent = final;
           return;
         }
@@ -128,27 +105,18 @@
       requestAnimationFrame(tick);
     };
 
-    // Same split as the reveals: on-screen figures run now, the rest on scroll.
-    const below: HTMLElement[] = [];
-    targets.forEach((el) => {
-      if (el.getBoundingClientRect().top < window.innerHeight) run(el);
-      else below.push(el);
-    });
-
-    if (!below.length) return;
-
-    const observer = new IntersectionObserver(
+    const countObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          observer.unobserve(entry.target);
+          countObserver.unobserve(entry.target);
           run(entry.target as HTMLElement);
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.3 }
     );
 
-    below.forEach((el) => observer.observe(el));
+    targets.forEach((el) => countObserver.observe(el));
   }
 
   function initHeader() {
@@ -159,8 +127,24 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // "Show all N" / "Show fewer" for any long list. The toggle names its panel by id
-  // via data-more-toggle, and carries both labels as data attributes.
+  function initProgress() {
+    let bar = document.getElementById('reading-progress');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'reading-progress';
+      document.body.prepend(bar);
+    }
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max <= 0) return;
+      const pct = Math.min(100, Math.max(0, (window.scrollY / max) * 100));
+      bar!.style.width = `${pct}%`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // "Show all N" / "Show fewer" for any long list
   function initDisclosures() {
     document.querySelectorAll<HTMLButtonElement>('[data-more-toggle]').forEach((button) => {
       const panel = document.getElementById(button.dataset.moreToggle ?? '');
@@ -172,8 +156,6 @@
         const label = open ? button.dataset.labelLess : button.dataset.labelMore;
         if (label) button.textContent = label;
 
-        // Collapsing from below the fold would leave the reader stranded mid-page,
-        // so pull the top of the list back into view.
         if (!open) {
           const top = panel.parentElement?.getBoundingClientRect().top ?? 0;
           if (top < 0) {
@@ -187,11 +169,51 @@
     });
   }
 
+  // Phone navigation disclosure. The links sit inline in the markup and only
+  // collapse under CSS gated on .js-motion, so this never hides the nav from
+  // anyone the script didn't reach.
+  function initNav() {
+    document.querySelectorAll<HTMLButtonElement>('[data-nav-toggle]').forEach((toggle) => {
+      const panel = document.getElementById(toggle.getAttribute('aria-controls') ?? '');
+      if (!panel) return;
+
+      const setOpen = (open: boolean) => {
+        panel.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      };
+
+      toggle.addEventListener('click', () => {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      // Following a link should close the panel behind you.
+      panel.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        if (toggle.getAttribute('aria-expanded') !== 'true') return;
+        setOpen(false);
+        toggle.focus();
+      });
+
+      // Rotating to landscape can cross into the desktop layout, where the panel
+      // styles no longer apply — drop the open state so it can't strand.
+      window.matchMedia('(min-width: 861px)').addEventListener('change', (event) => {
+        if (event.matches) setOpen(false);
+      });
+    });
+  }
+
   function init() {
     initReveals();
     initCounters();
     initHeader();
+    initProgress();
     initDisclosures();
+    initNav();
   }
 
   if (document.readyState === 'loading') {

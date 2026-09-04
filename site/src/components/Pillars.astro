@@ -5,14 +5,14 @@ import Quote from './Quote.astro';
 
 <section id="story">
   <div class="section-inner">
-    <div class="pillars-head" data-reveal>Four pillars, one runner</div>
+    <h2 class="pillars-head" data-reveal>Four pillars, one runner</h2>
 
     <div class="pillars hairline-grid" data-reveal-group data-reveal-step="110">
       {
         pillars.map((pillar) => (
           <div class="pillar lift" data-reveal>
             <div class="pillar-figure" data-count>{pillar.figure}</div>
-            <div class="pillar-title">{pillar.title}</div>
+            <h3 class="pillar-title">{pillar.title}</h3>
             <p>{pillar.body}</p>
           </div>
         ))
@@ -28,46 +28,49 @@ import Quote from './Quote.astro';
 <style>
   .pillars-head {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: clamp(12px, 0.85vw, 13px);
+    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.65);
-    border-bottom: 1px solid rgba(237, 228, 211, 0.16);
-    padding-bottom: 14px;
+    color: var(--ink-dim);
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 16px;
+    margin: 0;
   }
 
   .pillars {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    margin-top: 34px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    margin-top: 40px;
   }
 
   .pillar {
     background: var(--bg);
-    padding: 30px 26px;
+    padding: clamp(32px, 3vw, 44px) clamp(26px, 2.5vw, 36px);
     display: flex;
     flex-direction: column;
+    min-height: 260px;
   }
 
   .pillar-figure {
     font-family: var(--font-num);
-    font-size: 40px;
+    font-size: clamp(46px, 4.5vw, 70px);
     line-height: 1;
     color: var(--rust);
+    font-variant-numeric: tabular-nums;
   }
 
   .pillar-title {
     font-weight: 600;
-    font-size: 20px;
-    line-height: 1.25;
-    margin-top: 14px;
-    min-height: 26px;
+    font-size: clamp(22px, 1.6vw, 27px);
+    line-height: 1.22;
+    margin-top: 18px;
   }
 
   .pillar p {
-    margin-top: 10px;
-    font-size: 15px;
-    line-height: 1.6;
-    color: rgba(237, 228, 211, 0.78);
+    margin-top: 12px;
+    font-size: clamp(16px, 1.05vw, 18px);
+    line-height: 1.62;
+    color: var(--ink-dim);
     text-wrap: pretty;
   }
 </style>

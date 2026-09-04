@@ -6,18 +6,19 @@ import saltFlat from '../assets/photos/salt-flat-sunset.jpg';
 <section class="photo-band">
   <Image
     src={saltFlat}
-    alt="Salt flat at sunset"
+    alt="Harvey Lewis running across Badwater Basin salt flats at sunset in Death Valley"
     class="band-photo"
-    widths={[900, 1440, 2000]}
+    widths={[900, 1440, 2000, 2560]}
     sizes="100vw"
+    loading="lazy"
   />
   <div class="band-scrim"></div>
   <div class="band-copy">
     <div class="container band-copy-inner" data-reveal>
       <div class="eyebrow eyebrow-rust">Badwater 135 · Death Valley</div>
-      <div class="band-headline">
+      <h2 class="band-headline">
         135 miles across the hottest place on Earth. Fifteen finishes, two victories, and a celebration of what the human spirit can endure.
-      </div>
+      </h2>
     </div>
   </div>
 </section>
@@ -30,7 +31,7 @@ import saltFlat from '../assets/photos/salt-flat-sunset.jpg';
 
   .band-photo {
     width: 100%;
-    height: clamp(340px, 58vh, 620px);
+    height: clamp(380px, 60vh, 720px);
     object-fit: cover;
   }
 
@@ -45,7 +46,7 @@ import saltFlat from '../assets/photos/salt-flat-sunset.jpg';
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 40px 0;
+    padding: clamp(40px, 6vw, 72px) 0;
   }
 
   .band-copy-inner {
@@ -55,9 +56,10 @@ import saltFlat from '../assets/photos/salt-flat-sunset.jpg';
 
   .band-headline {
     font-weight: 600;
-    font-size: clamp(24px, 3vw, 44px);
-    line-height: 1.12;
-    margin-top: 14px;
-    max-width: 26ch;
+    font-size: clamp(28px, 3.5vw, 54px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-top: 18px;
+    max-width: 30ch;
   }
 </style>

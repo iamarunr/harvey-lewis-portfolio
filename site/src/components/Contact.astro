@@ -29,42 +29,43 @@ import site from '../data/site.json';
 
 <style>
   h2 {
-    margin: 18px 0 34px;
+    margin: 20px 0 40px;
     font-weight: 600;
-    font-size: clamp(26px, 3.6vw, 52px);
+    font-size: clamp(32px, 3.6vw, 56px);
     line-height: 1.08;
+    letter-spacing: -0.02em;
   }
 
   .contact-footer-row {
-    margin-top: 32px;
+    margin-top: 44px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 20px;
+    gap: 24px;
     flex-wrap: wrap;
-    padding-top: 20px;
+    padding-top: 24px;
     border-top: 1px solid var(--line);
   }
 
   .direct-contact {
     display: flex;
     align-items: baseline;
-    gap: 12px;
-    font-size: 15px;
+    gap: 14px;
+    font-size: clamp(15px, 1vw, 17px);
     flex-wrap: wrap;
   }
 
   .direct-label {
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-dim);
   }
 
   .direct-link {
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: clamp(14px, 0.95vw, 16px);
     font-weight: 600;
     color: var(--rust);
     transition: color 0.15s ease;

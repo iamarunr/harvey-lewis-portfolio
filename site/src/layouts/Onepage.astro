@@ -1,9 +1,12 @@
 ---
 import '@fontsource-variable/archivo';
 import '@fontsource-variable/archivo/wght-italic.css';
+import '@fontsource-variable/bitter';
+import '@fontsource-variable/bitter/wght-italic.css';
 import '@fontsource/anton';
 import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
+import Meta from '../components/Meta.astro';
 import Motion from '../components/Motion.astro';
 
 interface Props {
@@ -28,13 +31,13 @@ const {
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <Meta title={title} description={description} includePersonSchema />
   </head>
   <body>
-    <a href="#story" class="skip-link">Skip to main content</a>
-    <slot />
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <main id="main-content">
+      <slot />
+    </main>
     <Motion />
   </body>
 </html>

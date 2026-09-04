@@ -5,12 +5,11 @@ import reach from '../data/reach.json';
 
 <section id="partners">
   <div class="section-inner">
-    <div class="section-head" data-reveal>
+    <h2 class="section-head" data-reveal>
       <span>Partners &amp; affiliations</span>
       <span>Verified social &amp; media reach</span>
-    </div>
+    </h2>
 
-    <!-- When real logos arrive, replace these name cards with logo lockups on --bg. -->
     <div class="partners hairline-grid" data-reveal-group data-reveal-step="70">
       {
         partners.map((partner) => (
@@ -53,40 +52,40 @@ import reach from '../data/reach.json';
 </section>
 
 <style>
-  /* The handoff specifies minmax(220px), which resolves to 5 tracks in the 1240px
-     container and orphans a single card under a full row. 340px gives a clean 3x2
-     for the current six partners, and still steps to 2-up then 1-up on narrower
-     screens. Revisit the minimum if the partner count changes. */
   .partners {
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    margin-top: 34px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    margin-top: 40px;
   }
 
   .partner {
     background: var(--bg);
-    padding: 26px 24px;
-    min-height: 130px;
+    padding: clamp(28px, 2.5vw, 38px) clamp(24px, 2vw, 32px);
+    min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 18px;
+    gap: 20px;
   }
 
   .partner-kind {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.62);
+    color: var(--ink-dim);
   }
 
   .partner-name {
     font-weight: 600;
-    font-size: 19px;
+    font-size: clamp(20px, 1.4vw, 24px);
     line-height: 1.2;
   }
 
   .partner-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 44px;
     color: inherit;
     transition: color 0.2s ease;
   }
@@ -97,7 +96,7 @@ import reach from '../data/reach.json';
 
   .partner-arrow {
     display: inline-block;
-    font-size: 14px;
+    font-size: 15px;
     opacity: 0.7;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
   }
@@ -108,34 +107,35 @@ import reach from '../data/reach.json';
   }
 
   .partner-note {
-    font-size: 14px;
+    font-size: clamp(14px, 0.95vw, 16px);
     line-height: 1.55;
-    color: rgba(237, 228, 211, 0.72);
-    margin-top: 6px;
+    color: var(--ink-dim);
+    margin-top: 8px;
   }
 
   .reach {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    margin-top: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    margin-top: 10px;
   }
 
   .reach-cell {
     background: var(--bg);
-    padding: 24px 22px;
+    padding: clamp(26px, 2.2vw, 34px) clamp(22px, 2vw, 30px);
   }
 
   .reach-value {
     font-family: var(--font-num);
-    font-size: 32px;
+    font-size: clamp(36px, 3.8vw, 54px);
     line-height: 1;
+    font-variant-numeric: tabular-nums;
   }
 
   .reach-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.68);
-    margin-top: 8px;
+    color: var(--ink-dim);
+    margin-top: 10px;
   }
 </style>

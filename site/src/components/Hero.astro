@@ -23,7 +23,7 @@ const facts = [
       alt="Harvey Lewis running in silhouette at dusk"
       class="hero-photo"
       widths={[900, 1440, 2000, 2736]}
-      sizes="(max-width: 860px) 100vw, 60vw"
+      sizes="(max-width: 860px) 100vw, 58vw"
       loading="eager"
       fetchpriority="high"
     />
@@ -48,7 +48,7 @@ const facts = [
     </div>
   </div>
 
-  <a href="#story" class="scroll-cue" aria-label="Scroll to content">
+  <a href="#intro" class="scroll-cue" aria-label="Scroll to content">
     <span></span>
   </a>
 
@@ -67,8 +67,7 @@ const facts = [
 </section>
 
 <style>
-  /* grid-template-columns: minmax(0, 1fr) is required — without it the fact
-     rail's min-content width overflows the viewport and clips the headline. */
+  /* grid-template-columns: minmax(0, 1fr) prevents rail min-content overflow */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -85,13 +84,12 @@ const facts = [
     top: 0;
     bottom: 0;
     right: 0;
-    width: 62vw;
-    max-width: 1200px;
+    width: clamp(50vw, 56vw, 980px);
     height: 100%;
     overflow: hidden;
     pointer-events: none;
-    mask-image: linear-gradient(to right, transparent 0%, black 18%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.7) 18%, black 36%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.7) 18%, black 36%);
   }
 
   .hero-photo {
@@ -117,12 +115,12 @@ const facts = [
     width: 100%;
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 30px var(--pad-x);
+    padding: clamp(24px, 4vw, 48px) var(--pad-x);
     z-index: 2;
   }
 
   .hero-content {
-    max-width: 580px;
+    max-width: clamp(600px, 50vw, 860px);
   }
 
   .hero-eyebrow {
@@ -130,26 +128,26 @@ const facts = [
   }
 
   .hero-center h1 {
-    margin-top: 20px;
+    margin-top: 24px;
     font-weight: 600;
-    font-size: clamp(32px, 4.5vw, 68px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    max-width: 17ch;
+    font-size: clamp(38px, 4.8vw, 80px);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    max-width: 18ch;
   }
 
   .hero-body {
-    margin-top: 24px;
+    margin-top: 28px;
     max-width: 48ch;
-    font-size: 18px;
+    font-size: clamp(18px, 1.2vw, 22px);
     line-height: 1.62;
-    color: rgba(237, 228, 211, 0.88);
+    color: var(--ink-subtle);
     text-wrap: pretty;
   }
 
   .hero-bottom {
     position: relative;
-    padding: 0 var(--pad-x) 30px;
+    padding: 0 var(--pad-x) clamp(24px, 3.5vw, 44px);
     z-index: 2;
   }
 
@@ -157,12 +155,12 @@ const facts = [
   .scroll-cue {
     position: absolute;
     left: 50%;
-    bottom: 124px;
+    bottom: clamp(110px, 12vh, 140px);
     translate: -50%;
     z-index: 3;
-    width: 22px;
-    height: 38px;
-    border: 1px solid rgba(237, 228, 211, 0.35);
+    width: 24px;
+    height: 42px;
+    border: 1px solid var(--line-strong);
     display: flex;
     justify-content: center;
     transition: border-color 0.2s ease;
@@ -177,7 +175,7 @@ const facts = [
     position: absolute;
     top: 6px;
     width: 2px;
-    height: 6px;
+    height: 7px;
     background: var(--rust);
     animation: scroll-dot 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
@@ -191,54 +189,12 @@ const facts = [
       opacity: 1;
     }
     70% {
-      transform: translateY(16px);
+      transform: translateY(18px);
       opacity: 0.9;
     }
     100% {
-      transform: translateY(20px);
+      transform: translateY(22px);
       opacity: 0;
-    }
-  }
-
-  @media (max-width: 860px) {
-    .hero {
-      grid-template-rows: auto auto auto;
-      gap: 28px;
-      min-height: auto;
-      padding-bottom: 20px;
-    }
-
-    .hero-photo-wrap {
-      position: relative;
-      top: auto;
-      bottom: auto;
-      right: auto;
-      width: 100%;
-      height: clamp(280px, 46vh, 440px);
-      order: 1;
-      mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-    }
-
-    .hero-photo {
-      object-position: 46% 25%;
-    }
-
-    .hero-center {
-      order: 2;
-      padding-top: 0;
-    }
-
-    .hero-content {
-      max-width: 100%;
-    }
-
-    .scroll-cue {
-      display: none;
-    }
-
-    .hero-bottom {
-      order: 3;
     }
   }
 
@@ -246,9 +202,9 @@ const facts = [
     max-width: var(--max-w);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px 32px;
-    padding-top: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px clamp(24px, 4vw, 56px);
+    padding-top: 28px;
     position: relative;
   }
 
@@ -277,10 +233,121 @@ const facts = [
 
   .fact-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(237, 228, 211, 0.75);
-    margin-top: 6px;
+    color: var(--ink-dim);
+    margin-top: 8px;
+  }
+  /* ---- phone ----
+     The photo goes behind the copy rather than above it. Stacking it pushed the
+     headline to the bottom edge and both CTAs off-screen: the hero ran 1585px on a
+     812px viewport, so the first screen showed a menu and a picture and nothing to
+     act on. Behind the copy, the whole proposition fits one screen. */
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-rows: auto 1fr auto;
+      gap: 0;
+      min-height: 100svh;
+    }
+
+    .hero-photo-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      /* Full-bleed behind the text, so no side mask. */
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+
+    /* Flat scrim — the type has to clear the photo at AA. */
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--scrim-hero);
+    }
+
+    .hero-photo {
+      object-position: 62% 22%;
+    }
+
+    .hero-center {
+      padding: 20px var(--pad-x);
+    }
+
+    .hero-content {
+      max-width: 100%;
+    }
+
+    .hero-center h1 {
+      margin-top: 16px;
+      font-size: clamp(30px, 8.2vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 100%;
+    }
+
+    .hero-body {
+      margin-top: 16px;
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 42ch;
+    }
+
+    /* Full-width stacked buttons — comfortable thumb targets, predictable height. */
+    .hero-center :global(.cta-row) {
+      margin-top: 24px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .hero-center :global(.cta-row .btn) {
+      text-align: center;
+      padding: 15px 20px;
+    }
+
+    .scroll-cue {
+      display: none;
+    }
+
+    .hero-bottom {
+      padding-bottom: 22px;
+    }
+
+    /* Two-up so the four figures cost four rows' height, not eight. */
+    .fact-rail {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 20px;
+      padding-top: 18px;
+    }
+
+    .fact-rail :global(.figure) {
+      font-size: 30px;
+    }
+
+    .fact-label {
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+  }
+
+  /* Small phones: trim the last few pixels so the rail stays on the first screen. */
+  @media (max-width: 380px) {
+    .hero-center h1 {
+      font-size: 29px;
+    }
+
+    .hero-body {
+      font-size: 15px;
+      margin-top: 14px;
+    }
+
+    .fact-rail :global(.figure) {
+      font-size: 26px;
+    }
   }
 </style>

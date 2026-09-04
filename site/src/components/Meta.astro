@@ -1,0 +1,84 @@
+---
+import races from '../data/races.json';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Per-page share image in /public. Defaults to the site card. */
+  image?: string;
+  /** Person schema belongs on the homepage only, so it isn't claimed five times. */
+  includePersonSchema?: boolean;
+}
+
+const { title, description, image = '/og.jpg', includePersonSchema = false } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const raceCount = races.length;
+
+// Structured data lets Google render a knowledge panel rather than a plain blue link.
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Harvey Lewis',
+  alternateName: 'Harvey Lewis III',
+  url: Astro.site?.href,
+  image: ogImage.href,
+  jobTitle: ['Ultramarathon runner', 'High school teacher'],
+  description:
+    'Two-time Badwater 135 champion, twice a backyard ultra world record setter, and a full-time high school teacher in Cincinnati, Ohio.',
+  birthPlace: { '@type': 'Place', name: 'Wheeling, West Virginia, USA' },
+  homeLocation: { '@type': 'Place', name: 'Cincinnati, Ohio, USA' },
+  worksFor: { '@type': 'Organization', name: 'Cincinnati Public Schools' },
+  nationality: { '@type': 'Country', name: 'United States' },
+  knowsAbout: [
+    'Ultramarathon running',
+    'Backyard ultra racing',
+    'Badwater 135',
+    'Plant-based endurance nutrition',
+    'Resilience and mental performance',
+  ],
+  award: [
+    'Badwater 135 champion, 2014',
+    'Badwater 135 champion, 2021',
+    "Big's Backyard Ultra world record, 2021 — 354.16 miles",
+    "Big's Backyard Ultra world record, 2023 — 450 miles in 108 hours",
+  ],
+  sameAs: [
+    'https://www.instagram.com/harveylewisultrarunner',
+    'https://www.facebook.com/harveylewisultrarunner',
+    'https://twitter.com/harveylewisruns',
+    'https://www.youtube.com/@HarveyandKelly',
+  ],
+};
+---
+
+<link rel="canonical" href={canonical.href} />
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<meta property="og:site_name" content="Harvey Lewis" />
+<meta property="og:type" content={includePersonSchema ? 'profile' : 'article'} />
+<meta property="og:url" content={canonical.href} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage.href} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta
+  property="og:image:alt"
+  content={`Harvey Lewis running at dusk — two-time Badwater 135 champion, ${raceCount} races since 1996`}
+/>
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage.href} />
+
+{
+  includePersonSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  )
+}

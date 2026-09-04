@@ -16,8 +16,20 @@
     "“Like Harvey Like Son” documentary"
   ],
   "downloads": [
-    { "label": "Short & long bio", "format": "PDF", "href": "#media" },
-    { "label": "High-res photography", "format": "ZIP", "href": "#media" },
-    { "label": "Speaking one-sheet", "format": "PDF", "href": "#media" }
+    {
+      "label": "Short & long bio",
+      "format": "PDF",
+      "file": null
+    },
+    {
+      "label": "High-res photography",
+      "format": "ZIP",
+      "file": null
+    },
+    {
+      "label": "Speaking one-sheet",
+      "format": "PDF",
+      "file": null
+    }
   ]
 }

@@ -1,9 +1,12 @@
 ---
 import '@fontsource-variable/archivo';
 import '@fontsource-variable/archivo/wght-italic.css';
+import '@fontsource-variable/bitter';
+import '@fontsource-variable/bitter/wght-italic.css';
 import '@fontsource/anton';
 import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
+import Meta from '../components/Meta.astro';
 import Motion from '../components/Motion.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -30,9 +33,7 @@ const {
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <Meta title={title} description={description} />
   </head>
   <body id="top">
     <a href="#main-content" class="skip-link">Skip to main content</a>

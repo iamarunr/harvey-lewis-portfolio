@@ -4,16 +4,21 @@
    Flat colors only — no gradients, no shadows, no border-radius.
    Type: Archivo (prose + headlines) · Anton (numerals only)
          · JetBrains Mono (eyebrows, labels, data)
+   Canvas: Expanded fluid editorial scale (max 1520px).
    --------------------------------------------------------------- */
 
 :root {
   --bg: #0b0a09;
   --bg-deep: #100e0d;
   --ink: #ede4d3;
+  --ink-subtle: rgba(237, 228, 211, 0.88);
   --ink-dim: rgba(237, 228, 211, 0.72);
+  --ink-faint: rgba(237, 228, 211, 0.52);
   --rust: #e8511f;
   --line: rgba(237, 228, 211, 0.14);
   --line-strong: rgba(237, 228, 211, 0.28);
+  --surface-hover: rgba(237, 228, 211, 0.05);
+  --surface-active: rgba(232, 81, 31, 0.12);
 
   /* photo scrims — flat, never gradients */
   --scrim-hero: rgba(11, 10, 9, 0.58);
@@ -22,14 +27,12 @@
   --font-sans: 'Archivo Variable', Helvetica, Arial, sans-serif;
   --font-num: 'Anton', Impact, sans-serif;
   --font-mono: 'JetBrains Mono Variable', 'SF Mono', monospace;
-  /* The dark direction sets everything in Archivo — display included. Kept as an
-     alias so the content pages' existing `var(--font-serif)` rules resolve to it
-     rather than needing a find-and-replace through 1,700 lines of researched markup. */
-  --font-serif: var(--font-sans);
+  --font-serif: 'Bitter Variable', Georgia, serif;
 
-  --max-w: 1240px;
-  --pad-x: 32px;
-  --section-y: 90px;
+  /* Expanded fluid canvas */
+  --max-w: 1520px;
+  --pad-x: clamp(24px, 4vw, 64px);
+  --section-y: clamp(80px, 7vw, 130px);
 }
 
 * {
@@ -46,8 +49,8 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: clamp(17px, 1.1vw, 19px);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -64,11 +67,20 @@ a {
 img {
   max-width: 100%;
   display: block;
-  /* Astro's <Image> emits width/height attributes. Those act as presentational
-     hints, which keep the box definite and stop any `aspect-ratio` rule from
-     taking effect. Releasing the height lets aspect-ratio govern; components that
-     want a fixed height set one on their own class, which outranks this. */
   height: auto;
+}
+
+/* Discrete reading progress indicator */
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--rust);
+  z-index: 100;
+  pointer-events: none;
+  transition: width 0.08s linear;
 }
 
 /* ---- shared primitives ---- */
@@ -80,7 +92,7 @@ img {
   padding-right: var(--pad-x);
 }
 
-/* Section shell: 1240px container with the standard 90px vertical rhythm. */
+/* Section shell: 1520px fluid container with proportional vertical rhythm. */
 .section-inner {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -95,8 +107,8 @@ img {
 
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 400;
+  font-size: clamp(12px, 0.85vw, 13px);
+  font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -108,14 +120,14 @@ img {
 
 .mono-label {
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-size: clamp(12px, 0.85vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-dim);
 }
 
-/* Eyebrow / meta pair above a block, closed with a hairline. */
+/* Eyebrow / meta pair above a block, closed with a hairline. Semantic heading style. */
 .section-head {
   display: flex;
   align-items: baseline;
@@ -123,19 +135,17 @@ img {
   gap: 20px;
   flex-wrap: wrap;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: clamp(12px, 0.85vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(237, 228, 211, 0.65);
-  border-bottom: 1px solid rgba(237, 228, 211, 0.16);
-  padding-bottom: 14px;
+  color: var(--ink-dim);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 16px;
+  margin: 0;
 }
 
-/* Hairline grid: 1px gaps read as rules because the wrapper is --line. */
-/* Hairline grid: rules are drawn by the cells themselves, not by a 1px gap over a
-   tinted wrapper. The wrapper approach leaves the tint exposed whenever the last
-   row is short (7 cards in a 5-track auto-fit row = 3 bare cells), so the lines
-   live on the cells and simply stop where the content does. */
+/* Hairline grid: rules are drawn by the cells themselves */
 .hairline-grid {
   display: grid;
   gap: 0;
@@ -153,11 +163,7 @@ img {
   border-top: 1px solid var(--line);
 }
 
-/* ---- motion layer ----
-   Every rule here is gated behind `.js-motion`, set on <html> by an inline script.
-   With JS off the initial hidden state never applies, so content can't be trapped
-   invisible. `prefers-reduced-motion` is handled in the block at the bottom. */
-
+/* ---- motion layer ---- */
 .js-motion [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
@@ -172,32 +178,23 @@ img {
   transform: none;
 }
 
-/* Children of a [data-reveal-group] inherit an incrementing delay from the script. */
 .js-motion [data-reveal][data-reveal-x] {
   transform: translateY(0) translateX(var(--reveal-x, -20px));
 }
 
-/* Numerals that count up hold their width so the layout can't jitter mid-tick. */
 .counting {
   font-variant-numeric: tabular-nums;
 }
 
-/* Card hover — the flat-design stand-in for VoidCraft's glow. A tint, not a rise:
-   cells in a hairline grid share their borders, so translating one tears a gap in
-   the rules. Same value the results rows already use, so hover reads consistently. */
 .lift {
   transition: background-color 0.25s ease;
 }
 
 .lift:hover {
-  background: rgba(237, 228, 211, 0.05);
+  background: var(--surface-hover);
 }
 
-/* ---- show more / show fewer ----
-   Collapsing is gated on `.js-motion`, so with JS off the full list renders and the
-   toggle never appears. Because the class is set by an inline script in <head>, the
-   collapsed state is in place before first paint — no flash of the whole list. */
-
+/* ---- show more / show fewer ---- */
 .more-panel {
   display: block;
 }
@@ -215,14 +212,17 @@ img {
 }
 
 .js-motion .more-toggle {
-  display: inline-block;
-  margin-top: 28px;
-  padding: 13px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  padding: 15px 26px;
+  min-height: 48px;
   border: 1px solid var(--line);
   background: transparent;
   color: var(--rust);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -233,7 +233,7 @@ img {
 .js-motion .more-toggle:hover {
   border-color: var(--ink);
   color: var(--ink);
-  background: rgba(237, 228, 211, 0.05);
+  background: var(--surface-hover);
 }
 
 .js-motion .more-toggle:focus-visible {
@@ -243,10 +243,12 @@ img {
 
 /* Routes a homepage section to the page that holds the full version. */
 .see-all {
-  display: inline-block;
-  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 32px;
+  min-height: 44px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: clamp(12px, 0.85vw, 13px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--rust);
@@ -261,11 +263,14 @@ img {
   transform: translateX(4px);
 }
 
-/* Buttons — solid rust and outlined, both sharp-cornered. */
+/* Buttons — touch-compliant, solid rust and outlined */
 .btn {
-  display: inline-block;
-  padding: 15px 24px;
-  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 28px;
+  min-height: 48px;
+  font-size: 16px;
   font-weight: 600;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
@@ -284,8 +289,8 @@ img {
 }
 
 .btn-outline {
-  border: 1px solid rgba(237, 228, 211, 0.45);
-  font-weight: 400;
+  border: 1px solid var(--line-strong);
+  font-weight: 500;
 }
 
 .btn-outline:hover {
@@ -294,41 +299,42 @@ img {
 
 .cta-row {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin-top: 36px;
 }
 
-/* Anton is numerals-only — never set prose in it. */
+/* Anton is numerals-only */
 .figure {
   font-family: var(--font-num);
-  font-size: 34px;
+  font-size: clamp(38px, 4.2vw, 64px);
   line-height: 1;
   font-weight: 400;
+  font-variant-numeric: tabular-nums;
 }
 
-/* Page masthead — the eyebrow + H1 + standfirst block every content page opens with. */
+/* Page masthead */
 .page-head {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 72px var(--pad-x) 0;
+  padding: clamp(72px, 8vw, 110px) var(--pad-x) 0;
 }
 
 .page-head h1 {
-  margin-top: 20px;
+  margin-top: 24px;
   font-weight: 600;
-  font-size: clamp(34px, 5vw, 66px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  max-width: 18ch;
+  font-size: clamp(40px, 5.5vw, 84px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  max-width: 20ch;
 }
 
 .page-head .standfirst {
-  margin-top: 24px;
-  max-width: 56ch;
-  font-size: 19px;
+  margin-top: 28px;
+  max-width: 58ch;
+  font-size: clamp(19px, 1.35vw, 24px);
   line-height: 1.6;
-  color: rgba(237, 228, 211, 0.82);
+  color: var(--ink-subtle);
   text-wrap: pretty;
 }
 
@@ -338,11 +344,11 @@ img {
   top: -100px;
   left: 20px;
   z-index: 1000;
-  padding: 12px 20px;
+  padding: 14px 22px;
   background: var(--rust);
   color: var(--bg);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -367,19 +373,17 @@ img {
     scroll-behavior: auto;
   }
 
-  /* Reveals resolve to their final state immediately rather than animating */
+  /* Reveals resolve to their final state immediately */
   .js-motion [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
 
-  /* Kill displacement and infinite animations, while preserving subtle color hover feedback */
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Disable heavy looping transforms while preserving color/opacity changes */
+  .hero-photo,
+  .fact-rail::before,
+  .track {
+    animation: none !important;
   }
 }
-

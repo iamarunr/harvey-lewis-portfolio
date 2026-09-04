@@ -12,32 +12,52 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 <header class:list={['site-header', variant]} data-site-header>
   <div class="header-inner">
-    <a href="/" class="wordmark">Harvey Lewis</a>
-    <nav aria-label="Main">
-      {
-        nav.map((item) => (
-          <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
-            {item.label}
-          </a>
-        ))
-      }
+    <a href="/" class="wordmark" aria-label="Harvey Lewis home">Harvey Lewis</a>
+
+    <div class="header-right">
+      <nav id="site-nav" aria-label="Main navigation">
+        {
+          nav.map((item) => (
+            <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
       <a href="/contact" class="nav-cta">Enquiries</a>
-    </nav>
+
+      {/* Phone-only disclosure. Hidden unless JS is running, so the nav above
+          stays inline and reachable when the script never loads. */}
+      <button
+        type="button"
+        class="nav-toggle"
+        data-nav-toggle
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Open navigation menu"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
 <style>
   .site-header {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
-  /* Transparent over the hero photo — the hero owns the background. */
+  /* Transparent over the hero photo. Must outrank .hero-center (z-index 2), or the
+     headline paints straight through the open mobile menu panel. */
   .site-header.overlay {
     position: relative;
-    z-index: 2;
+    z-index: 30;
   }
 
   .site-header.solid {
@@ -45,22 +65,22 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     top: 0;
     z-index: 20;
     border-bottom: 1px solid transparent;
-    background: rgba(11, 10, 9, 0.72);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(11, 10, 9, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transition: border-color 0.3s ease, background-color 0.3s ease;
   }
 
-  @supports not (backdrop-filter: blur(10px)) {
+  @supports not (backdrop-filter: blur(12px)) {
     .site-header.solid {
       background: var(--bg);
     }
   }
 
-  /* Once you leave the top the bar earns its hairline and a denser ground. */
+  /* Once scrolled */
   .site-header.solid.is-scrolled {
     border-bottom-color: var(--line);
-    background: rgba(11, 10, 9, 0.9);
+    background: rgba(11, 10, 9, 0.95);
   }
 
   .header-inner {
@@ -71,7 +91,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     justify-content: space-between;
     gap: 24px;
     flex-wrap: wrap;
-    padding: 18px var(--pad-x);
+    padding: 10px var(--pad-x);
   }
 
   .overlay .header-inner {
@@ -79,22 +99,29 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   }
 
   .wordmark {
-    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 600;
+    font-size: 15px;
     color: var(--ink);
+    letter-spacing: 0.18em;
   }
 
-  /* flex-wrap is required — a non-wrapping nav pushes the Enquiries button
-     outside the overflow-hidden hero on phones. */
   nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px 22px;
+    gap: 8px 24px;
     align-items: center;
     justify-content: flex-end;
   }
 
   nav a {
-    color: rgba(237, 228, 211, 0.78);
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 4px;
+    color: var(--ink-dim);
     transition: color 0.15s ease;
   }
 
@@ -104,14 +131,18 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
   nav a[aria-current='page'] {
     color: var(--ink);
-    box-shadow: inset 0 -1px 0 var(--rust);
+    box-shadow: inset 0 -2px 0 var(--rust);
   }
 
   .nav-cta {
-    padding: 9px 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 20px;
     background: var(--rust);
     color: var(--bg);
-    font-weight: 500;
+    font-weight: 600;
     transition: background-color 0.15s ease;
   }
 
@@ -120,5 +151,117 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     background: var(--ink);
     color: var(--bg);
     box-shadow: none;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px 24px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  /* The toggle only exists once the script can drive it. */
+  .nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--line);
+    background: transparent;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: border-color 0.16s ease;
+  }
+
+  .nav-toggle:hover {
+    border-color: var(--rust);
+  }
+
+  .nav-toggle:focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 2px;
+  }
+
+  .bar {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.16s ease;
+  }
+
+  /* Bars fold into a cross while the panel is open. */
+  .nav-toggle[aria-expanded='true'] .bar:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded='true'] .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded='true'] .bar:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* ---- phone: nav collapses behind the toggle ---- */
+  @media (max-width: 860px) {
+    :global(.js-motion) .nav-toggle {
+      display: inline-flex;
+    }
+
+    /* Panel drops out of the bar. Solid ground because the header sits on a photo. */
+    :global(.js-motion) #site-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 4px var(--pad-x) 12px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    :global(.js-motion) #site-nav.is-open {
+      display: flex;
+    }
+
+    :global(.js-motion) #site-nav a {
+      justify-content: flex-start;
+      min-height: 52px;
+      padding: 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    :global(.js-motion) #site-nav a:last-child {
+      border-bottom: 0;
+    }
+
+    .header-inner {
+      flex-wrap: nowrap;
+      gap: 12px;
+    }
+
+    .header-right {
+      flex-wrap: nowrap;
+      gap: 8px;
+    }
+
+    .nav-cta {
+      padding: 0 14px;
+      font-size: 11px;
+    }
+
+    .wordmark {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+    }
   }
 </style>
