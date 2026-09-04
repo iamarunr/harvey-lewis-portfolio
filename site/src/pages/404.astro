@@ -1,0 +1,197 @@
+---
+import Base from '../layouts/Base.astro';
+
+const trailheads = [
+  {
+    tag: '01 / The Human Story',
+    title: 'The Story',
+    desc: 'From a broken neck to back-to-back world records. Teaching school by day, running by night.',
+    href: '/story',
+  },
+  {
+    tag: '02 / Results & Records',
+    title: 'Races & Archive',
+    desc: '126 career starts since 1996 across seven continents, 38 wins, and two Badwater 135 victories.',
+    href: '/races',
+  },
+  {
+    tag: '03 / Keynotes',
+    title: 'Speaking',
+    desc: 'Keynotes for corporate leadership, schools, and expos. Evidence first, zero hype.',
+    href: '/speaking',
+  },
+  {
+    tag: '04 / Press & Kit',
+    title: 'Media & Press',
+    desc: 'High-resolution press photography, documentary links, podcasts, and verified bio facts.',
+    href: '/media',
+  },
+];
+---
+
+<Base
+  title="404: Page Not Found — Harvey Lewis"
+  description="The trail doesn't run this way. The page you're looking for doesn't exist, has moved, or was mistyped."
+  noindex={true}
+>
+  <section class="not-found-hero">
+    <div class="container" data-reveal-group data-reveal-step="90">
+      <p class="eyebrow eyebrow-rust" data-reveal>404 · Course Boundary</p>
+      
+      <div class="hero-split" data-reveal>
+        <div class="hero-text">
+          <h1 class="not-found-title">The trail doesn't run this way.</h1>
+          <p class="not-found-body">
+            In a 450-mile race or thirty years of ultrarunning, you occasionally take a wrong turn.
+            The page you're looking for may have been moved, mistyped, or retired.
+          </p>
+          <div class="cta-row">
+            <a href="/" class="btn btn-solid">Back to homepage →</a>
+            <a href="/contact" class="btn btn-outline">Contact &amp; enquiries</a>
+          </div>
+        </div>
+        <div class="hero-num-wrap" aria-hidden="true">
+          <span class="num-404">404</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trailheads-section band-deep">
+    <div class="section-inner">
+      <p class="mono-label" data-reveal>Pick up the trail</p>
+      <div class="trailheads hairline-grid" data-reveal-group data-reveal-step="90">
+        {
+          trailheads.map((trail) => (
+            <a href={trail.href} class="trailhead lift" data-reveal>
+              <div class="trail-tag">{trail.tag}</div>
+              <h2 class="trail-title">{trail.title}</h2>
+              <p class="trail-desc">{trail.desc}</p>
+              <span class="trail-arrow" aria-hidden="true">→</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .not-found-hero {
+    padding: clamp(72px, 8vw, 130px) 0 clamp(64px, 6vw, 100px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) auto;
+    gap: clamp(32px, 5vw, 84px);
+    align-items: center;
+    margin-top: 24px;
+  }
+
+  .not-found-title {
+    font-weight: 600;
+    font-size: clamp(38px, 5vw, 76px);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    max-width: 20ch;
+  }
+
+  .not-found-body {
+    margin-top: 24px;
+    font-size: clamp(18px, 1.25vw, 22px);
+    line-height: 1.6;
+    color: var(--ink-subtle);
+    max-width: 52ch;
+    text-wrap: pretty;
+  }
+
+  .hero-num-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+
+  .num-404 {
+    font-family: var(--font-num);
+    font-size: clamp(120px, 16vw, 240px);
+    line-height: 0.85;
+    color: var(--ink);
+    opacity: 0.12;
+    letter-spacing: -0.04em;
+    border-bottom: 2px solid var(--rust);
+    padding-bottom: 8px;
+  }
+
+  .trailheads-section {
+    padding: 0;
+  }
+
+  .trailheads {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    margin-top: 28px;
+  }
+
+  .trailhead {
+    background: var(--bg);
+    padding: clamp(32px, 3vw, 44px) clamp(26px, 2.5vw, 36px);
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    color: inherit;
+    transition: background-color 0.18s ease;
+  }
+
+  .trail-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .trail-title {
+    font-weight: 600;
+    font-size: clamp(22px, 1.6vw, 28px);
+    line-height: 1.2;
+    margin-top: 14px;
+  }
+
+  .trail-desc {
+    margin-top: 10px;
+    font-size: clamp(15px, 1.05vw, 17px);
+    line-height: 1.6;
+    color: var(--ink-dim);
+    text-wrap: pretty;
+  }
+
+  .trail-arrow {
+    margin-top: auto;
+    padding-top: 20px;
+    font-size: 20px;
+    color: var(--ink-dim);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease;
+  }
+
+  .trailhead:hover .trail-arrow {
+    transform: translateX(6px);
+    color: var(--rust);
+  }
+
+  @media (max-width: 860px) {
+    .hero-split {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-num-wrap {
+      justify-content: flex-start;
+      margin-top: 8px;
+    }
+
+    .num-404 {
+      font-size: 100px;
+    }
+  }
+</style>

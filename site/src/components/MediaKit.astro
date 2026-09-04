@@ -52,35 +52,40 @@ const gallery = [
         <div class="downloads">
           {
             mediaKit.downloads.map((download) => {
-              // Until the real asset exists, the row requests it by email rather than
-              // pointing at a dead anchor. Set `file` in media-kit.json and the same
-              // row becomes a genuine download with no further changes.
+              // Pending assets render as plain text, not links — a "coming soon" row
+              // shouldn't be clickable or focusable. Set `file` in media-kit.json and
+              // the row becomes a real download with no other changes.
               const ready = Boolean(download.file);
-              const href = ready
-                ? download.file
-                : `mailto:${site.enquiryEmail}?subject=${encodeURIComponent(
-                    `Media request — ${download.label}`
-                  )}`;
+
+              if (!ready) {
+                return (
+                  <div class="download is-pending">
+                    <span class="download-label">{download.label}</span>
+                    <span class="format soon">Coming soon</span>
+                  </div>
+                );
+              }
 
               return (
                 <a
-                  href={href}
+                  href={download.file}
                   class="download"
-                  download={ready ? '' : undefined}
-                  aria-label={
-                    ready
-                      ? `Download ${download.label} (${download.format})`
-                      : `Request ${download.label} by email (${download.format})`
-                  }
+                  download
+                  aria-label={`Download ${download.label} (${download.format})`}
                 >
                   <span class="download-label">{download.label}</span>
-                  <span class="format">{ready ? download.format : `Request · ${download.format}`}</span>
+                  <span class="format">{download.format}</span>
                 </a>
               );
             })
           }
         </div>
-        <p class="downloads-note">Sent by return email, usually same day.</p>
+        <p class="downloads-note">
+          Press pack in preparation. On deadline?
+          <a href={`mailto:${site.enquiryEmail}?subject=${encodeURIComponent('Media enquiry')}`}>
+            Email for assets →
+          </a>
+        </p>
       </div>
     </div>
 
@@ -169,6 +174,25 @@ const gallery = [
 
   .download:hover {
     color: var(--rust);
+  }
+
+  /* Pending rows read as inventory, not as broken links. */
+  .download.is-pending .download-label {
+    color: var(--ink-dim);
+  }
+
+  .format.soon {
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  .downloads-note a {
+    color: var(--rust);
+    transition: color 0.15s ease;
+  }
+
+  .downloads-note a:hover {
+    color: var(--ink);
   }
 
   .downloads-note {

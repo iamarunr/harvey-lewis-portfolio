@@ -14,11 +14,13 @@ import SiteFooter from '../components/SiteFooter.astro';
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Harvey Lewis — two-time Badwater 135 champion, twice a backyard ultra world record setter, and a full-time high school teacher in Cincinnati, Ohio.',
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -33,7 +35,7 @@ const {
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <Meta title={title} description={description} />
+    <Meta title={title} description={description} noindex={noindex} />
   </head>
   <body id="top">
     <a href="#main-content" class="skip-link">Skip to main content</a>

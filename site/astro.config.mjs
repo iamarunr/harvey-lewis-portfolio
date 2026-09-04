@@ -7,8 +7,8 @@ export default defineConfig({
   site: 'https://harvey-lewis-portfolio.pages.dev',
   integrations: [
     sitemap({
-      // /press is a redirect stub kept for old inbound links — not worth indexing.
-      filter: (page) => !/\/press\/?$/.test(page),
+      // /press is a redirect stub and /404 should not be in the sitemap.
+      filter: (page) => !/\/press\/?$/.test(page) && !/\/404\/?$/.test(page),
     }),
   ],
 });

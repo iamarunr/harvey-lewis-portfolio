@@ -8,9 +8,10 @@ interface Props {
   image?: string;
   /** Person schema belongs on the homepage only, so it isn't claimed five times. */
   includePersonSchema?: boolean;
+  noindex?: boolean;
 }
 
-const { title, description, image = '/og.jpg', includePersonSchema = false } = Astro.props;
+const { title, description, image = '/og.jpg', includePersonSchema = false, noindex = false } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
 const ogImage = new URL(image, Astro.site);
@@ -53,6 +54,8 @@ const personSchema = {
   ],
 };
 ---
+
+{noindex && <meta name="robots" content="noindex, follow" />}
 
 <link rel="canonical" href={canonical.href} />
 
