@@ -43,7 +43,7 @@ const facts = [
       </p>
       <div class="cta-row" data-reveal>
         <a href="/contact" class="btn btn-solid">Sponsorship &amp; speaking →</a>
-        <a href="/media" class="btn btn-outline">Media kit</a>
+        <a href="/media" class="btn btn-outline hero-secondary">Media kit <span class="cta-arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -240,15 +240,20 @@ const facts = [
     margin-top: 8px;
   }
   /* ---- phone ----
-     The photo goes behind the copy rather than above it. Stacking it pushed the
-     headline to the bottom edge and both CTAs off-screen: the hero ran 1585px on a
-     812px viewport, so the first screen showed a menu and a picture and nothing to
-     act on. Behind the copy, the whole proposition fits one screen. */
+     Refined editorial mobile presentation:
+     - Atmosphere over distraction: progressive dark dissolve lets the runner's
+       silhouette float in the upper third while copy and figures rest on pure black.
+     - Single primary action: full-width sponsorship CTA paired with an understated
+       Media kit link prevents competing button rectangles.
+     - Quiet eyebrow: subdued sand instead of aggressive orange for calm hierarchy.
+     - Uncramped rhythm: natural vertical breathing room for headline, body, and stats. */
   @media (max-width: 860px) {
     .hero {
-      grid-template-rows: auto 1fr auto;
-      gap: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       min-height: 100svh;
+      padding-bottom: 24px;
     }
 
     .hero-photo-wrap {
@@ -256,57 +261,97 @@ const facts = [
       inset: 0;
       width: 100%;
       height: 100%;
-      /* Full-bleed behind the text, so no side mask. */
       mask-image: none;
       -webkit-mask-image: none;
     }
 
-    /* Flat scrim — the type has to clear the photo at AA. */
+    /* Progressive dark dissolve: runner's stride is visible at dusk in the upper third,
+       then melts into solid --bg behind all headline, text, and numbers */
     .hero-photo-wrap::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--scrim-hero);
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 10, 9, 0.45) 0%,
+        rgba(11, 10, 9, 0.72) 22%,
+        rgba(11, 10, 9, 0.94) 45%,
+        var(--bg) 70%,
+        var(--bg) 100%
+      );
     }
 
     .hero-photo {
-      object-position: 62% 22%;
+      object-position: 62% 16%;
     }
 
     .hero-center {
-      padding: 20px var(--pad-x);
+      padding: clamp(24px, 4.5vh, 40px) var(--pad-x) 16px;
     }
 
     .hero-content {
       max-width: 100%;
     }
 
+    /* Subdued eyebrow for calm hierarchy */
+    .hero-eyebrow {
+      color: var(--ink-dim);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+    }
+
     .hero-center h1 {
-      margin-top: 16px;
-      font-size: clamp(30px, 8.2vw, 42px);
-      line-height: 1.08;
+      margin-top: 14px;
+      font-size: clamp(28px, 7.5vw, 38px);
+      line-height: 1.1;
       letter-spacing: -0.02em;
       max-width: 100%;
     }
 
     .hero-body {
-      margin-top: 16px;
-      font-size: 16px;
+      margin-top: 14px;
+      font-size: 15px;
       line-height: 1.55;
-      max-width: 42ch;
+      color: var(--ink-dim);
+      max-width: 40ch;
     }
 
-    /* Full-width stacked buttons — comfortable thumb targets, predictable height. */
+    /* Single primary full-width button + quiet secondary text link */
     .hero-center :global(.cta-row) {
-      margin-top: 24px;
+      margin-top: 22px;
       flex-direction: column;
-      align-items: stretch;
-      gap: 10px;
+      align-items: flex-start;
+      gap: 12px;
     }
 
-    .hero-center :global(.cta-row .btn) {
+    .hero-center :global(.cta-row .btn-solid) {
+      width: 100%;
       text-align: center;
       padding: 15px 20px;
+    }
+
+    .hero-center :global(.cta-row .hero-secondary) {
+      border: 0;
+      background: transparent;
+      padding: 6px 0;
+      min-height: 40px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--line-strong);
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+
+    .hero-center :global(.cta-row .hero-secondary:hover) {
+      color: var(--ink);
+      text-decoration-color: var(--rust);
     }
 
     .scroll-cue {
@@ -314,40 +359,41 @@ const facts = [
     }
 
     .hero-bottom {
-      padding-bottom: 22px;
+      padding: 12px var(--pad-x) 0;
     }
 
-    /* Two-up so the four figures cost four rows' height, not eight. */
+    /* Clean two-up stats sitting on pure dark ground */
     .fact-rail {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px 20px;
-      padding-top: 18px;
+      gap: 14px 20px;
+      padding-top: 16px;
     }
 
     .fact-rail :global(.figure) {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     .fact-label {
-      font-size: 10.5px;
+      font-size: 10px;
       letter-spacing: 0.1em;
       margin-top: 4px;
+      color: var(--ink-faint);
     }
   }
 
-  /* Small phones: trim the last few pixels so the rail stays on the first screen. */
+  /* Small phones */
   @media (max-width: 380px) {
     .hero-center h1 {
-      font-size: 29px;
+      font-size: 27px;
     }
 
     .hero-body {
-      font-size: 15px;
-      margin-top: 14px;
+      font-size: 14px;
+      margin-top: 12px;
     }
 
     .fact-rail :global(.figure) {
-      font-size: 26px;
+      font-size: 24px;
     }
   }
 </style>

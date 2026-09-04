@@ -23,6 +23,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
             </a>
           ))
         }
+        <a href="/contact" class="nav-contact-mobile" aria-current={currentPath === '/contact' ? 'page' : undefined}>
+          Enquiries
+        </a>
       </nav>
 
       <a href="/contact" class="nav-cta">Enquiries</a>
@@ -132,6 +135,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   nav a[aria-current='page'] {
     color: var(--ink);
     box-shadow: inset 0 -2px 0 var(--rust);
+  }
+
+  .nav-contact-mobile {
+    display: none;
   }
 
   .nav-cta {
@@ -255,8 +262,12 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     }
 
     .nav-cta {
-      padding: 0 14px;
-      font-size: 11px;
+      display: none;
+    }
+
+    .nav-contact-mobile {
+      display: inline-flex;
+      color: var(--rust);
     }
 
     .wordmark {
