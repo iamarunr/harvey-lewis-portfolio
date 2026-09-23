@@ -61,7 +61,7 @@ These facts were not found in any public source and should be verified directly 
 
 6. **How he got into running specifically** — MTA says "started as a teenager" and "took 5 years to break 5 hours in the marathon." Was the FANS 1996 ultra his first ultra at age 20, or did he run marathons/shorter races first? The trajectory (teenager → first ultra 1996 at age ~20) implies he started running in his early teens. Exact starting point not sourced.
 
-7. **Does he still teach?** — All research confirms active teaching. Most recent confirmation: iRunFar Educator Effect March 2024 interview ("less than a week before 2024 Barkley" = he was still teaching). But no 2025-2026 confirmation.
+7. **Does he still teach?** — **Resolved (2026-09-23): yes.** Confirmed by the site owner, who is in direct contact with Harvey. Teaching remains central to the brand. (Earlier public confirmation: iRunFar Educator Effect, 2024.)
 
 8. **Current Brooks Running contract** — confirmed as sponsor from one Charity Miles episode (~2024). Is this an ongoing contract or a one-off? What shoes does he race in?
 
