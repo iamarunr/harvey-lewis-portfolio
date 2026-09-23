@@ -6,12 +6,13 @@ import badwaterDawn from '../assets/photos/badwater-dawn.jpg';
 
 const wins = races.filter((r) => r.placeOverall === 1 && r.status === 'finished').length;
 const podiums = races.filter((r) => r.placeOverall <= 3 && r.status === 'finished').length;
+const bigsStarts = races.filter((r) => r.race.startsWith("Big Dog's Backyard")).length;
 const years = [...new Set(races.map((r) => r.year))].sort((a, b) => b - a);
 
 const highlights = [
   {
     event: "Big's Backyard Ultra",
-    detail: '6 starts · 2 wins, both world records',
+    detail: `${bigsStarts} starts · 2 wins, both world records at the time`,
     rows: [
       { y: '2025', r: '111 laps · 462.5 mi', p: '3rd' },
       { y: '2023', r: '108 laps · 450.0 mi', p: '1st — World Record' },
@@ -22,12 +23,12 @@ const highlights = [
   },
   {
     event: 'Badwater 135',
-    detail: '15 finishes since 2011 · 2 wins · 7 podiums · 270 mi Double',
+    detail: '15 finishes since 2011 · 2 wins · 5 podiums · 270 mi Double',
     rows: [
       { y: '2026', r: '25:55:41', p: '11th — 15th finish' },
       { y: '2024', r: '270 mi Badwater Double', p: 'Turnaround Finish' },
       { y: '2021', r: '25:50:23', p: '1st' },
-      { y: '2014', r: '23:52', p: '1st' },
+      { y: '2014', r: '23:52:55', p: '1st' },
       { y: '2016', r: '23:40:52', p: '2nd' },
     ],
   },
@@ -55,7 +56,7 @@ const highlights = [
 ];
 ---
 
-<Base title="Races & Records — Harvey Lewis" description="Every race Harvey Lewis has run since 1996 — 124 results, 38 wins, from FANS 24-Hour to back-to-back world records at Big's Backyard Ultra.">
+<Base title="Races & Records — Harvey Lewis" description={`Every race Harvey Lewis has run since 1996 — ${races.length} results, ${wins} wins, from FANS 24-Hour to back-to-back world records at Big's Backyard Ultra.`}>
   <section class="races-hero">
     <div class="container">
       <p class="eyebrow">Races &amp; Records</p>
