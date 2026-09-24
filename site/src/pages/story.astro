@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Arrow from '../components/Arrow.astro';
-import riverRun from '../assets/photos/river-run.jpg';
+import saltFlat from '../assets/photos/salt-flat.jpg';
 import veganFriends from '../assets/photos/vegan-friends.jpg';
 import after450 from '../assets/photos/after-450.jpg';
 import students from '../assets/photos/students.jpg';
@@ -125,17 +125,17 @@ const chapters = [
 
 <Base title="Story — Harvey Lewis" description="From a broken neck to back-to-back world records: the story of Cincinnati high school teacher and ultrarunner Harvey Lewis.">
   <header class="page-head story-head">
-    <h1 class="display-1">From a broken neck to the record book.</h1>
-    <p class="lede">
-      A Cincinnati high school teacher who has spent thirty years finding out how far a person can run,
-      without ever giving up his day job.
-    </p>
+    <div class="story-head-text">
+      <h1 class="display-1">From a broken neck to the record book.</h1>
+      <p class="lede">
+        A Cincinnati high school teacher who has spent thirty years finding out how far a person can run,
+        without ever giving up his day job.
+      </p>
+    </div>
+    <figure class="story-plate">
+      <Image src={saltFlat} alt="Harvey Lewis running across a salt flat toward a low sun" widths={[540, 800, 1080]} sizes="(max-width: 900px) 100vw, 40vw" loading="eager" fetchpriority="high" />
+    </figure>
   </header>
-
-  <figure class="story-plate">
-    <Image src={riverRun} alt="Harvey Lewis running beside a river in late summer" widths={[900, 1600, 2400, 3200]} sizes="100vw" loading="eager" />
-    <figcaption class="wrap">Dream Big, 2026. Photograph by Mike Trimpe</figcaption>
-  </figure>
 
   <div class="salt story-body">
     {
@@ -181,9 +181,13 @@ const chapters = [
 </Base>
 
 <style is:global>
+  .story-head {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: end; gap: 40px clamp(32px, 6vw, 112px);
+  }
+  .story-head-text { display: grid; gap: clamp(24px, 3vw, 44px); padding-bottom: clamp(8px, 2vw, 32px); }
   .story-head .display-1 { max-width: 12ch; }
-  .story-plate img { width: 100%; height: min(88svh, 60vw); object-fit: cover; object-position: 50% 35%; }
-  .story-plate figcaption { padding-top: 14px; padding-bottom: 14px; color: var(--ink-faint); }
+  .story-plate img { width: 100%; height: min(80svh, 900px); object-fit: cover; object-position: 50% 60%; }
 
   .story-body { padding: clamp(40px, 5vw, 80px) 0 var(--sec); }
   .chapter {
@@ -220,6 +224,8 @@ const chapters = [
     .chapter { grid-template-columns: 1fr; }
     .chapter-era { position: static; color: var(--dark-dim); font-size: 24px; }
     .chapter-photos { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-    .story-plate img { height: 56svh; }
+    .story-head { grid-template-columns: 1fr; }
+    .story-plate { margin: 0 calc(var(--gut) * -1); }
+    .story-plate img { height: 64svh; }
   }
 </style>

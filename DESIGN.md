@@ -66,4 +66,4 @@ One authored moment per surface. Under `prefers-reduced-motion` movement is remo
 
 ## Photography
 
-Most supplied photos are 640px web exports and no originals exist. Full-screen treatments are reserved for the high-resolution few (night run, river run, backyard flags shirt, Badwater finish, salt-flat portrait, Architects of Destiny poster). 640px images are shown at or below 340 CSS px (photo strips, chapter photos). Credit Mike Trimpe where known.
+Most supplied photos are 640px web exports and no originals exist. Full-screen treatments are reserved for the high-resolution few (night run, backyard flags shirt, Badwater finish, salt-flat portrait, Architects of Destiny poster). 640px images are shown at or below 340 CSS px (photo strips, chapter photos). Credit Mike Trimpe where known.
