@@ -405,7 +405,7 @@ const loopSteps = [
   .hero {
     position: relative;
     min-height: 100svh;
-    background: #0e0e0e;
+    background: var(--asphalt);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
@@ -446,7 +446,7 @@ const loopSteps = [
   }
   .hero-line { font-size: clamp(18px, 1.3vw, 22px); max-width: 44ch; color: var(--ink-dim); }
 
-  .lw-js .rise {
+  .js .rise {
     animation: rise 1.2s var(--ease) both;
     animation-delay: calc(0.15s + var(--d) * 0.12s);
   }
@@ -510,7 +510,7 @@ const loopSteps = [
   .dial { width: min(100%, 78svh); height: auto; overflow: visible; }
   .dial-ring { fill: none; stroke: var(--rule); stroke-width: 1; }
   .tick {
-    stroke: rgba(231, 230, 226, 0.2); stroke-width: 3.2; stroke-linecap: butt;
+    stroke: var(--ink-ghost); stroke-width: 3.2; stroke-linecap: butt;
     transition: stroke 0.25s;
   }
   .tick.on { stroke: var(--ink); }
@@ -529,11 +529,11 @@ const loopSteps = [
   .loop-steps { padding: 30svh 0 40svh; }
   .loop-step {
     min-height: 70svh; display: flex; flex-direction: column; justify-content: center;
-    opacity: 0.32; transition: opacity 0.5s var(--ease);
+    transition: opacity 0.5s var(--ease);
     max-width: 30em;
   }
   .loop-step.is-active { opacity: 1; }
-  .lw-js .loop-step:not(.is-active) { opacity: 0.32; }
+  .js .loop-step:not(.is-active) { opacity: 0.55; }
   .step-year {
     font-family: var(--display); font-weight: 700; font-size: 17px;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--line);
@@ -554,8 +554,8 @@ const loopSteps = [
     fill: none; stroke: var(--dark); stroke-width: 3; vector-effect: non-scaling-stroke;
     stroke-linejoin: round;
   }
-  .lw-js .profile-line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.4s var(--ease); }
-  .lw-js .profile.is-drawn .profile-line { stroke-dashoffset: 0; }
+  .js .profile-line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.4s var(--ease); }
+  .js .profile.is-drawn .profile-line { stroke-dashoffset: 0; }
   .profile-labels { position: absolute; inset: 0 0 auto; height: clamp(200px, 26vw, 400px); pointer-events: none; }
   .profile-labels li {
     position: absolute; left: var(--x); top: var(--y);
@@ -626,7 +626,7 @@ const loopSteps = [
     .hero-photo { left: -20%; right: -30%; top: 33%; -webkit-mask-image: none; mask-image: none; }
     .hero-photo img { object-position: 52% 50%; }
     .hero-name { font-size: min(34vw, 190px); }
-    .hero-foot { grid-template-columns: 1fr; background: #0e0e0e; margin: 0 calc(var(--gut) * -1); padding: 20px var(--gut) 0; }
+    .hero-foot { grid-template-columns: 1fr; background: var(--asphalt); margin: 0 calc(var(--gut) * -1); padding: 20px var(--gut) 0; }
     .hero-foot .btn { justify-self: stretch; justify-content: space-between; font-size: 18px; }
     .dial-num { font-size: 56px; }
     .dial-sub { font-size: 13px; margin-top: 4px; }
@@ -657,8 +657,8 @@ const loopSteps = [
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .lw-js .rise { animation: none; }
-    .lw-js .profile-line { stroke-dashoffset: 0; transition: none; }
+    .js .rise { animation: none; }
+    .js .profile-line { stroke-dashoffset: 0; transition: none; }
     .tick, .loop-step { transition: none; }
   }
 </style>

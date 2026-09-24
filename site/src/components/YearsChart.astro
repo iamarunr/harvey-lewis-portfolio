@@ -23,6 +23,7 @@ const cols = years.length;
 ---
 
 <div class="chart" style={`--rows:${tallest}; --cols:${cols}; --gap-start:${gapStart}`} data-chart>
+  <div class="chart-plot">
   <div class="chart-gap" aria-hidden="true">
     <p>
       No results, 2000–2005. A broken neck, around 2004.
@@ -47,6 +48,7 @@ const cols = years.length;
       ))
     }
   </ol>
+  </div>
   <p class="chart-read" aria-live="polite" data-read>
     {linked ? 'Point at a mark to read the race. Click to jump to it.' : 'Point at a mark to read the race.'}
   </p>
@@ -80,12 +82,12 @@ const cols = years.length;
 </script>
 
 <style is:global>
-  .chart { position: relative; }
+  .chart-plot { position: relative; }
   .chart-cols {
     display: grid;
     grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
     gap: 0 clamp(3px, 0.5vw, 8px);
-    border-bottom: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink-faint);
   }
   .col { position: relative; }
   .col-marks {
@@ -108,7 +110,7 @@ const cols = years.length;
   .m-dnf { background: repeating-linear-gradient(135deg, var(--ink-faint) 0 1.5px, transparent 1.5px 5px); }
   .m.is-hot { transform: scaleX(1.35); background-color: var(--ink); box-shadow: none; }
   .chart-gap {
-    position: absolute; top: 0; bottom: 0;
+    position: absolute; top: 0; bottom: 1px;
     left: calc(var(--gap-start) / var(--cols) * 100%); width: calc(6 / var(--cols) * 100%);
     display: flex; align-items: flex-start; padding-top: 4px;
     border-left: 1px dashed var(--rule); border-right: 1px dashed var(--rule);

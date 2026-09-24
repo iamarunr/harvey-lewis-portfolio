@@ -15,7 +15,9 @@ Death Valley highway materials. The site reads like a long magazine feature prin
 | `--salt` | `#e7e6e2` | Light ground for reading and proof sections (`.salt`). Cool grey-white, never cream. |
 | `--salt-2` | `#d9d8d2` | Fills on salt (Badwater elevation area). |
 | `--line` | `#f2c230` | Road-line yellow. Records, wins, the primary action, current nav item, focus rings on dark. Also a full ground for closing sections (`.yellow`). |
-| `--ink` / `--ink-dim` / `--ink-faint` | `#e7e6e2` at 100 / 70 / 50% | Text on asphalt. |
+| `--ink` / `--ink-dim` / `--ink-faint` | `#e7e6e2` at 100 / 70 / 56% | Text on asphalt. Faint is the floor for small text (4.9:1). |
+| `--ink-ghost` | ink at 20% | Unlit ticks on the backyard dial. Never text. |
+| `--line-tint` | yellow at 22% | Highlight on a race row reached from the chart. |
 | `--rule` | ink at 16% | Hairlines on asphalt. |
 | `--dark` / `--dark-dim` / `--dark-rule` | `#121211`, `#4b4a46`, dark at 18% | Text and rules on salt and yellow. |
 
@@ -49,12 +51,12 @@ No eyebrows or kickers above headings; headings carry themselves. Where a marker
 - **Bar** (`Base.astro`): fixed; solid asphalt, or transparent over a full-bleed opening (`overlay` prop + `data-opening` element) until it scrolls away. Nav in Big Shoulders; current page underlined in yellow; yellow Enquire button. Under 900px: yellow Menu button opening a full-screen asphalt sheet with 44–64px links (Escape and link-follow close it).
 - **Buttons**: `.btn-line` (yellow, dark text), `.btn-dark` (on yellow grounds), `.btn-lg` 60px tall. `.text-link` for secondary actions. One drawn arrow (`Arrow.astro`), rotated 45° for external links.
 - **Close list** (`.close-list`): big Big Shoulders route names with description and arrow, on yellow. Used for "Work with Harvey" and the 404.
-- **YearsChart**: every race since 1996 as a mark stacked by year; wins yellow, podiums salt, finishes outlined, DNFs hatched. Annotates the 2000–2005 gap. Pointer reads the race into a caption line; on /races marks link to archive rows.
+- **YearsChart**: every race since 1996 as a mark stacked by year; wins yellow, podiums salt, finishes outlined, DNFs hatched. Sits on a thin faint baseline; the 2000–2005 gap annotation stays inside the plot. Pointer reads the race into a caption line; on /races marks link to archive rows.
 - **Footer**: large stacked name, page and social links, photo credit.
 
 ## Motion
 
-One authored moment per surface, all respecting `prefers-reduced-motion` (durations collapse globally):
+One authored moment per surface. Under `prefers-reduced-motion` movement is removed per element (hero rise, dial count, line draw, row flash, hover nudges) while colour and state changes stay, so hover, focus and the active dial step still read:
 
 - Homepage hero name rises in with a clip reveal on load.
 - Backyard dial: 111 ticks, one ring per day, accrue to each step's yard count as the reader scrolls (sticky stage; exponential ease-out count).

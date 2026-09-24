@@ -41,7 +41,7 @@ const socials = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0e0e0e" />
-    <script is:inline>document.documentElement.classList.add('lw-js');</script>
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <Meta title={title} description={description} noindex={noindex} includePersonSchema={includePersonSchema} />
@@ -119,6 +119,8 @@ const socials = [
         if (!menu || !openBtn) return;
         menu.toggleAttribute('data-open', open);
         openBtn.setAttribute('aria-expanded', String(open));
+        // Everything behind the sheet leaves the tab order while it is open.
+        document.querySelectorAll('main, .foot, .bar').forEach((el) => el.toggleAttribute('inert', open));
         document.body.style.overflow = open ? 'hidden' : '';
         (open ? closeBtn : openBtn)?.focus();
       };

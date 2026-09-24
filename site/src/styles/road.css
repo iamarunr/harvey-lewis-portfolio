@@ -9,10 +9,12 @@
   --salt: #e7e6e2;
   --salt-2: #d9d8d2;
   --line: #f2c230;
+  --line-tint: rgba(242, 194, 48, 0.22);
 
   --ink: #e7e6e2;
   --ink-dim: rgba(231, 230, 226, 0.7);
-  --ink-faint: rgba(231, 230, 226, 0.5);
+  --ink-faint: rgba(231, 230, 226, 0.56);
+  --ink-ghost: rgba(231, 230, 226, 0.2);
   --rule: rgba(231, 230, 226, 0.16);
 
   --dark: #121211;
@@ -212,17 +214,18 @@ a:hover > .arrow, button:hover > .arrow { transform: translateX(4px); }
 .foot-note { margin-top: 16px; color: var(--ink-dim); font-size: 17px; max-width: 32ch; }
 .foot h2 { font-family: var(--display); font-weight: 650; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px; }
 .foot li a {
-  display: inline-flex; min-height: 36px; align-items: center;
+  display: inline-flex; min-height: 44px; align-items: center;
   font-family: var(--display); font-weight: 650; font-size: 18px; letter-spacing: 0.04em;
   text-transform: uppercase; text-decoration: none; color: var(--ink);
 }
 .foot li a:hover { color: var(--line); }
 .foot-base {
-  grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px;
+  grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px;
   padding-top: 24px; border-top: 1px solid var(--rule);
   font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--ink-faint);
 }
+.foot-base a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* ---------- Close band (yellow) ---------- */
 .close-list { border-top: 2px solid var(--dark); }
@@ -258,5 +261,7 @@ a:hover > .arrow, button:hover > .arrow { transform: translateX(4px); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-delay: 0s !important; }
+  /* Movement goes; colour and state changes stay so hover and focus still read. */
+  .arrow, .cl-name, .cl-desc { transition: none; }
+  a:hover > .arrow, button:hover > .arrow, .close-list a:hover .cl-name, .close-list a:hover .cl-desc { transform: none; }
 }
