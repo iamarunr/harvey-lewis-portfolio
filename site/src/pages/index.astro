@@ -9,7 +9,7 @@ import site from '../data/site.json';
 
 import nightRun from '../assets/photos/night-run.jpg';
 import students from '../assets/photos/students.jpg';
-import badwaterFinish from '../assets/photos/badwater-finish.jpg';
+import after450 from '../assets/photos/after-450.jpg';
 import backyardFlags from '../assets/photos/backyard-flags.jpg';
 import saltFlat from '../assets/photos/salt-flat.jpg';
 import stovepipe24 from '../assets/photos/stovepipe-24.jpg';
@@ -76,6 +76,14 @@ const dialTicks = Array.from({ length: YARDS }, (_, i) => {
   };
 });
 
+// Big's 2023 ran 21–25 October; the stops below are the ones iRunFar reported.
+const route = [
+  { when: 'October 25, 2023', what: 'Finishes yard 108 in Bell Buckle, Tennessee. 450 miles, a world record at the time.' },
+  { when: 'That night', what: 'Sleeps in a tent at the race.' },
+  { when: 'Next day', what: 'Drives home to Cincinnati.' },
+  { when: 'Friday morning', what: 'Runs to school and teaches class. Less than 48 hours after finishing.', end: true },
+];
+
 const loopSteps = [
   {
     yard: 1,
@@ -141,35 +149,58 @@ const loopSteps = [
     </div>
   </section>
 
-  <!-- ============ Duality ============ -->
-  <section class="salt duality" aria-labelledby="duality-h">
-    <div class="duality-text">
-      <h2 id="duality-h" class="display-2">Friday morning, he taught class.</h2>
-      <p class="lede">
-        In October 2023 Harvey Lewis ran 450 miles in 108 hours at Big's Backyard Ultra. He slept in a
-        tent, drove home to Cincinnati, and less than 48 hours after finishing, ran to school. He teaches
-        financial literacy and American government at the School for Creative and Performing Arts.
-      </p>
+  <!-- ============ Duality: the 48 hours after 450 miles ============ -->
+  <section class="salt duality wrap sec" aria-labelledby="duality-h">
+    <h2 id="duality-h" class="display-2 duality-h">Friday morning, he taught class.</h2>
+
+    <ol class="route" aria-label="The two days after the 2023 world record">
+      {route.map((r) => (
+        <li class:list={['route-stop', r.end && 'is-end']}>
+          <span class="route-when">{r.when}</span>
+          <span class="route-what">{r.what}</span>
+        </li>
+      ))}
+    </ol>
+
+    <div class="duality-body">
+      <div class="diptych">
+        <figure>
+          <Image src={after450} alt="Harvey Lewis after finishing a backyard ultra, scraped but standing" widths={[400, 700]} sizes="(max-width: 900px) 45vw, 20vw" />
+          <figcaption>After a backyard ultra</figcaption>
+        </figure>
+        <figure>
+          <Image src={students} alt="Harvey Lewis speaking to hundreds of schoolchildren outdoors" widths={[480]} sizes="(max-width: 900px) 45vw, 20vw" />
+          <figcaption>Speaking to schoolchildren</figcaption>
+        </figure>
+      </div>
+      <div class="duality-text">
+        <p class="lede">
+          He teaches financial literacy and American government at the School for Creative and Performing
+          Arts in Cincinnati, and runs the three miles to school most mornings. When his students are on the
+          bus, he races it.
+        </p>
+        <blockquote class="duality-quote">
+          <p class="pull">“I'm 47, and … I'm racing a bus? What the hell is going on here?”</p>
+          <cite class="pull-cite">iRunFar, 2024</cite>
+        </blockquote>
+      </div>
     </div>
-    <figure class="duality-a">
-      <Image src={badwaterFinish} alt="Harvey Lewis breaking the Badwater 135 finish tape at night, crew and an American flag behind him" widths={[500, 900, 1300]} sizes="(max-width: 760px) 100vw, 40vw" />
-      <figcaption>Badwater 135 finish, Whitney Portal, at night</figcaption>
-    </figure>
-    <figure class="duality-b">
-      <Image src={students} alt="Harvey Lewis speaking to hundreds of schoolchildren outdoors" widths={[480]} sizes="(max-width: 760px) 80vw, 24vw" />
-      <figcaption>Speaking to schoolchildren</figcaption>
-    </figure>
-    <blockquote class="duality-quote">
-      <p>“I'm 47, and … I'm racing a bus? What the hell is going on here?”</p>
-      <footer>On run-commuting past his students' school bus. iRunFar, 2024</footer>
-    </blockquote>
   </section>
 
   <!-- ============ The loop ============ -->
   <section class="loop" aria-labelledby="loop-h">
-    <div class="loop-intro">
-      <h2 id="loop-h" class="display-2">The last one standing.</h2>
-      <p class="lede">Big's Backyard Ultra, Bell Buckle, Tennessee. Eight starts since 2017.</p>
+    <div class="loop-intro wrap">
+      <div class="loop-intro-text">
+        <h2 id="loop-h" class="display-2">The last one standing.</h2>
+        <p class="lede">Big's Backyard Ultra, Bell Buckle, Tennessee. Eight starts since 2017, two wins, both world records at the time.</p>
+        <blockquote class="loop-quote">
+          <p class="pull">“There are powers that exist to push us beyond what seems reasonable.”</p>
+          <cite class="pull-cite">iRunFar, after the 2023 race</cite>
+        </blockquote>
+      </div>
+      <figure class="loop-photo">
+        <Image src={backyardFlags} alt="Harvey Lewis leading a pack of runners at the start of a yard, wearing a World Backyard Ultra Championships shirt" widths={[600, 1000, 1400, 2048]} sizes="(max-width: 900px) 100vw, 45vw" />
+      </figure>
     </div>
     <div class="loop-stage">
       <div class="loop-dial" aria-hidden="true">
@@ -197,13 +228,6 @@ const loopSteps = [
         ))}
       </ol>
     </div>
-    <figure class="loop-photo">
-      <Image src={backyardFlags} alt="Harvey Lewis leading a pack of runners at the start of a yard, wearing a World Backyard Ultra Championships shirt" widths={[800, 1400, 2048]} sizes="100vw" />
-      <figcaption>
-        <blockquote>“There are powers that exist to push us beyond what seems reasonable.”</blockquote>
-        <span>iRunFar, after the 2023 race</span>
-      </figcaption>
-    </figure>
   </section>
 
   <!-- ============ Badwater ============ -->
@@ -432,36 +456,47 @@ const loopSteps = [
   }
 
   /* ---------- Duality ---------- */
-  .duality {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 0 clamp(16px, 2vw, 32px);
-    padding: var(--sec) var(--gut);
+  .duality-h { max-width: 12ch; }
+  .route {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(16px, 2.5vw, 40px);
+    margin-top: clamp(48px, 6vw, 96px); position: relative;
   }
-  .duality-text { grid-column: 1 / span 7; }
-  .duality-text .lede { margin-top: clamp(24px, 2.5vw, 40px); }
-  .duality-a { grid-column: 7 / span 6; grid-row: 2 / span 2; margin-top: clamp(48px, 6vw, 96px); }
-  .duality-b { grid-column: 2 / span 4; grid-row: 2; margin-top: clamp(64px, 9vw, 160px); }
-  .duality figure img { width: 100%; }
-  .duality-a img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 60%; }
-  .duality-b img { aspect-ratio: 3 / 4; object-fit: cover; }
-  .duality figcaption { margin-top: 12px; color: var(--dark-dim); }
-  .duality-quote {
-    grid-column: 1 / span 5; grid-row: 3; align-self: end;
-    padding-top: 48px;
+  .route::before {
+    content: ''; position: absolute; left: 0; right: 0; top: 7px; height: 3px;
+    background: repeating-linear-gradient(90deg, var(--dark) 0 28px, transparent 28px 44px);
   }
-  .duality-quote p {
-    font-size: clamp(24px, 2.2vw, 36px); line-height: 1.25;
-    font-weight: 450; text-wrap: balance; max-width: 22ch;
+  .route-stop { position: relative; padding-top: 36px; display: grid; gap: 10px; align-content: start; }
+  .route-stop::before {
+    content: ''; position: absolute; left: 0; top: 0; width: 17px; height: 17px;
+    background: var(--salt); box-shadow: inset 0 0 0 3px var(--dark);
   }
-  .duality-quote footer {
-    margin-top: 16px; font-family: var(--display); font-weight: 600; font-size: 15px;
-    letter-spacing: 0.06em; text-transform: uppercase; color: var(--dark-dim);
+  .route-stop.is-end::before { background: var(--line); }
+  .route-when { font-family: var(--display); font-weight: 800; font-size: clamp(22px, 1.9vw, 30px); line-height: 1; text-transform: uppercase; }
+  .route-what { font-size: 18px; line-height: 1.45; color: var(--dark-dim); max-width: 26ch; }
+  .route-stop.is-end .route-what { color: var(--dark); }
+
+  .duality-body {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px clamp(40px, 7vw, 128px);
+    margin-top: clamp(72px, 9vw, 140px); align-items: center;
   }
+  .diptych { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(8px, 1vw, 16px); max-width: 640px; }
+  .diptych img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 30%; }
+  .diptych figcaption { margin-top: 10px; color: var(--dark-dim); }
+  .duality-text { display: grid; gap: clamp(32px, 4vw, 56px); }
+  .duality-text .lede { max-width: 34ch; }
+  .duality-quote { padding-top: 24px; border-top: 2px solid var(--dark); }
+  .duality-quote .pull { font-size: clamp(24px, 2.2vw, 36px); }
 
   /* ---------- Loop ---------- */
-  .loop { padding: var(--sec) 0 0; }
-  .loop-intro { padding: 0 var(--gut); display: grid; gap: clamp(20px, 2vw, 32px); }
+  .loop { padding: var(--sec) 0 clamp(40px, 5vw, 80px); }
+  .loop-intro {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px clamp(40px, 6vw, 112px);
+    align-items: center;
+  }
+  .loop-intro-text { display: grid; gap: clamp(24px, 2.5vw, 40px); }
+  .loop-quote { padding-top: 24px; border-top: 2px solid var(--ink); }
+  .loop-quote .pull { font-size: clamp(24px, 2.2vw, 36px); }
+  .loop-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 55% 15%; }
   .loop-stage {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -508,22 +543,6 @@ const loopSteps = [
     font-size: clamp(36px, 3.6vw, 60px); line-height: 0.95; margin: 12px 0 20px;
   }
   .loop-step p { color: var(--ink-dim); max-width: 34ch; }
-  .loop-photo { position: relative; margin-top: clamp(40px, 6vw, 96px); }
-  .loop-photo img { width: 100%; height: min(92svh, 62vw); object-fit: cover; object-position: 50% 30%; }
-  .loop-photo figcaption {
-    text-transform: none; letter-spacing: 0; font-weight: 400;
-    padding: clamp(28px, 3vw, 48px) var(--gut) var(--sec);
-    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 16px 48px;
-  }
-  .loop-photo blockquote {
-    font-family: var(--text); font-size: clamp(28px, 3.2vw, 54px); line-height: 1.15;
-    font-weight: 420; max-width: 24ch; text-wrap: balance;
-  }
-  .loop-photo figcaption span {
-    font-family: var(--display); font-weight: 600; font-size: 15px;
-    letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint);
-  }
-
   /* ---------- Badwater ---------- */
   .badwater { padding: var(--sec) var(--gut); }
   .bw-head { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px 64px; align-items: end; }
@@ -613,18 +632,19 @@ const loopSteps = [
     .dial-sub { font-size: 13px; margin-top: 4px; }
     .dial-label { font-size: 12px; }
 
-    .duality { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-    .duality-text { grid-column: 1 / -1; }
-    .duality-a { grid-column: 2 / -1; grid-row: auto; }
-    .duality-b { grid-column: 1 / span 4; grid-row: auto; margin-top: 32px; }
-    .duality-quote { grid-column: 1 / -1; grid-row: auto; }
+    .route { grid-template-columns: 1fr; gap: 28px; padding-left: 36px; }
+    .route::before { left: 7px; right: auto; top: 0; bottom: 0; width: 3px; height: auto;
+      background: repeating-linear-gradient(180deg, var(--dark) 0 22px, transparent 22px 34px); }
+    .route-stop { padding-top: 0; }
+    .route-stop::before { left: -36px; top: 4px; }
+    .duality-body, .loop-intro { grid-template-columns: 1fr; }
+    .loop-photo { margin-top: 8px; }
 
     .loop-stage { grid-template-columns: 1fr; }
     .loop-dial { top: 56px; height: 46svh; z-index: 1; background: var(--asphalt); }
     .dial { width: min(100%, 42svh); }
     .loop-steps { padding: 4svh 0 20svh; }
     .loop-step { min-height: 52svh; }
-    .loop-photo figcaption { grid-template-columns: 1fr; }
 
     .bw-head, .bw-body { grid-template-columns: 1fr; }
     .bw-photo { max-width: 420px; }
