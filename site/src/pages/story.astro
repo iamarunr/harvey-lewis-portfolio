@@ -1,34 +1,37 @@
 ---
 import { Image } from 'astro:assets';
-// Bitter is the display face for chapter headings and is used on this page only,
-// so it loads here rather than in the shared layout.
-import '@fontsource-variable/bitter';
-import '@fontsource-variable/bitter/wght-italic.css';
 import Base from '../layouts/Base.astro';
-import trailRiver from '../assets/photos/trail-river.jpg';
+import Arrow from '../components/Arrow.astro';
+import riverRun from '../assets/photos/river-run.jpg';
 import veganFriends from '../assets/photos/vegan-friends.jpg';
 import after450 from '../assets/photos/after-450.jpg';
-import speakingStudents from '../assets/photos/speaking-students.jpg';
-import saltFlatSunset from '../assets/photos/salt-flat-sunset.jpg';
-import desertRoadPair from '../assets/photos/desert-road-pair.jpg';
-import badwaterFinishNight from '../assets/photos/badwater-finish-night.jpg';
+import students from '../assets/photos/students.jpg';
+import badwaterFinishNight from '../assets/photos/badwater-finish.jpg';
 import sunsetTogether from '../assets/photos/sunset-together.jpg';
 
-const chapterPhotos = [
-  { src: trailRiver, alt: 'Harvey Lewis running a wooded trail beside a river' },
-  { src: veganFriends, alt: 'Harvey Lewis in a VEGAN shirt with Lazarus Lake and a friend at a race camp' },
-  { src: after450, alt: 'Harvey Lewis after finishing a backyard ultra, scraped but standing' },
-  { src: speakingStudents, alt: 'Harvey Lewis speaking to hundreds of schoolchildren outdoors' },
-  { src: saltFlatSunset, alt: 'Harvey Lewis running alone across a salt flat toward the setting sun' },
-  { src: desertRoadPair, alt: 'Two runners on a long empty desert highway' },
-  { src: badwaterFinishNight, alt: 'Harvey Lewis crossing the Badwater 135 finish tape at night with his crew and an American flag' },
-  { src: sunsetTogether, alt: 'Harvey and Kelly at sunset on a salt flat' },
-];
+type Photo = { src: ImageMetadata; alt: string; caption: string; wide?: boolean };
+
+// Photos sit with the chapter they belong to. Most are small web exports, so they are
+// shown near their native size rather than stretched.
+const photos: Record<string, Photo[]> = {
+  '1995–1996': [
+    { src: veganFriends, alt: 'Harvey Lewis in a VEGAN shirt with Lazarus Lake and a friend at a race camp', caption: 'With Lazarus Lake, at a race camp' },
+  ],
+  '2006–today': [
+    { src: students, alt: 'Harvey Lewis speaking to hundreds of schoolchildren outdoors', caption: 'Speaking to schoolchildren' },
+  ],
+  '2014–2026': [
+    { src: after450, alt: 'Harvey Lewis after finishing a backyard ultra, scraped but standing', caption: 'After a backyard ultra', wide: true },
+    { src: badwaterFinishNight, alt: 'Harvey Lewis crossing the Badwater 135 finish tape at night with his crew and an American flag', caption: 'Badwater 135 finish, Whitney Portal', wide: true },
+  ],
+  Today: [
+    { src: sunsetTogether, alt: 'Harvey and Kelly at sunset on a salt flat', caption: 'Harvey and Kelly' },
+  ],
+};
 
 const chapters = [
   {
-    n: '01',
-    kicker: 'Origins',
+    era: '1976–1995',
     title: 'Not a natural athlete.',
     paras: [
       'Harvey Lewis III was born on April 13, 1976 in Wheeling, West Virginia, and grew up in Berea, Ohio, a suburb of Cleveland. By his own account he was an unhealthy kid: fast food culture, meals heavy on meat, heartburn, and "layers of fat around my stomach."',
@@ -40,8 +43,7 @@ const chapters = [
     },
   },
   {
-    n: '02',
-    kicker: 'The Turning Point',
+    era: '1995–1996',
     title: 'His mother\'s stroke changed everything.',
     paras: [
       'When Lewis was 19, his mother, a 54-year-old nurse, suffered a sudden stroke despite no family history. The experience shook him into rethinking everything about food and health.',
@@ -53,8 +55,7 @@ const chapters = [
     },
   },
   {
-    n: '03',
-    kicker: 'The Comeback',
+    era: 'Around 2004',
     title: 'A broken neck, rebuilt in titanium.',
     paras: [
       'Around 2004, Lewis suffered a broken neck. Neurosurgeons rebuilt his C4 and C5 vertebrae with titanium implants. Rather than ending his career, the injury catalyzed it; he returned to competition faster than before.',
@@ -65,8 +66,7 @@ const chapters = [
     },
   },
   {
-    n: '04',
-    kicker: 'The Teacher',
+    era: '2006–today',
     title: 'He promised his students. Then he kept running.',
     paras: [
       'Lewis has taught at the School for Creative and Performing Arts in Cincinnati\'s Over-the-Rhine since 2006, teaching financial literacy and American government. Around 2013, after screening a climate change documentary in his government class, he made his students a promise: he would stop driving to work.',
@@ -79,8 +79,7 @@ const chapters = [
     },
   },
   {
-    n: '05',
-    kicker: 'Running as Witness',
+    era: '2008–2026',
     title: 'Gandhi\'s Salt March. Selma. Chasing Democracy 250.',
     paras: [
       'In 2008, Lewis earned a grant to retrace Mahatma Gandhi\'s 1930 Salt March: 241 miles from Ahmedabad to the coastal city of Dandi, India. In 2009, he ran Dr. Martin Luther King Jr.\'s Selma to Montgomery march.',
@@ -93,8 +92,7 @@ const chapters = [
     },
   },
   {
-    n: '06',
-    kicker: 'Father & Son',
+    era: '2018',
     title: '2,190 miles with his dad in the crew van.',
     paras: [
       'In 2018, Lewis ran the full Appalachian Trail from Springer Mountain, Georgia to Mount Katahdin, Maine in 49 days and 14 hours, averaging over 42 miles per day (one of the ten fastest completions ever at the time). His crew chief was his father, Harvey Lewis Jr. (then 78), from whom he had been estranged early in life.',
@@ -102,8 +100,7 @@ const chapters = [
     ],
   },
   {
-    n: '07',
-    kicker: 'The Record Book',
+    era: '2014–2026',
     title: 'Last man standing. Fifteen Badwaters.',
     paras: [
       'Lewis has won Badwater 135 twice: 2014 (23:52) and 2021 (25:50:23), the second at age 45 after coming from an hour behind at mile 90. In 2024, after finishing the race, he turned around and ran all the way back across Death Valley to complete the legendary 270-mile "Badwater Double." In 2026 at age 50, he logged his 15th career Badwater finish.',
@@ -116,8 +113,7 @@ const chapters = [
     },
   },
   {
-    n: '08',
-    kicker: 'Off the Clock',
+    era: 'Today',
     title: 'Charlie, the Flying Pig, and 101 countries.',
     paras: [
       'Lewis lives in East Walnut Hills, Cincinnati, with a rescued dog named Charlie, who runs long distances with him and eats plant-based too. He has run every Flying Pig Marathon since the race began in 1999, and has visited 101 countries across seven continents. He counts centenarian vegan runner Mike Fremont among his friends and running partners.',
@@ -127,208 +123,103 @@ const chapters = [
 ];
 ---
 
-<Base title="Story — Harvey Lewis" description="From a broken neck to back-to-back world records — the full story of ultrarunner and teacher Harvey Lewis.">
-  <section class="story-hero">
-    <div class="container">
-      <p class="eyebrow">The Story</p>
-      <h1 data-reveal class="story-hero-title">
-        From a broken neck to <em>the record book.</em>
-      </h1>
-      <p data-reveal class="story-hero-sub">
-        A teacher from Cincinnati who became one of the greatest endurance
-        athletes alive, without ever quitting his day job.
-      </p>
-    </div>
-  </section>
+<Base title="Story — Harvey Lewis" description="From a broken neck to back-to-back world records: the story of Cincinnati high school teacher and ultrarunner Harvey Lewis.">
+  <header class="page-head story-head">
+    <h1 class="display-1">From a broken neck to the record book.</h1>
+    <p class="lede">
+      A Cincinnati high school teacher who has spent thirty years finding out how far a person can run,
+      without ever giving up his day job.
+    </p>
+  </header>
 
-  {
-    chapters.map((c, i) => (
-      <section class="chapter">
-        <div class="container chapter-grid">
-          <div data-reveal class="chapter-meta">
-            <p class="chapter-n">{c.n}</p>
-            <p class="eyebrow">{c.kicker}</p>
+  <figure class="story-plate">
+    <Image src={riverRun} alt="Harvey Lewis running beside a river in late summer" widths={[900, 1600, 2400, 3200]} sizes="100vw" loading="eager" />
+    <figcaption class="wrap">Dream Big, 2026. Photograph by Mike Trimpe</figcaption>
+  </figure>
+
+  <div class="salt story-body">
+    {
+      chapters.map((c) => (
+        <article class="chapter wrap">
+          <div class="chapter-rail">
+            <p class="chapter-era">{c.era}</p>
           </div>
-          <div data-reveal class="chapter-body">
-            <h2 class="chapter-title">{c.title}</h2>
-            {c.paras.map((p) => (
-              <p class="chapter-para">{p}</p>
-            ))}
+          <div class="chapter-main">
+            <h2 class="display-3">{c.title}</h2>
+            <div class="prose chapter-prose">
+              {c.paras.map((p) => <p>{p}</p>)}
+            </div>
             {c.quote && (
               <blockquote class="chapter-quote">
-                <p>“{c.quote.text}”</p>
-                <cite>— Harvey Lewis, {c.quote.cite}</cite>
+                <p class="pull">“{c.quote.text}”</p>
+                <cite class="pull-cite">Harvey Lewis · {c.quote.cite}</cite>
               </blockquote>
             )}
           </div>
-          <div data-reveal class="chapter-photo">
-            <div class="chapter-photo-box">
-              <Image
-                src={chapterPhotos[i].src}
-                alt={chapterPhotos[i].alt}
-                widths={[480, 720, 1080]}
-                sizes="(max-width: 900px) 100vw, 33vw"
-                quality={80}
-      loading="lazy"
-    />
+          {photos[c.era] && (
+            <div class="chapter-photos">
+              {photos[c.era].map((ph) => (
+                <figure class:list={['chapter-photo', ph.wide && 'is-wide']}>
+                  <Image src={ph.src} alt={ph.alt} widths={[360, 640, 1072]} sizes="(max-width: 900px) 90vw, 340px" />
+                  <figcaption>{ph.caption}</figcaption>
+                </figure>
+              ))}
             </div>
-          </div>
-        </div>
-      </section>
-    ))
-  }
+          )}
+        </article>
+      ))
+    }
+  </div>
 
-  <section class="story-next">
-    <div class="container">
-      <p class="mono-label">Keep going</p>
-      <a class="next-link" href="/races">Every race since 1996 →</a>
-    </div>
-  </section>
+  <nav class="story-next wrap sec" aria-label="Keep reading">
+    <a href="/races" class="next-link">
+      <span class="label dim">Next</span>
+      <span class="display-2">Every race since 1996</span>
+      <Arrow />
+    </a>
+  </nav>
 </Base>
 
-<style>
-  .story-hero {
-    padding: clamp(72px, 8vw, 120px) 0 clamp(64px, 6vw, 96px);
-    border-bottom: 1px solid var(--line);
-  }
+<style is:global>
+  .story-head .display-1 { max-width: 12ch; }
+  .story-plate img { width: 100%; height: min(88svh, 60vw); object-fit: cover; object-position: 50% 35%; }
+  .story-plate figcaption { padding-top: 14px; padding-bottom: 14px; color: var(--ink-faint); }
 
-  .story-hero-title {
-    font-weight: 600;
-    font-size: clamp(42px, 5.5vw, 84px);
-    line-height: 1.04;
-    letter-spacing: -0.025em;
-    max-width: 22ch;
-    margin: 20px 0 24px;
-  }
-
-  .story-hero-title em {
-    font-style: italic;
-    color: var(--rust);
-  }
-
-  .story-hero-sub {
-    font-size: clamp(18px, 1.25vw, 23px);
-    line-height: 1.6;
-    color: var(--ink-subtle);
-    max-width: 58ch;
-  }
-
+  .story-body { padding: clamp(40px, 5vw, 80px) 0 var(--sec); }
   .chapter {
-    padding: clamp(64px, 7vw, 110px) 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .chapter-grid {
     display: grid;
-    grid-template-columns: 140px 1.5fr 1fr;
-    gap: clamp(32px, 4vw, 72px);
-    align-items: start;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr);
+    gap: 24px clamp(24px, 4vw, 72px);
+    padding-top: clamp(64px, 8vw, 128px);
   }
-
-  .chapter-n {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--rust);
-    margin-bottom: 8px;
+  .chapter + .chapter { border-top: 1px solid var(--dark-rule); margin-top: clamp(64px, 8vw, 128px); }
+  .chapter-rail { position: relative; }
+  .chapter-era {
+    position: sticky; top: 96px;
+    font-family: var(--display); font-weight: 850; text-transform: uppercase;
+    font-size: clamp(28px, 2.6vw, 44px); line-height: 0.95;
   }
-
-  .chapter-title {
-    font-family: var(--font-serif);
-    font-weight: 600;
-    font-size: clamp(28px, 2.6vw, 42px);
-    line-height: 1.2;
-    letter-spacing: -0.015em;
-    margin-bottom: 24px;
-  }
-
-  .chapter-para {
-    font-size: clamp(17px, 1.1vw, 19px);
-    line-height: 1.72;
-    color: var(--ink-subtle);
-    margin-bottom: 20px;
-    max-width: 64ch;
-    text-wrap: pretty;
-  }
-
-  .chapter-quote {
-    border-left: 2px solid var(--rust);
-    padding-left: 24px;
-    margin-top: 32px;
-  }
-
-  .chapter-quote p {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(20px, 1.4vw, 26px);
-    line-height: 1.45;
-    color: var(--ink);
-  }
-
-  .chapter-quote cite {
-    display: block;
-    margin-top: 14px;
-    font-family: var(--font-mono);
-    font-style: normal;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-
-  .chapter-photo-box {
-    aspect-ratio: 3 / 4;
-    position: sticky;
-    top: 32px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-  }
-
-  .chapter-photo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .story-next {
-    padding: clamp(80px, 8vw, 120px) 0;
-  }
+  .chapter-main .display-3 { max-width: 16ch; }
+  .chapter-prose { margin-top: clamp(24px, 2.4vw, 36px); }
+  .chapter-quote { margin-top: clamp(40px, 4vw, 64px); padding-top: 24px; border-top: 2px solid var(--dark); }
+  .chapter-quote .pull { font-size: clamp(24px, 2vw, 34px); max-width: 28ch; }
+  .chapter-photos { display: grid; gap: 32px; align-content: start; padding-top: 8px; }
+  .chapter-photo { max-width: 340px; }
+  .chapter-photo img { width: 100%; }
+  .chapter-photo figcaption { margin-top: 10px; }
 
   .next-link {
-    display: inline-flex;
-    align-items: center;
-    font-weight: 600;
-    font-size: clamp(28px, 3vw, 48px);
-    color: var(--ink);
-    margin-top: 14px;
-    min-height: 48px;
-    transition: color 0.15s ease;
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 8px 32px;
+    text-decoration: none; padding-bottom: 24px; border-bottom: 2px solid var(--ink);
   }
+  .next-link .label { grid-column: 1 / -1; }
+  .next-link .arrow { width: clamp(40px, 5vw, 80px); height: clamp(40px, 5vw, 80px); stroke-width: 1.8; }
+  .next-link:hover { color: var(--line); }
 
-  .next-link:hover {
-    color: var(--rust);
-  }
-
-  /* Mobile < 900px: meta collapses inline; photo drops below text */
   @media (max-width: 900px) {
-    .chapter-grid {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-
-    .chapter-photo-box {
-      aspect-ratio: 4 / 3;
-      position: static;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .story-hero {
-      padding: 64px 0 56px;
-    }
-
-    .chapter {
-      padding: 56px 0;
-    }
+    .chapter { grid-template-columns: 1fr; }
+    .chapter-era { position: static; color: var(--dark-dim); font-size: 24px; }
+    .chapter-photos { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .story-plate img { height: 56svh; }
   }
 </style>

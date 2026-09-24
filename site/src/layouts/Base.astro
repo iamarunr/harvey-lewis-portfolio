@@ -1,25 +1,38 @@
 ---
-import '@fontsource-variable/archivo';
-import '@fontsource-variable/archivo/wght-italic.css';
-import '@fontsource/anton';
-import '@fontsource-variable/jetbrains-mono';
-import '../styles/global.css';
+import '@fontsource-variable/big-shoulders/opsz.css';
+import '@fontsource-variable/source-serif-4/opsz.css';
+import '../styles/road.css';
 import Meta from '../components/Meta.astro';
-import Motion from '../components/Motion.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
+import Arrow from '../components/Arrow.astro';
+import nav from '../data/nav.json';
+import site from '../data/site.json';
 
 interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  includePersonSchema?: boolean;
+  /** The header sits transparent over a full-bleed opening and solidifies on scroll. */
+  overlay?: boolean;
 }
 
 const {
   title,
-  description = 'Harvey Lewis — two-time Badwater 135 champion, twice a backyard ultra world record setter, and a full-time high school teacher in Cincinnati, Ohio.',
+  description = 'Harvey Lewis: high school teacher in Cincinnati, two-time Badwater 135 champion, and twice a backyard ultra world record setter.',
   noindex = false,
+  includePersonSchema = false,
+  overlay = false,
 } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => (path === href ? 'page' : undefined);
+
+const socials = [
+  { label: 'Instagram', url: site.instagramUrl },
+  { label: 'Facebook', url: 'https://www.facebook.com/harveylewisultrarunner' },
+  { label: 'YouTube', url: 'https://www.youtube.com/@HarveyandKelly' },
+  { label: 'X / Twitter', url: 'https://twitter.com/harveylewisruns' },
+];
 ---
 
 <!doctype html>
@@ -27,21 +40,96 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b0a09" />
-    <script is:inline>
-      document.documentElement.classList.add('js-motion');
-    </script>
+    <meta name="theme-color" content="#0e0e0e" />
+    <script is:inline>document.documentElement.classList.add('lw-js');</script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <Meta title={title} description={description} noindex={noindex} />
+    <Meta title={title} description={description} noindex={noindex} includePersonSchema={includePersonSchema} />
   </head>
-  <body id="top">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <SiteHeader variant="solid" />
-    <main id="main-content">
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+
+    <header class="bar" data-bar data-overlay={overlay ? '' : undefined}>
+      <a href="/" class="bar-name">Harvey Lewis</a>
+      <nav class="bar-nav" aria-label="Primary">
+        {nav.map((n) => <a href={n.href} aria-current={isCurrent(n.href)}>{n.label}</a>)}
+      </nav>
+      <a href="/contact" class="btn btn-line" aria-current={isCurrent('/contact')}>Enquire</a>
+      <button type="button" class="bar-menu" aria-expanded="false" aria-controls="menu" data-menu-open>Menu</button>
+    </header>
+
+    <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-menu>
+      <div class="menu-top">
+        <a href="/" class="bar-name" style="opacity:1">Harvey Lewis</a>
+        <button type="button" class="bar-menu" data-menu-close>Close</button>
+      </div>
+      <nav class="menu-list" aria-label="Menu">
+        <a href="/" aria-current={isCurrent('/')}>Home <Arrow /></a>
+        {nav.map((n) => <a href={n.href} aria-current={isCurrent(n.href)}>{n.label} <Arrow /></a>)}
+      </nav>
+      <div class="menu-foot">
+        <a href="/contact" class="btn btn-line btn-lg">Enquire <Arrow /></a>
+      </div>
+    </div>
+
+    <main id="main">
       <slot />
     </main>
-    <SiteFooter />
-    <Motion />
+
+    <footer class="foot">
+      <div>
+        <p class="foot-name">Harvey<br />Lewis</p>
+        <p class="foot-note">High school teacher and ultrarunner. Cincinnati, Ohio.</p>
+      </div>
+      <nav aria-labelledby="foot-pages">
+        <h2 id="foot-pages">Pages</h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="foot-follow">
+        <h2 id="foot-follow">Follow</h2>
+        <ul>
+          {socials.map((s) => <li><a href={s.url} rel="noopener noreferrer" target="_blank">{s.label}</a></li>)}
+        </ul>
+      </nav>
+      <div class="foot-base">
+        <span>{site.photoCredit}</span>
+        <a href="#main" class="inline-link">Back to top</a>
+      </div>
+    </footer>
+
+    <script>
+      // Overlay header solidifies once the opening screen scrolls away.
+      const bar = document.querySelector<HTMLElement>('[data-bar]');
+      const opening = document.querySelector('[data-opening]');
+      if (bar?.hasAttribute('data-overlay') && opening) {
+        new IntersectionObserver(([e]) => bar.classList.toggle('is-solid', !e.isIntersecting), {
+          rootMargin: '-80px 0px 0px 0px',
+        }).observe(opening);
+      }
+
+      // Mobile menu: a full-screen sheet, closed by button, Escape, or following a link.
+      const menu = document.querySelector<HTMLElement>('[data-menu]');
+      const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+      const closeBtn = document.querySelector<HTMLButtonElement>('[data-menu-close]');
+      const setMenu = (open: boolean) => {
+        if (!menu || !openBtn) return;
+        menu.toggleAttribute('data-open', open);
+        openBtn.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = open ? 'hidden' : '';
+        (open ? closeBtn : openBtn)?.focus();
+      };
+      openBtn?.addEventListener('click', () => setMenu(true));
+      closeBtn?.addEventListener('click', () => setMenu(false));
+      menu?.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).closest('a')) setMenu(false);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu?.hasAttribute('data-open')) setMenu(false);
+      });
+    </script>
   </body>
 </html>

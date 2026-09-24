@@ -1,13 +1,12 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import Arrow from '../components/Arrow.astro';
+import YearsChart from '../components/YearsChart.astro';
 import races from '../data/races.json';
-import badwaterDawn from '../assets/photos/badwater-dawn.jpg';
+import { raceId, raceKind, raceName, racePlace, raceResult, stats } from '../lib/races';
 
-const wins = races.filter((r) => r.placeOverall === 1 && r.status === 'finished').length;
-const podiums = races.filter((r) => r.placeOverall <= 3 && r.status === 'finished').length;
-const bigsStarts = races.filter((r) => r.race.startsWith("Big Dog's Backyard")).length;
 const years = [...new Set(races.map((r) => r.year))].sort((a, b) => b - a);
+const bigsStarts = races.filter((r) => r.race.startsWith("Big Dog's Backyard")).length;
 
 const highlights = [
   {
@@ -56,491 +55,206 @@ const highlights = [
 ];
 ---
 
-<Base title="Races & Records — Harvey Lewis" description={`Every race Harvey Lewis has run since 1996 — ${races.length} results, ${wins} wins, from FANS 24-Hour to back-to-back world records at Big's Backyard Ultra.`}>
-  <section class="races-hero">
-    <div class="container">
-      <p class="eyebrow">Races &amp; Records</p>
-      <h1 data-reveal class="races-title">
-        {races.length} races. Thirty years. <em>Seven continents.</em>
-      </h1>
-      <div data-reveal-group data-reveal-step="90" class="races-stats">
-        <div data-reveal class="rstat"><span class="rstat-n">{wins}</span><span class="rstat-l">Overall wins</span></div>
-        <div data-reveal class="rstat"><span class="rstat-n">{podiums}</span><span class="rstat-l">Podiums</span></div>
-        <div data-reveal class="rstat"><span class="rstat-n">{years[years.length - 1]}–{years[0]}</span><span class="rstat-l">Active span</span></div>
-        <div data-reveal class="rstat"><span class="rstat-n">3</span><span class="rstat-l">World records</span></div>
-      </div>
+<Base
+  title="Races & Records — Harvey Lewis"
+  description={`Every race Harvey Lewis has run since ${stats.firstYear}: ${stats.count} results and ${stats.wins} wins, from the FANS 24-Hour to two backyard world records at Big's Backyard Ultra.`}
+>
+  <header class="page-head">
+    <h1 class="display-1">Every race since {stats.firstYear}.</h1>
+    <p class="lede">
+      {stats.count} results, {stats.wins} wins and {stats.podiums} podiums, one mark each. Point at a mark to read
+      it, or click to find it in the archive below.
+    </p>
+  </header>
+
+  <section class="wrap races-chart" aria-label="All results by year">
+    <YearsChart linked />
+  </section>
+
+  <section class="salt wrap sec" aria-labelledby="ledgers-h">
+    <h2 id="ledgers-h" class="display-2 ledgers-title">Where the records were set.</h2>
+    <div class="ledgers">
+      {
+        highlights.map((h) => (
+          <article class="ledger">
+            <h3 class="display-3">{h.event}</h3>
+            <p class="ledger-detail">{h.detail}</p>
+            <table class="ledger-table">
+              <caption class="visually-hidden">{h.event} results</caption>
+              <tbody>
+                {h.rows.map((row) => (
+                  <tr>
+                    <th scope="row" class="num">{row.y}</th>
+                    <td class="num">{row.r}</td>
+                    <td class:list={['ledger-place', /1st|World Record/.test(row.p) && 'is-record']}>{row.p}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <div class="photo-band">
-    <Image
-      src={badwaterDawn}
-      alt="Runners on the road at Badwater Basin at dawn, mountains on the horizon"
-      widths={[800, 1280]}
-      sizes="100vw"
-      quality={80}
-      loading="lazy"
-    />
-  </div>
-
-  <section class="highlights">
-    <div class="container">
-      <p class="mono-label">01 / The marquee events</p>
-      <div data-reveal-group data-reveal-step="100" class="highlight-grid">
-        {
-          highlights.map((h) => (
-            <article data-reveal class="highlight-card lift">
-              <h2 class="highlight-event">{h.event}</h2>
-              <p class="highlight-detail">{h.detail}</p>
-              <table class="highlight-table">
-                <tbody>
-                  {h.rows.map((row) => (
-                    <tr>
-                      <td class="ht-year">{row.y}</td>
-                      <td class="ht-result">{row.r}</td>
-                      <td class="ht-place">{row.p}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </article>
-          ))
-        }
-      </div>
+  <section class="wrap sec archive" aria-labelledby="archive-h">
+    <div class="archive-head">
+      <h2 id="archive-h" class="display-2">The archive.</h2>
+      <p class="lede">From UltraSignup. Fixed-time races show miles; fixed-distance races show elapsed time.</p>
     </div>
-  </section>
 
-  <section class="archive">
-    <div class="container">
-      <p class="mono-label">02 / The full archive</p>
-      <h2 class="archive-title">Every start since 1996</h2>
-      <p class="archive-note">Source: UltraSignup. Results are miles for fixed-time races, elapsed time for fixed-distance races.</p>
+    <div class="filters" role="group" aria-label="Filter races">
+      <button type="button" class="filter" data-filter="all" aria-pressed="true">All <span class="num">{stats.count}</span></button>
+      <button type="button" class="filter" data-filter="win" aria-pressed="false">Wins <span class="num">{stats.wins}</span></button>
+      <button type="button" class="filter" data-filter="podium" aria-pressed="false">Podiums <span class="num">{stats.podiums}</span></button>
+    </div>
 
-      <div class="filters" role="group" aria-label="Filter races">
-        <button class="filter-btn active" data-filter="all" aria-pressed="true">All ({races.length})</button>
-        <button class="filter-btn" data-filter="wins" aria-pressed="false">Wins ({wins})</button>
-        <button class="filter-btn" data-filter="podiums" aria-pressed="false">Podiums ({podiums})</button>
-      </div>
-
-      <div data-reveal class="race-table-head">
-        <span>Date</span><span>Race</span><span>Result</span><span>Place</span>
-      </div>
-
+    <table class="archive-table">
+      <caption class="visually-hidden">All races, newest first</caption>
+      <thead>
+        <tr><th scope="col">Date</th><th scope="col">Race</th><th scope="col">Result</th><th scope="col">Place</th></tr>
+      </thead>
       {
         years.map((year) => (
-          <div class="year-group" data-year={year}>
-            <h3 class="year-label">{year}</h3>
+          <tbody data-year={year}>
+            <tr class="year-row"><th colspan="4" scope="rowgroup">{year}</th></tr>
             {races
               .filter((r) => r.year === year)
               .map((r) => (
-                <div
-                  class="race-row"
-                  data-win={r.placeOverall === 1 && r.status === 'finished' ? 'true' : 'false'}
-                  data-podium={r.placeOverall <= 3 && r.status === 'finished' ? 'true' : 'false'}
-                >
-                  <span class="race-date">{r.date}</span>
-                  <span class="race-name">{r.race}</span>
-                  <span class="race-result">{r.status === 'dnf' ? 'DNF' : r.result}</span>
-                  <span class="race-place">
-                    {r.status === 'dnf' ? '—' : r.placeOverall === 1 ? <strong>1st</strong> : `${r.placeOverall}${['th','st','nd','rd'][((r.placeOverall % 100) - 20) % 10] || ['th','st','nd','rd'][r.placeOverall % 100] || 'th'}`}
-                  </span>
-                </div>
+                <tr id={raceId(r)} class={`race race-${raceKind(r)}`} data-kind={raceKind(r)}>
+                  <td class="num race-date">{r.date.slice(5).replace('-', '.')}</td>
+                  <td class="race-name">{raceName(r)}<span class="race-sub">{r.race.split(' - ')[1] ?? ''}</span></td>
+                  <td class="num">{raceResult(r)}</td>
+                  <td class="num race-place">{racePlace(r)}</td>
+                </tr>
               ))}
-          </div>
+          </tbody>
         ))
       }
-
-      <div class="archive-actions">
-        <button
-          type="button"
-          class="more-toggle"
-          id="races-expand-btn"
-          aria-expanded="false"
-        >
-          Show all {races.length} races &darr;
-        </button>
-      </div>
-    </div>
+    </table>
+    <p class="archive-empty" hidden data-empty>No races match this filter.</p>
   </section>
+
+  <nav class="wrap sec races-next" aria-label="Keep reading">
+    <a href="/story" class="text-link">The story behind the results <Arrow /></a>
+  </nav>
 </Base>
 
 <script>
-  const buttons = document.querySelectorAll('.filter-btn');
-  const rows = document.querySelectorAll<HTMLElement>('.race-row');
-  const groups = document.querySelectorAll<HTMLElement>('.year-group');
-  const expandBtn = document.getElementById('races-expand-btn') as HTMLButtonElement | null;
+  const filters = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const rows = [...document.querySelectorAll<HTMLTableRowElement>('tr[data-kind]')];
+  const groups = [...document.querySelectorAll<HTMLTableSectionElement>('tbody[data-year]')];
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
 
-  const INITIAL_COUNT = 10;
-  let isExpanded = false;
-  let currentMode = 'all';
-
-  function updateView() {
-    let matchCount = 0;
-    let totalMatching = 0;
-
+  const apply = (mode: string) => {
     rows.forEach((row) => {
-      const matches =
-        currentMode === 'all' ||
-        (currentMode === 'wins' && row.getAttribute('data-win') === 'true') ||
-        (currentMode === 'podiums' && row.getAttribute('data-podium') === 'true');
-
-      if (matches) {
-        totalMatching++;
-        const show = isExpanded || matchCount < INITIAL_COUNT;
-        row.style.display = show ? '' : 'none';
-        if (show) matchCount++;
-      } else {
-        row.style.display = 'none';
-      }
+      const k = row.dataset.kind;
+      row.hidden = !(mode === 'all' || k === mode || (mode === 'podium' && k === 'win'));
     });
-
-    groups.forEach((group) => {
-      const visible = group.querySelectorAll('.race-row:not([style*="display: none"])').length;
-      group.style.display = visible > 0 ? '' : 'none';
+    let any = false;
+    groups.forEach((g) => {
+      const visible = g.querySelector('tr[data-kind]:not([hidden])') !== null;
+      g.hidden = !visible;
+      any ||= visible;
     });
+    if (empty) empty.hidden = any;
+  };
 
-    if (expandBtn) {
-      if (totalMatching <= INITIAL_COUNT) {
-        expandBtn.style.display = 'none';
-      } else {
-        expandBtn.style.display = '';
-        expandBtn.setAttribute('aria-expanded', String(isExpanded));
-        const modeLabel = currentMode === 'wins' ? 'wins' : currentMode === 'podiums' ? 'podiums' : 'races';
-        expandBtn.innerHTML = isExpanded
-          ? `Show fewer (10) &uarr;`
-          : `Show all ${totalMatching} ${modeLabel} &darr;`;
-      }
-    }
-  }
-
-  function applyTransition(fn: () => void) {
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'startViewTransition' in document) {
-      (document as any).startViewTransition(fn);
-    } else {
-      fn();
-    }
-  }
-
-  buttons.forEach((btn) => {
+  filters.forEach((btn) =>
     btn.addEventListener('click', () => {
-      buttons.forEach((b) => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      currentMode = btn.getAttribute('data-filter') || 'all';
-      applyTransition(updateView);
-    });
-  });
+      filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      apply(btn.dataset.filter ?? 'all');
+    }),
+  );
 
-  if (expandBtn) {
-    expandBtn.addEventListener('click', () => {
-      isExpanded = !isExpanded;
-      applyTransition(() => {
-        updateView();
-        if (!isExpanded) {
-          const tableHead = document.querySelector('.race-table-head');
-          if (tableHead) {
-            const top = tableHead.getBoundingClientRect().top;
-            if (top < 0) {
-              tableHead.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }
-        }
-      });
-    });
-  }
-
-  updateView();
+  // A jump from the chart always lands on a visible row.
+  const reveal = () => {
+    const target = location.hash && document.querySelector<HTMLElement>(location.hash);
+    if (!target || !target.matches('tr[data-kind]')) return;
+    if (target.hidden) {
+      filters.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === 'all')));
+      apply('all');
+      target.scrollIntoView({ block: 'center' });
+    }
+    target.classList.remove('is-target');
+    void target.offsetWidth;
+    target.classList.add('is-target');
+  };
+  window.addEventListener('hashchange', reveal);
+  reveal();
 </script>
 
-<style>
-  .races-hero {
-    padding: clamp(72px, 8vw, 120px) 0 clamp(48px, 6vw, 72px);
-    border-bottom: 1px solid var(--line);
+<style is:global>
+  .races-chart { padding-bottom: clamp(72px, 9vw, 140px); }
+
+  .ledgers-title { max-width: 14ch; }
+  .ledgers {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(56px, 6vw, 96px) clamp(32px, 5vw, 96px);
+    margin-top: clamp(56px, 7vw, 110px);
+  }
+  .ledger { border-top: 2px solid var(--dark); padding-top: 20px; }
+  .ledger-detail { margin-top: 10px; color: var(--dark-dim); font-size: 17px; }
+  .ledger-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+  .ledger-table th, .ledger-table td {
+    text-align: left; padding: 10px 0; border-bottom: 1px solid var(--dark-rule); vertical-align: baseline;
+    font-family: var(--display); font-weight: 600; font-size: 18px;
+  }
+  .ledger-table th { width: 4.2em; font-weight: 750; }
+  .ledger-place { text-align: right !important; color: var(--dark-dim); }
+  .ledger-place.is-record { color: var(--dark); font-weight: 800 !important; }
+  .ledger-place.is-record::before {
+    content: ''; display: inline-block; width: 10px; height: 10px; margin-right: 8px; background: var(--line);
+    box-shadow: inset 0 0 0 1.5px var(--dark);
   }
 
-  .races-title {
-    font-weight: 600;
-    font-size: clamp(42px, 5.5vw, 84px);
-    line-height: 1.04;
-    letter-spacing: -0.025em;
-    max-width: 20ch;
-    margin: 20px 0 44px;
+  .archive-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(40px, 5vw, 72px); }
+  .filter {
+    display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px;
+    background: transparent; border: 1.5px solid var(--rule); cursor: pointer;
+    font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink-dim); transition: color 0.2s, border-color 0.2s, background-color 0.2s;
   }
+  .filter:hover { color: var(--ink); border-color: var(--ink-faint); }
+  .filter[aria-pressed='true'] { background: var(--line); border-color: var(--line); color: var(--dark); }
 
-  .races-title em {
-    font-style: italic;
-    color: var(--rust);
+  .archive-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+  .archive-table thead th {
+    text-align: left; padding: 12px 0; border-bottom: 2px solid var(--ink);
+    font-family: var(--display); font-weight: 650; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
   }
-
-  .races-stats {
-    display: flex;
-    border-top: 1px solid var(--line);
-    flex-wrap: wrap;
+  .archive-table thead th:nth-child(n + 3), .archive-table td:nth-child(n + 3) { text-align: right; }
+  .year-row th {
+    text-align: left; padding: 36px 0 10px;
+    font-family: var(--display); font-weight: 850; font-size: clamp(28px, 2.6vw, 40px); line-height: 1;
+    border-bottom: 1px solid var(--ink-faint);
   }
-
-  .rstat {
-    flex: 1 1 180px;
-    padding: 24px 28px 0 0;
-    display: flex;
-    flex-direction: column;
+  .race td {
+    padding: 12px 0; border-bottom: 1px solid var(--rule); vertical-align: baseline;
+    font-family: var(--display); font-weight: 600; font-size: 18px;
   }
+  .race td + td { padding-left: 16px; }
+  .race-date { width: 4.5em; color: var(--ink-faint); }
+  .race-name { font-family: var(--text) !important; font-weight: 450 !important; font-size: 18px !important; }
+  .race-sub { display: block; font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); margin-top: 2px; }
+  .race-place { width: 4.5em; color: var(--ink-dim); }
+  .race-win .race-place { color: var(--line); font-weight: 800; }
+  .race-dnf td { color: var(--ink-faint); }
+  .race { scroll-margin-top: 30vh; }
+  .race.is-target { animation: target-flash 2.4s var(--ease); }
+  @keyframes target-flash { 0%, 30% { background: rgba(242, 194, 48, 0.22); } 100% { background: transparent; } }
+  .archive-empty { margin-top: 32px; color: var(--ink-dim); }
 
-  .rstat-n {
-    font-family: var(--font-num);
-    font-size: clamp(34px, 3.8vw, 54px);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-    color: var(--rust);
-  }
-
-  .rstat-l {
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    margin-top: 4px;
-  }
-
-  .photo-band {
-    border-bottom: 1px solid var(--line);
-    max-height: 480px;
-    overflow: hidden;
-  }
-
-  .photo-band img {
-    width: 100%;
-    height: 480px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .highlights {
-    padding: clamp(72px, 8vw, 110px) 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .highlight-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
-    margin-top: 36px;
-  }
-
-  .highlight-card {
-    padding: clamp(28px, 2.5vw, 38px);
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .highlight-event {
-    font-weight: 600;
-    font-size: clamp(24px, 2vw, 30px);
-    line-height: 1.2;
-  }
-
-  .highlight-detail {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin: 8px 0 20px;
-  }
-
-  .highlight-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .highlight-table td {
-    padding: 9px 0;
-    border-top: 1px solid var(--line);
-    font-size: 14px;
-    vertical-align: top;
-  }
-
-  .ht-year {
-    font-family: var(--font-mono);
-    color: var(--ink-dim);
-    width: 60px;
-  }
-
-  .ht-result {
-    color: var(--ink);
-  }
-
-  .ht-place {
-    text-align: right;
-    color: var(--ink-dim);
-    white-space: nowrap;
-  }
-
-  .archive {
-    padding: clamp(72px, 8vw, 110px) 0 clamp(96px, 10vw, 140px);
-  }
-
-  .archive-title {
-    font-weight: 600;
-    font-size: clamp(34px, 3.8vw, 56px);
-    margin: 16px 0 12px;
-    letter-spacing: -0.02em;
-  }
-
-  .archive-note {
-    font-size: clamp(14px, 1vw, 16px);
-    color: var(--ink-dim);
-    margin-bottom: 40px;
-  }
-
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 40px;
-  }
-
-  .filter-btn {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    background: none;
-    border: 1px solid var(--line-strong);
-    border-radius: 0;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
-  }
-
-  .filter-btn:hover {
-    color: var(--ink);
-    border-color: var(--ink-dim);
-  }
-
-  .filter-btn.active {
-    background: var(--rust);
-    border-color: var(--rust);
-    color: var(--bg-deep);
-    font-weight: 700;
-  }
-
-  .race-table-head {
-    display: grid;
-    grid-template-columns: 130px 1fr 180px 90px;
-    gap: 20px;
-    padding: 0 12px 14px;
-    border-bottom: 1px solid var(--line-strong);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-
-  .year-label {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--rust);
-    padding: 32px 12px 10px;
-  }
-
-  .race-row {
-    display: grid;
-    grid-template-columns: 130px 1fr 180px 90px;
-    gap: 20px;
-    padding: 14px 12px;
-    margin: 0 -12px;
-    border-bottom: 1px solid var(--line);
-    font-size: 16px;
-    transition: background-color 0.15s ease;
-  }
-
-  .race-row:hover {
-    background: var(--surface-hover);
-  }
-
-  .race-date {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--ink-dim);
-    padding-top: 2px;
-  }
-
-  .race-name {
-    color: var(--ink);
-  }
-
-  .race-result {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--ink-dim);
-    text-align: right;
-  }
-
-  .race-place {
-    text-align: right;
-    color: var(--ink-dim);
-  }
-
-  .race-place strong {
-    color: var(--rust);
-  }
-
-  .archive-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-
-  /* Mobile < 640px */
-  @media (max-width: 640px) {
-    .races-hero {
-      padding: 64px 0 48px;
-    }
-
-    .races-title {
-      font-size: 38px;
-    }
-
-    .races-stats {
-      flex-wrap: wrap;
-    }
-
-    .rstat {
-      flex: 1 1 50%;
-      padding: 16px 12px 0 0;
-    }
-
-    .highlight-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .race-table-head {
-      display: none;
-    }
-
-    .race-row {
-      grid-template-columns: 1fr auto;
-      grid-template-areas:
-        'name name'
-        'date result'
-        'date place';
-      gap: 4px 12px;
-    }
-
-    .race-name { grid-area: name; }
-    .race-date { grid-area: date; }
-    .race-result { grid-area: result; }
-    .race-place { grid-area: place; }
+  @media (max-width: 900px) {
+    .ledgers, .archive-head { grid-template-columns: 1fr; }
+    .archive-table thead { display: none; }
+    .race { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+    .race td { border: 0; padding: 0 !important; }
+    .race-date { grid-column: 1 / -1; font-size: 14px !important; }
+    .race-name { grid-column: 1; grid-row: 2 / span 2; }
+    .race td:nth-child(3) { grid-column: 2; grid-row: 2; }
+    .race-place { grid-column: 2; grid-row: 3; width: auto; }
+    .race[hidden] { display: none; }
   }
 </style>
